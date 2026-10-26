@@ -46,6 +46,10 @@
       </nav>
 
       <div class="header-actions">
+        <button class="cart-toggle" id="cart-toggle" type="button" aria-controls="cart-drawer" aria-expanded="false" aria-haspopup="dialog" aria-label="Warenkorb, 0 Artikel">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1.2 11.1a2 2 0 0 1-2 1.9H8.2a2 2 0 0 1-2-1.9z"/><path d="M9 10V7a3 3 0 0 1 6 0v3"/></svg>
+          <span class="cart-count" id="cart-count" aria-hidden="true" hidden>0</span>
+        </button>
         <div class="lang-switch" role="group" aria-label="Sprache" data-i18n-attr="aria-label:lang.label">
           <button type="button" data-lang="de" aria-pressed="true" lang="de" aria-label="Deutsch">DE</button>
           <button type="button" data-lang="en" aria-pressed="false" lang="en" aria-label="English">EN</button>
@@ -141,76 +145,100 @@
         </div>
 
         <ul class="product-grid" id="product-grid" role="tabpanel" aria-labelledby="tab-all" aria-live="polite">
-          <li class="product reveal" data-category="brot">
+          <li class="product reveal" data-product="p1" data-category="brot">
             <div class="product-media"><picture><source type="image/webp" srcset="images/products/honigkorn-laib.webp"><img src="images/products/honigkorn-laib.jpg" width="800" height="600" loading="lazy" decoding="async" alt="Kastenbrot mit Haferflocken und Körnern auf hellem Grund" data-i18n-attr="alt:p1.alt"></picture></div>
             <div class="product-body">
               <span class="product-tag" data-i18n="filter.brot">Brot</span>
-              <h3 data-i18n="p1.name">Honigkorn-Laib</h3>
+              <h3><button class="product-link" type="button" aria-haspopup="dialog" data-i18n="p1.name">Honigkorn-Laib</button></h3>
               <p data-i18n="p1.desc">Dinkel-Sauerteig mit Waldhonig und Sonnenblumenkernen. Unser Hausbrot, 750 g.</p>
-              <p class="price" data-price="5.20">5,20 €</p>
+              <div class="product-foot">
+                <p class="price" data-price="5.20">5,20 €</p>
+                <button class="btn btn-add" type="button" data-add-to-cart="p1"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1.2 11.1a2 2 0 0 1-2 1.9H8.2a2 2 0 0 1-2-1.9z"/><path d="M9 10V7a3 3 0 0 1 6 0v3"/><path d="M12 12.5v5M9.5 15h5"/></svg><span data-add-label data-i18n="cart.add">In den Warenkorb</span></button>
+              </div>
             </div>
           </li>
-          <li class="product reveal" data-category="brot">
+          <li class="product reveal" data-product="p2" data-category="brot">
             <div class="product-media"><picture><source type="image/webp" srcset="images/products/bauernbrot.webp"><img src="images/products/bauernbrot.jpg" width="800" height="600" loading="lazy" decoding="async" alt="Angeschnittenes dunkles Roggenbrot auf einem Holzbrett" data-i18n-attr="alt:p2.alt"></picture></div>
             <div class="product-body">
               <span class="product-tag" data-i18n="filter.brot">Brot</span>
-              <h3 data-i18n="p2.name">Taunus-Bauernbrot</h3>
+              <h3><button class="product-link" type="button" aria-haspopup="dialog" data-i18n="p2.name">Taunus-Bauernbrot</button></h3>
               <p data-i18n="p2.desc">Kräftiges Roggenmischbrot mit dunkler Kruste, 48 Stunden gereift. 1 kg.</p>
-              <p class="price" data-price="4.80">4,80 €</p>
+              <div class="product-foot">
+                <p class="price" data-price="4.80">4,80 €</p>
+                <button class="btn btn-add" type="button" data-add-to-cart="p2"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1.2 11.1a2 2 0 0 1-2 1.9H8.2a2 2 0 0 1-2-1.9z"/><path d="M9 10V7a3 3 0 0 1 6 0v3"/><path d="M12 12.5v5M9.5 15h5"/></svg><span data-add-label data-i18n="cart.add">In den Warenkorb</span></button>
+              </div>
             </div>
           </li>
-          <li class="product reveal" data-category="broetchen">
+          <li class="product reveal" data-product="p3" data-category="broetchen">
             <div class="product-media"><picture><source type="image/webp" srcset="images/products/kaiserbroetchen.webp"><img src="images/products/kaiserbroetchen.jpg" width="800" height="600" loading="lazy" decoding="async" alt="Knusprige Brötchen auf einem rot-weiß karierten Tuch" data-i18n-attr="alt:p3.alt"></picture></div>
             <div class="product-body">
               <span class="product-tag" data-i18n="filter.broetchen">Brötchen</span>
-              <h3 data-i18n="p3.name">Kaiserbrötchen</h3>
+              <h3><button class="product-link" type="button" aria-haspopup="dialog" data-i18n="p3.name">Kaiserbrötchen</button></h3>
               <p data-i18n="p3.desc">Der Klassiker zum Frühstück: außen knusprig, innen fluffig.</p>
-              <p class="price" data-price="0.55">0,55 €</p>
+              <div class="product-foot">
+                <p class="price" data-price="0.55">0,55 €</p>
+                <button class="btn btn-add" type="button" data-add-to-cart="p3"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1.2 11.1a2 2 0 0 1-2 1.9H8.2a2 2 0 0 1-2-1.9z"/><path d="M9 10V7a3 3 0 0 1 6 0v3"/><path d="M12 12.5v5M9.5 15h5"/></svg><span data-add-label data-i18n="cart.add">In den Warenkorb</span></button>
+              </div>
             </div>
           </li>
-          <li class="product reveal" data-category="broetchen">
+          <li class="product reveal" data-product="p4" data-category="broetchen">
             <div class="product-media"><picture><source type="image/webp" srcset="images/products/laugenbrezel.webp"><img src="images/products/laugenbrezel.jpg" width="800" height="600" loading="lazy" decoding="async" alt="Drei goldbraune Brezeln auf einem Holzbrett" data-i18n-attr="alt:p4.alt"></picture></div>
             <div class="product-body">
               <span class="product-tag" data-i18n="filter.broetchen">Brötchen</span>
-              <h3 data-i18n="p4.name">Laugenbrezel</h3>
+              <h3><button class="product-link" type="button" aria-haspopup="dialog" data-i18n="p4.name">Laugenbrezel</button></h3>
               <p data-i18n="p4.desc">Von Hand geschlungen, mit grobem Salz – schwäbische Art, im Taunus gebacken.</p>
-              <p class="price" data-price="0.95">0,95 €</p>
+              <div class="product-foot">
+                <p class="price" data-price="0.95">0,95 €</p>
+                <button class="btn btn-add" type="button" data-add-to-cart="p4"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1.2 11.1a2 2 0 0 1-2 1.9H8.2a2 2 0 0 1-2-1.9z"/><path d="M9 10V7a3 3 0 0 1 6 0v3"/><path d="M12 12.5v5M9.5 15h5"/></svg><span data-add-label data-i18n="cart.add">In den Warenkorb</span></button>
+              </div>
             </div>
           </li>
-          <li class="product reveal" data-category="suesses">
+          <li class="product reveal" data-product="p5" data-category="suesses">
             <div class="product-media"><picture><source type="image/webp" srcset="images/products/croissant.webp"><img src="images/products/croissant.jpg" width="800" height="600" loading="lazy" decoding="async" alt="Buttercroissant auf einem runden Korkuntersetzer" data-i18n-attr="alt:p5.alt"></picture></div>
             <div class="product-body">
               <span class="product-tag" data-i18n="filter.suesses">Süßes</span>
-              <h3 data-i18n="p5.name">Buttercroissant</h3>
+              <h3><button class="product-link" type="button" aria-haspopup="dialog" data-i18n="p5.name">Buttercroissant</button></h3>
               <p data-i18n="p5.desc">Drei Tage Arbeit, 27 Schichten und viel französische Butter.</p>
-              <p class="price" data-price="1.80">1,80 €</p>
+              <div class="product-foot">
+                <p class="price" data-price="1.80">1,80 €</p>
+                <button class="btn btn-add" type="button" data-add-to-cart="p5"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1.2 11.1a2 2 0 0 1-2 1.9H8.2a2 2 0 0 1-2-1.9z"/><path d="M9 10V7a3 3 0 0 1 6 0v3"/><path d="M12 12.5v5M9.5 15h5"/></svg><span data-add-label data-i18n="cart.add">In den Warenkorb</span></button>
+              </div>
             </div>
           </li>
-          <li class="product reveal" data-category="suesses">
+          <li class="product reveal" data-product="p6" data-category="suesses">
             <div class="product-media"><picture><source type="image/webp" srcset="images/products/zimtschnecke.webp"><img src="images/products/zimtschnecke.jpg" width="800" height="600" loading="lazy" decoding="async" alt="Zimtschnecken, eine davon mit Zuckerglasur" data-i18n-attr="alt:p6.alt"></picture></div>
             <div class="product-body">
               <span class="product-tag" data-i18n="filter.suesses">Süßes</span>
-              <h3 data-i18n="p6.name">Zimtschnecke</h3>
+              <h3><button class="product-link" type="button" aria-haspopup="dialog" data-i18n="p6.name">Zimtschnecke</button></h3>
               <p data-i18n="p6.desc">Hefeteig mit Zimt, braunem Zucker und Vanilleglasur.</p>
-              <p class="price" data-price="2.40">2,40 €</p>
+              <div class="product-foot">
+                <p class="price" data-price="2.40">2,40 €</p>
+                <button class="btn btn-add" type="button" data-add-to-cart="p6"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1.2 11.1a2 2 0 0 1-2 1.9H8.2a2 2 0 0 1-2-1.9z"/><path d="M9 10V7a3 3 0 0 1 6 0v3"/><path d="M12 12.5v5M9.5 15h5"/></svg><span data-add-label data-i18n="cart.add">In den Warenkorb</span></button>
+              </div>
             </div>
           </li>
-          <li class="product reveal" data-category="torten">
+          <li class="product reveal" data-product="p7" data-category="torten">
             <div class="product-media"><picture><source type="image/webp" srcset="images/products/frankfurter-kranz.webp"><img src="images/products/frankfurter-kranz.jpg" width="800" height="600" loading="lazy" decoding="async" alt="Frankfurter Kranz mit Buttercreme, Krokant und Belegkirschen" data-i18n-attr="alt:p7.alt"></picture></div>
             <div class="product-body">
               <span class="product-tag" data-i18n="filter.torten">Torten</span>
-              <h3 data-i18n="p7.name">Frankfurter Kranz (Stück)</h3>
+              <h3><button class="product-link" type="button" aria-haspopup="dialog" data-i18n="p7.name">Frankfurter Kranz (Stück)</button></h3>
               <p data-i18n="p7.desc">Buttercreme, Johannisbeergelee und Krokant – hessisch durch und durch.</p>
-              <p class="price" data-price="3.90">3,90 €</p>
+              <div class="product-foot">
+                <p class="price" data-price="3.90">3,90 €</p>
+                <button class="btn btn-add" type="button" data-add-to-cart="p7"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1.2 11.1a2 2 0 0 1-2 1.9H8.2a2 2 0 0 1-2-1.9z"/><path d="M9 10V7a3 3 0 0 1 6 0v3"/><path d="M12 12.5v5M9.5 15h5"/></svg><span data-add-label data-i18n="cart.add">In den Warenkorb</span></button>
+              </div>
             </div>
           </li>
-          <li class="product reveal" data-category="torten">
+          <li class="product reveal" data-product="p8" data-category="torten">
             <div class="product-media"><picture><source type="image/webp" srcset="images/products/schwarzwaelder.webp"><img src="images/products/schwarzwaelder.jpg" width="800" height="600" loading="lazy" decoding="async" alt="Stück Schwarzwälder Kirschtorte mit Sahne, Schokoraspeln und Kirsche" data-i18n-attr="alt:p8.alt"></picture></div>
             <div class="product-body">
               <span class="product-tag" data-i18n="filter.torten">Torten</span>
-              <h3 data-i18n="p8.name">Schwarzwälder Kirschtorte (Stück)</h3>
+              <h3><button class="product-link" type="button" aria-haspopup="dialog" data-i18n="p8.name">Schwarzwälder Kirschtorte (Stück)</button></h3>
               <p data-i18n="p8.desc">Schokobiskuit, Sauerkirschen, Sahne und ein Schuss Kirschwasser.</p>
-              <p class="price" data-price="3.80">3,80 €</p>
+              <div class="product-foot">
+                <p class="price" data-price="3.80">3,80 €</p>
+                <button class="btn btn-add" type="button" data-add-to-cart="p8"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1.2 11.1a2 2 0 0 1-2 1.9H8.2a2 2 0 0 1-2-1.9z"/><path d="M9 10V7a3 3 0 0 1 6 0v3"/><path d="M12 12.5v5M9.5 15h5"/></svg><span data-add-label data-i18n="cart.add">In den Warenkorb</span></button>
+              </div>
             </div>
           </li>
         </ul>
@@ -235,9 +263,184 @@
           <ul class="checklist">
             <li data-i18n="cakes.li1">Bestellung mindestens 3 Tage im Voraus</li>
             <li data-i18n="cakes.li2">Glutenfreie und vegane Varianten möglich</li>
-            <li data-i18n="cakes.li3">Ab 34 € für 12 Stücke</li>
+            <li data-i18n="cakes.li3">Ab 34 € für Ø 18 cm (8–10 Stücke)</li>
           </ul>
-          <a class="btn btn-primary" href="#vorbestellen" data-i18n="cakes.cta">Torte anfragen</a>
+          <a class="btn btn-primary" href="#cake-builder" data-i18n="cakes.cta">Torte gestalten</a>
+        </div>
+      </div>
+      <div class="container">
+        <div class="card cake-builder reveal" id="cake-builder" role="region" aria-labelledby="builder-title">
+          <div class="builder-head">
+            <p class="eyebrow" data-i18n="builder.eyebrow">Tortenkonfigurator</p>
+            <h3 id="builder-title" data-i18n="builder.title">Stellen Sie Ihre Torte zusammen</h3>
+            <p data-i18n="builder.lead">Wählen Sie Größe, Biskuit, Creme und Früchte – Vorschau und Preis passen sich sofort an.</p>
+          </div>
+
+          <div class="builder-grid">
+            <div class="builder-preview">
+              <svg class="cake-svg" id="cake-svg" viewBox="0 0 400 320" role="img" aria-labelledby="cake-preview-desc" data-filling="strawberry">
+                <ellipse cx="200" cy="296" rx="168" ry="18" fill="#3B2618" opacity=".07"/>
+                <ellipse class="cake-plate" cx="200" cy="288" rx="160" ry="18"/>
+                <g class="cake-body" id="cake-body">
+                  <path data-part="sponge" d="M84 228a116 14 0 0 0 232 0V262a116 14 0 0 1-232 0z"/>
+                  <path data-part="cream" d="M84 214a116 14 0 0 0 232 0V228a116 14 0 0 1-232 0z"/>
+                  <path data-part="fruit" class="fruit-layer" d="M84 219a116 14 0 0 0 232 0V223a116 14 0 0 1-232 0z"/>
+                  <path data-part="sponge" d="M84 172a116 14 0 0 0 232 0V214a116 14 0 0 1-232 0z"/>
+                  <path data-part="cream" d="M84 158a116 14 0 0 0 232 0V172a116 14 0 0 1-232 0z"/>
+                  <path data-part="fruit" class="fruit-layer" d="M84 163a116 14 0 0 0 232 0V167a116 14 0 0 1-232 0z"/>
+                  <path data-part="sponge" d="M84 124a116 14 0 0 0 232 0V158a116 14 0 0 1-232 0z"/>
+                  <g data-part="cream"><rect x="87.5" y="123.1" width="9" height="16" rx="4.5"/><rect x="105.5" y="126.8" width="9" height="22" rx="4.5"/><rect x="123.5" y="129.0" width="9" height="14" rx="4.5"/><rect x="141.5" y="130.4" width="9" height="20" rx="4.5"/><rect x="159.5" y="131.3" width="9" height="26" rx="4.5"/><rect x="177.5" y="131.8" width="9" height="15" rx="4.5"/><rect x="195.5" y="132.0" width="9" height="19" rx="4.5"/><rect x="213.5" y="131.8" width="9" height="24" rx="4.5"/><rect x="231.5" y="131.3" width="9" height="13" rx="4.5"/><rect x="249.5" y="130.4" width="9" height="21" rx="4.5"/><rect x="267.5" y="129.0" width="9" height="17" rx="4.5"/><rect x="285.5" y="126.8" width="9" height="23" rx="4.5"/><rect x="303.5" y="123.1" width="9" height="15" rx="4.5"/></g>
+                  <ellipse data-part="cream" cx="200" cy="124" rx="116" ry="14"/>
+                  <ellipse class="cake-top-shine" cx="200" cy="122" rx="100" ry="9"/>
+                  <g data-part="cream" class="cake-rosettes"><circle cx="184.0" cy="111.6" r="7.5"/><circle cx="246.0" cy="112.8" r="7.5"/><circle cx="129.5" cy="114.9" r="7.5"/><circle cx="286.5" cy="117.8" r="7.5"/><circle cx="108.0" cy="121.0" r="7.5"/><circle cx="286.5" cy="124.2" r="7.5"/><circle cx="129.5" cy="127.1" r="7.5"/><circle cx="246.0" cy="129.2" r="7.5"/><circle cx="184.0" cy="130.4" r="7.5"/></g>
+                  <g class="fruits fruits-strawberry"><g transform="translate(184.0 103.6)"><path class="fruit-body" d="M0-7c5.5 0 8.5 4 6.5 8.5S1.5 9 0 10C-1.5 9-4.5 6-6.5 1.5S-5.5-7 0-7z"/><path class="fruit-leaf" d="M-5-6.5l2.5 2 2.5-3 2.5 3 2.5-2-1 3.5h-8z"/><g class="fruit-seed"><circle cx="-2.5" cy="0" r=".7"/><circle cx="2" cy="-1" r=".7"/><circle cx="0" cy="4" r=".7"/><circle cx="3" cy="3" r=".7"/><circle cx="-3" cy="4.5" r=".7"/></g></g><g transform="translate(246.0 104.8)"><path class="fruit-body" d="M0-7c5.5 0 8.5 4 6.5 8.5S1.5 9 0 10C-1.5 9-4.5 6-6.5 1.5S-5.5-7 0-7z"/><path class="fruit-leaf" d="M-5-6.5l2.5 2 2.5-3 2.5 3 2.5-2-1 3.5h-8z"/><g class="fruit-seed"><circle cx="-2.5" cy="0" r=".7"/><circle cx="2" cy="-1" r=".7"/><circle cx="0" cy="4" r=".7"/><circle cx="3" cy="3" r=".7"/><circle cx="-3" cy="4.5" r=".7"/></g></g><g transform="translate(129.5 106.9)"><path class="fruit-body" d="M0-7c5.5 0 8.5 4 6.5 8.5S1.5 9 0 10C-1.5 9-4.5 6-6.5 1.5S-5.5-7 0-7z"/><path class="fruit-leaf" d="M-5-6.5l2.5 2 2.5-3 2.5 3 2.5-2-1 3.5h-8z"/><g class="fruit-seed"><circle cx="-2.5" cy="0" r=".7"/><circle cx="2" cy="-1" r=".7"/><circle cx="0" cy="4" r=".7"/><circle cx="3" cy="3" r=".7"/><circle cx="-3" cy="4.5" r=".7"/></g></g><g transform="translate(286.5 109.8)"><path class="fruit-body" d="M0-7c5.5 0 8.5 4 6.5 8.5S1.5 9 0 10C-1.5 9-4.5 6-6.5 1.5S-5.5-7 0-7z"/><path class="fruit-leaf" d="M-5-6.5l2.5 2 2.5-3 2.5 3 2.5-2-1 3.5h-8z"/><g class="fruit-seed"><circle cx="-2.5" cy="0" r=".7"/><circle cx="2" cy="-1" r=".7"/><circle cx="0" cy="4" r=".7"/><circle cx="3" cy="3" r=".7"/><circle cx="-3" cy="4.5" r=".7"/></g></g><g transform="translate(108.0 113.0)"><path class="fruit-body" d="M0-7c5.5 0 8.5 4 6.5 8.5S1.5 9 0 10C-1.5 9-4.5 6-6.5 1.5S-5.5-7 0-7z"/><path class="fruit-leaf" d="M-5-6.5l2.5 2 2.5-3 2.5 3 2.5-2-1 3.5h-8z"/><g class="fruit-seed"><circle cx="-2.5" cy="0" r=".7"/><circle cx="2" cy="-1" r=".7"/><circle cx="0" cy="4" r=".7"/><circle cx="3" cy="3" r=".7"/><circle cx="-3" cy="4.5" r=".7"/></g></g><g transform="translate(286.5 116.2)"><path class="fruit-body" d="M0-7c5.5 0 8.5 4 6.5 8.5S1.5 9 0 10C-1.5 9-4.5 6-6.5 1.5S-5.5-7 0-7z"/><path class="fruit-leaf" d="M-5-6.5l2.5 2 2.5-3 2.5 3 2.5-2-1 3.5h-8z"/><g class="fruit-seed"><circle cx="-2.5" cy="0" r=".7"/><circle cx="2" cy="-1" r=".7"/><circle cx="0" cy="4" r=".7"/><circle cx="3" cy="3" r=".7"/><circle cx="-3" cy="4.5" r=".7"/></g></g><g transform="translate(129.5 119.1)"><path class="fruit-body" d="M0-7c5.5 0 8.5 4 6.5 8.5S1.5 9 0 10C-1.5 9-4.5 6-6.5 1.5S-5.5-7 0-7z"/><path class="fruit-leaf" d="M-5-6.5l2.5 2 2.5-3 2.5 3 2.5-2-1 3.5h-8z"/><g class="fruit-seed"><circle cx="-2.5" cy="0" r=".7"/><circle cx="2" cy="-1" r=".7"/><circle cx="0" cy="4" r=".7"/><circle cx="3" cy="3" r=".7"/><circle cx="-3" cy="4.5" r=".7"/></g></g><g transform="translate(246.0 121.2)"><path class="fruit-body" d="M0-7c5.5 0 8.5 4 6.5 8.5S1.5 9 0 10C-1.5 9-4.5 6-6.5 1.5S-5.5-7 0-7z"/><path class="fruit-leaf" d="M-5-6.5l2.5 2 2.5-3 2.5 3 2.5-2-1 3.5h-8z"/><g class="fruit-seed"><circle cx="-2.5" cy="0" r=".7"/><circle cx="2" cy="-1" r=".7"/><circle cx="0" cy="4" r=".7"/><circle cx="3" cy="3" r=".7"/><circle cx="-3" cy="4.5" r=".7"/></g></g><g transform="translate(184.0 122.4)"><path class="fruit-body" d="M0-7c5.5 0 8.5 4 6.5 8.5S1.5 9 0 10C-1.5 9-4.5 6-6.5 1.5S-5.5-7 0-7z"/><path class="fruit-leaf" d="M-5-6.5l2.5 2 2.5-3 2.5 3 2.5-2-1 3.5h-8z"/><g class="fruit-seed"><circle cx="-2.5" cy="0" r=".7"/><circle cx="2" cy="-1" r=".7"/><circle cx="0" cy="4" r=".7"/><circle cx="3" cy="3" r=".7"/><circle cx="-3" cy="4.5" r=".7"/></g></g></g>
+                  <g class="fruits fruits-raspberry"><g transform="translate(184.0 104.6)" class="fruit-body"><circle cx="-3" cy="-3" r="2.6"/><circle cx="0" cy="-4" r="2.6"/><circle cx="3" cy="-3" r="2.6"/><circle cx="-4.5" cy="0.5" r="2.6"/><circle cx="-1.5" cy="0" r="2.6"/><circle cx="1.5" cy="0" r="2.6"/><circle cx="4.5" cy="0.5" r="2.6"/><circle cx="-3" cy="3.5" r="2.6"/><circle cx="0" cy="4" r="2.6"/><circle cx="3" cy="3.5" r="2.6"/><circle cx="0" cy="7" r="2.6"/></g><g transform="translate(246.0 105.8)" class="fruit-body"><circle cx="-3" cy="-3" r="2.6"/><circle cx="0" cy="-4" r="2.6"/><circle cx="3" cy="-3" r="2.6"/><circle cx="-4.5" cy="0.5" r="2.6"/><circle cx="-1.5" cy="0" r="2.6"/><circle cx="1.5" cy="0" r="2.6"/><circle cx="4.5" cy="0.5" r="2.6"/><circle cx="-3" cy="3.5" r="2.6"/><circle cx="0" cy="4" r="2.6"/><circle cx="3" cy="3.5" r="2.6"/><circle cx="0" cy="7" r="2.6"/></g><g transform="translate(129.5 107.9)" class="fruit-body"><circle cx="-3" cy="-3" r="2.6"/><circle cx="0" cy="-4" r="2.6"/><circle cx="3" cy="-3" r="2.6"/><circle cx="-4.5" cy="0.5" r="2.6"/><circle cx="-1.5" cy="0" r="2.6"/><circle cx="1.5" cy="0" r="2.6"/><circle cx="4.5" cy="0.5" r="2.6"/><circle cx="-3" cy="3.5" r="2.6"/><circle cx="0" cy="4" r="2.6"/><circle cx="3" cy="3.5" r="2.6"/><circle cx="0" cy="7" r="2.6"/></g><g transform="translate(286.5 110.8)" class="fruit-body"><circle cx="-3" cy="-3" r="2.6"/><circle cx="0" cy="-4" r="2.6"/><circle cx="3" cy="-3" r="2.6"/><circle cx="-4.5" cy="0.5" r="2.6"/><circle cx="-1.5" cy="0" r="2.6"/><circle cx="1.5" cy="0" r="2.6"/><circle cx="4.5" cy="0.5" r="2.6"/><circle cx="-3" cy="3.5" r="2.6"/><circle cx="0" cy="4" r="2.6"/><circle cx="3" cy="3.5" r="2.6"/><circle cx="0" cy="7" r="2.6"/></g><g transform="translate(108.0 114.0)" class="fruit-body"><circle cx="-3" cy="-3" r="2.6"/><circle cx="0" cy="-4" r="2.6"/><circle cx="3" cy="-3" r="2.6"/><circle cx="-4.5" cy="0.5" r="2.6"/><circle cx="-1.5" cy="0" r="2.6"/><circle cx="1.5" cy="0" r="2.6"/><circle cx="4.5" cy="0.5" r="2.6"/><circle cx="-3" cy="3.5" r="2.6"/><circle cx="0" cy="4" r="2.6"/><circle cx="3" cy="3.5" r="2.6"/><circle cx="0" cy="7" r="2.6"/></g><g transform="translate(286.5 117.2)" class="fruit-body"><circle cx="-3" cy="-3" r="2.6"/><circle cx="0" cy="-4" r="2.6"/><circle cx="3" cy="-3" r="2.6"/><circle cx="-4.5" cy="0.5" r="2.6"/><circle cx="-1.5" cy="0" r="2.6"/><circle cx="1.5" cy="0" r="2.6"/><circle cx="4.5" cy="0.5" r="2.6"/><circle cx="-3" cy="3.5" r="2.6"/><circle cx="0" cy="4" r="2.6"/><circle cx="3" cy="3.5" r="2.6"/><circle cx="0" cy="7" r="2.6"/></g><g transform="translate(129.5 120.1)" class="fruit-body"><circle cx="-3" cy="-3" r="2.6"/><circle cx="0" cy="-4" r="2.6"/><circle cx="3" cy="-3" r="2.6"/><circle cx="-4.5" cy="0.5" r="2.6"/><circle cx="-1.5" cy="0" r="2.6"/><circle cx="1.5" cy="0" r="2.6"/><circle cx="4.5" cy="0.5" r="2.6"/><circle cx="-3" cy="3.5" r="2.6"/><circle cx="0" cy="4" r="2.6"/><circle cx="3" cy="3.5" r="2.6"/><circle cx="0" cy="7" r="2.6"/></g><g transform="translate(246.0 122.2)" class="fruit-body"><circle cx="-3" cy="-3" r="2.6"/><circle cx="0" cy="-4" r="2.6"/><circle cx="3" cy="-3" r="2.6"/><circle cx="-4.5" cy="0.5" r="2.6"/><circle cx="-1.5" cy="0" r="2.6"/><circle cx="1.5" cy="0" r="2.6"/><circle cx="4.5" cy="0.5" r="2.6"/><circle cx="-3" cy="3.5" r="2.6"/><circle cx="0" cy="4" r="2.6"/><circle cx="3" cy="3.5" r="2.6"/><circle cx="0" cy="7" r="2.6"/></g><g transform="translate(184.0 123.4)" class="fruit-body"><circle cx="-3" cy="-3" r="2.6"/><circle cx="0" cy="-4" r="2.6"/><circle cx="3" cy="-3" r="2.6"/><circle cx="-4.5" cy="0.5" r="2.6"/><circle cx="-1.5" cy="0" r="2.6"/><circle cx="1.5" cy="0" r="2.6"/><circle cx="4.5" cy="0.5" r="2.6"/><circle cx="-3" cy="3.5" r="2.6"/><circle cx="0" cy="4" r="2.6"/><circle cx="3" cy="3.5" r="2.6"/><circle cx="0" cy="7" r="2.6"/></g></g>
+                  <g class="fruits fruits-cherry"><g transform="translate(184.0 104.6)"><path class="fruit-stem" d="M0-5c1-6 4-9 8-10"/><circle class="fruit-body" r="6.5"/><circle class="fruit-shine" cx="-2.2" cy="-2.2" r="1.6"/></g><g transform="translate(246.0 105.8)"><path class="fruit-stem" d="M0-5c1-6 4-9 8-10"/><circle class="fruit-body" r="6.5"/><circle class="fruit-shine" cx="-2.2" cy="-2.2" r="1.6"/></g><g transform="translate(129.5 107.9)"><path class="fruit-stem" d="M0-5c1-6 4-9 8-10"/><circle class="fruit-body" r="6.5"/><circle class="fruit-shine" cx="-2.2" cy="-2.2" r="1.6"/></g><g transform="translate(286.5 110.8)"><path class="fruit-stem" d="M0-5c1-6 4-9 8-10"/><circle class="fruit-body" r="6.5"/><circle class="fruit-shine" cx="-2.2" cy="-2.2" r="1.6"/></g><g transform="translate(108.0 114.0)"><path class="fruit-stem" d="M0-5c1-6 4-9 8-10"/><circle class="fruit-body" r="6.5"/><circle class="fruit-shine" cx="-2.2" cy="-2.2" r="1.6"/></g><g transform="translate(286.5 117.2)"><path class="fruit-stem" d="M0-5c1-6 4-9 8-10"/><circle class="fruit-body" r="6.5"/><circle class="fruit-shine" cx="-2.2" cy="-2.2" r="1.6"/></g><g transform="translate(129.5 120.1)"><path class="fruit-stem" d="M0-5c1-6 4-9 8-10"/><circle class="fruit-body" r="6.5"/><circle class="fruit-shine" cx="-2.2" cy="-2.2" r="1.6"/></g><g transform="translate(246.0 122.2)"><path class="fruit-stem" d="M0-5c1-6 4-9 8-10"/><circle class="fruit-body" r="6.5"/><circle class="fruit-shine" cx="-2.2" cy="-2.2" r="1.6"/></g><g transform="translate(184.0 123.4)"><path class="fruit-stem" d="M0-5c1-6 4-9 8-10"/><circle class="fruit-body" r="6.5"/><circle class="fruit-shine" cx="-2.2" cy="-2.2" r="1.6"/></g></g>
+                  <g class="cake-plaque" id="cake-plaque" aria-hidden="true">
+                    <rect x="140" y="64" width="120" height="30" rx="8"/>
+                    <text x="200" y="84" text-anchor="middle"></text>
+                  </g>
+                </g>
+              </svg>
+              <p class="visually-hidden" id="cake-preview-desc"></p>
+            </div>
+
+            <form class="builder-form" id="cake-form" novalidate>
+              <fieldset class="choice-group">
+                <legend data-i18n="builder.size">Größe</legend>
+                <div class="choices choices-3">
+                  <label class="choice">
+                    <input type="radio" name="size" value="18">
+                    <span class="choice-body">
+                      <span class="choice-title">Ø 18 cm</span>
+                      <span class="choice-meta" data-meta="size-18"></span>
+                    </span>
+                  </label>
+                  <label class="choice">
+                    <input type="radio" name="size" value="22" checked>
+                    <span class="choice-body">
+                      <span class="choice-title">Ø 22 cm</span>
+                      <span class="choice-meta" data-meta="size-22"></span>
+                    </span>
+                  </label>
+                  <label class="choice">
+                    <input type="radio" name="size" value="26">
+                    <span class="choice-body">
+                      <span class="choice-title">Ø 26 cm</span>
+                      <span class="choice-meta" data-meta="size-26"></span>
+                    </span>
+                  </label>
+                </div>
+              </fieldset>
+              <fieldset class="choice-group">
+                <legend data-i18n="builder.sponge">Biskuit</legend>
+                <div class="choices choices-3">
+                  <label class="choice">
+                    <input type="radio" name="sponge" value="vanilla" checked>
+                    <span class="choice-body">
+                      <span class="choice-title" data-i18n="cake.sponge.vanilla">Vanille</span>
+                      <span class="choice-meta" data-meta="sponge-vanilla"></span>
+                    </span>
+                  </label>
+                  <label class="choice">
+                    <input type="radio" name="sponge" value="chocolate">
+                    <span class="choice-body">
+                      <span class="choice-title" data-i18n="cake.sponge.chocolate">Schoko</span>
+                      <span class="choice-meta" data-meta="sponge-chocolate"></span>
+                    </span>
+                  </label>
+                  <label class="choice">
+                    <input type="radio" name="sponge" value="nut">
+                    <span class="choice-body">
+                      <span class="choice-title" data-i18n="cake.sponge.nut">Nuss</span>
+                      <span class="choice-meta" data-meta="sponge-nut"></span>
+                    </span>
+                  </label>
+                </div>
+              </fieldset>
+              <fieldset class="choice-group">
+                <legend data-i18n="builder.cream">Creme</legend>
+                <div class="choices choices-3">
+                  <label class="choice">
+                    <input type="radio" name="cream" value="whipped" checked>
+                    <span class="choice-body">
+                      <span class="choice-title" data-i18n="cake.cream.whipped">Sahne</span>
+                      <span class="choice-meta" data-meta="cream-whipped"></span>
+                    </span>
+                  </label>
+                  <label class="choice">
+                    <input type="radio" name="cream" value="butter">
+                    <span class="choice-body">
+                      <span class="choice-title" data-i18n="cake.cream.butter">Buttercreme</span>
+                      <span class="choice-meta" data-meta="cream-butter"></span>
+                    </span>
+                  </label>
+                  <label class="choice">
+                    <input type="radio" name="cream" value="cheese">
+                    <span class="choice-body">
+                      <span class="choice-title" data-i18n="cake.cream.cheese">Frischkäse</span>
+                      <span class="choice-meta" data-meta="cream-cheese"></span>
+                    </span>
+                  </label>
+                </div>
+              </fieldset>
+              <fieldset class="choice-group">
+                <legend data-i18n="builder.filling">Früchte</legend>
+                <div class="choices choices-4">
+                  <label class="choice">
+                    <input type="radio" name="filling" value="strawberry" checked>
+                    <span class="choice-body">
+                      <span class="choice-title" data-i18n="cake.filling.strawberry">Erdbeere</span>
+                      <span class="choice-meta" data-meta="filling-strawberry"></span>
+                    </span>
+                  </label>
+                  <label class="choice">
+                    <input type="radio" name="filling" value="raspberry">
+                    <span class="choice-body">
+                      <span class="choice-title" data-i18n="cake.filling.raspberry">Himbeere</span>
+                      <span class="choice-meta" data-meta="filling-raspberry"></span>
+                    </span>
+                  </label>
+                  <label class="choice">
+                    <input type="radio" name="filling" value="cherry">
+                    <span class="choice-body">
+                      <span class="choice-title" data-i18n="cake.filling.cherry">Kirsche</span>
+                      <span class="choice-meta" data-meta="filling-cherry"></span>
+                    </span>
+                  </label>
+                  <label class="choice">
+                    <input type="radio" name="filling" value="none">
+                    <span class="choice-body">
+                      <span class="choice-title" data-i18n="cake.filling.none">ohne</span>
+                      <span class="choice-meta" data-meta="filling-none"></span>
+                    </span>
+                  </label>
+                </div>
+              </fieldset>
+              <div class="builder-fields">
+                <div class="field">
+                  <label for="cake-text" data-i18n="builder.text">Aufschrift</label>
+                  <input id="cake-text" name="text" type="text" maxlength="30" autocomplete="off" placeholder="z. B. Alles Gute, Anna!" data-i18n-attr="placeholder:builder.textPh" aria-describedby="cake-text-hint cake-text-count">
+                  <p class="hint field-hint-row"><span id="cake-text-hint"></span><span class="char-count" id="cake-text-count">0/30</span></p>
+                </div>
+                <div class="field">
+                  <label for="cake-date" data-i18n="builder.date">Abholdatum</label>
+                  <input id="cake-date" name="date" type="date" required aria-describedby="cake-date-hint cake-date-error">
+                  <p class="hint" id="cake-date-hint" data-i18n="builder.dateHint">Frühestens in 3 Tagen, höchstens 30 Tage im Voraus.</p>
+                  <p class="error" id="cake-date-error" aria-live="polite"></p>
+                </div>
+              </div>
+            </form>
+
+            <div class="builder-summary">
+              <div class="builder-total">
+                <span class="builder-total-label" data-i18n="builder.price">Ihr Preis</span>
+                <strong class="builder-price" id="cake-price" aria-live="polite" aria-atomic="true">50,00 €</strong>
+                <span class="builder-breakdown" id="cake-breakdown"></span>
+              </div>
+              <button class="btn btn-primary" type="submit" form="cake-form" id="cake-add"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1.2 11.1a2 2 0 0 1-2 1.9H8.2a2 2 0 0 1-2-1.9z"/><path d="M9 10V7a3 3 0 0 1 6 0v3"/><path d="M12 12.5v5M9.5 15h5"/></svg><span data-add-label data-i18n="cart.add">In den Warenkorb</span></button>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -397,7 +600,103 @@
     <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
   </a>
 
+  <div class="drawer" id="cart-drawer" role="dialog" aria-modal="true" aria-labelledby="cart-title" hidden>
+    <div class="drawer-backdrop" data-dialog-close></div>
+    <div class="drawer-panel">
+      <div class="drawer-head">
+        <div>
+          <h2 id="cart-title" data-i18n="cart.title">Ihr Warenkorb</h2>
+          <p class="drawer-count" id="cart-drawer-count"></p>
+        </div>
+        <button class="icon-btn drawer-close" type="button" data-dialog-close aria-label="Warenkorb schließen" data-i18n-attr="aria-label:cart.close"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      </div>
+      <div class="drawer-body">
+        <ul class="cart-list" id="cart-list"></ul>
+        <div class="cart-empty" id="cart-empty">
+          <svg class="cart-empty-art" viewBox="0 0 160 120" aria-hidden="true">
+            <ellipse cx="80" cy="104" rx="56" ry="8" fill="#3B2618" opacity=".07"/>
+            <path d="M34 50h92l-8 46a8 8 0 0 1-8 6.6H50a8 8 0 0 1-8-6.6z" fill="#F3E7D3"/>
+            <path d="M34 50h92l-8 46a8 8 0 0 1-8 6.6H50a8 8 0 0 1-8-6.6z" fill="none" stroke="#8A5A2B" stroke-width="3" stroke-linejoin="round"/>
+            <path d="M58 50l12-26M102 50L90 24" stroke="#8A5A2B" stroke-width="3" stroke-linecap="round"/>
+            <path d="M52 66l4 26M80 66v26M108 66l-4 26" stroke="#C9A779" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="126" cy="26" r="5" fill="#E0A43B"/><circle cx="36" cy="30" r="3" fill="#E8B4A0"/>
+          </svg>
+          <p class="cart-empty-title" data-i18n="cart.empty">Ihr Warenkorb ist leer</p>
+          <p class="cart-empty-text" data-i18n="cart.emptyText">Stöbern Sie in unserem Sortiment oder stellen Sie sich Ihre Wunschtorte zusammen.</p>
+          <button class="btn btn-ghost" type="button" id="cart-browse" data-i18n="cart.browse">Sortiment ansehen</button>
+        </div>
+      </div>
+      <div class="drawer-foot" id="cart-foot">
+        <div class="cart-total-row">
+          <span data-i18n="cart.total">Gesamtsumme</span>
+          <strong id="cart-total">0,00 €</strong>
+        </div>
+        <p class="cart-note" data-i18n="cart.note">Bezahlung bei Abholung. Demo – es wird nichts bestellt.</p>
+        <button class="btn btn-primary btn-block" type="button" id="cart-checkout" data-i18n="cart.checkout">Zur Vorbestellung</button>
+        <button class="link-btn" type="button" id="cart-clear" data-i18n="cart.clear">Warenkorb leeren</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="product-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-desc" hidden>
+    <div class="modal-backdrop" data-dialog-close></div>
+    <div class="modal-dialog">
+      <button class="icon-btn modal-close" type="button" data-dialog-close aria-label="Schließen" data-i18n-attr="aria-label:modal.close"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      <div class="modal-media">
+        <picture>
+          <source type="image/webp" id="modal-src">
+          <img id="modal-img" width="800" height="600" alt="" decoding="async">
+        </picture>
+      </div>
+      <div class="modal-content">
+        <div class="modal-body">
+          <span class="product-tag" id="modal-tag"></span>
+          <h2 id="modal-title"></h2>
+          <p class="modal-desc" id="modal-desc"></p>
+          <dl class="modal-facts">
+            <div><dt data-i18n="modal.weight">Gewicht / Menge</dt><dd id="modal-weight"></dd></div>
+            <div><dt data-i18n="modal.price">Preis</dt><dd id="modal-price"></dd></div>
+          </dl>
+          <section class="modal-section" aria-labelledby="modal-ingredients-title">
+            <h3 id="modal-ingredients-title" data-i18n="modal.ingredients">Zutaten</h3>
+            <p id="modal-ingredients"></p>
+          </section>
+          <section class="modal-section" aria-labelledby="modal-allergens-title">
+            <h3 id="modal-allergens-title" data-i18n="modal.allergens">Allergene</h3>
+            <p class="allergen-label" data-i18n="modal.contains">Enthält</p>
+            <ul class="allergen-list" id="modal-allergens"></ul>
+            <div id="modal-traces-wrap">
+              <p class="allergen-label" data-i18n="modal.traces">Kann Spuren enthalten von</p>
+              <ul class="allergen-list" id="modal-traces"></ul>
+            </div>
+            <details class="allergen-all">
+              <summary data-i18n="modal.allAllergens">Alle 14 Hauptallergene (EU)</summary>
+              <ul class="allergen-grid" id="modal-allergen-grid"></ul>
+              <p class="allergen-legend" aria-hidden="true">
+                <span class="legend legend-contains" data-i18n="modal.legendContains">enthalten</span>
+                <span class="legend legend-traces" data-i18n="modal.legendTraces">Spuren möglich</span>
+                <span class="legend legend-free" data-i18n="modal.legendFree">nicht enthalten</span>
+              </p>
+            </details>
+          </section>
+          <p class="modal-demo" data-i18n="modal.demo">Angaben für Demo-Zwecke</p>
+        </div>
+        <div class="modal-foot">
+          <p class="modal-foot-price" id="modal-foot-price"></p>
+          <button class="btn btn-primary" type="button" id="modal-add"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1.2 11.1a2 2 0 0 1-2 1.9H8.2a2 2 0 0 1-2-1.9z"/><path d="M9 10V7a3 3 0 0 1 6 0v3"/><path d="M12 12.5v5M9.5 15h5"/></svg><span data-add-label data-i18n="cart.add">In den Warenkorb</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="visually-hidden" id="sr-status" role="status" aria-live="polite"></div>
+
   <script src="js/i18n.js"></script>
+  <script src="js/products-data.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/dialog.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/modal.js"></script>
+  <script src="js/cake-builder.js"></script>
 </body>
 </html>

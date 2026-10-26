@@ -7,9 +7,16 @@
 
   // ---------- Language ----------
 
-  function t(key) {
+  // t('cart.remove', { name: 'Brezel' }) fills {name} placeholders.
+  function t(key, vars) {
     const dict = window.I18N[lang] || window.I18N.de;
-    return dict[key] != null ? dict[key] : window.I18N.de[key];
+    let value = dict[key] != null ? dict[key] : window.I18N.de[key];
+    if (value != null && vars) {
+      value = value.replace(/\{(\w+)\}/g, function (m, name) {
+        return vars[name] != null ? vars[name] : m;
+      });
+    }
+    return value;
   }
 
   function formatPrice(value) {
@@ -17,6 +24,25 @@
       style: 'currency',
       currency: 'EUR'
     }).format(value);
+  }
+
+  // "2026-10-30" → "30.10.2026" / "30 Oct 2026"
+  function formatDate(iso) {
+    const parts = iso.split('-').map(Number);
+    const date = new Date(parts[0], parts[1] - 1, parts[2]);
+    return new Intl.DateTimeFormat(lang === 'de' ? 'de-DE' : 'en-GB', {
+      day: lang === 'de' ? '2-digit' : 'numeric',
+      month: lang === 'de' ? '2-digit' : 'short',
+      year: 'numeric'
+    }).format(date);
+  }
+
+  function announce(message) {
+    const region = document.getElementById('sr-status');
+    if (!region) return;
+    region.textContent = '';
+    // A fresh text node in the next frame makes screen readers repeat identical messages.
+    window.requestAnimationFrame(function () { region.textContent = message; });
   }
 
   function applyLanguage(next) {
@@ -55,6 +81,7 @@
     updateMenuLabel();
     updateOpenStatus();
     refreshErrors();
+    document.dispatchEvent(new CustomEvent('app:langchange', { detail: { lang: lang } }));
   }
 
   function initLanguage() {
@@ -257,11 +284,11 @@
     return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate());
   }
 
-  function dateBounds() {
+  function dateBounds(minDays, maxDays) {
     const min = new Date();
-    min.setDate(min.getDate() + 1);
+    min.setDate(min.getDate() + (minDays == null ? 1 : minDays));
     const max = new Date();
-    max.setDate(max.getDate() + 30);
+    max.setDate(max.getDate() + (maxDays == null ? 30 : maxDays));
     return { min: isoDate(min), max: isoDate(max) };
   }
 
@@ -329,6 +356,7 @@
         return;
       }
       // Demo only: nothing is sent anywhere.
+      document.dispatchEvent(new CustomEvent('app:order-submitted'));
       form.hidden = true;
       success.hidden = false;
       success.focus();
@@ -349,6 +377,19 @@
       form.elements.name.focus();
     });
   }
+
+  // Shared helpers for the cart, product modal and cake builder modules.
+  window.App = {
+    t: t,
+    formatPrice: formatPrice,
+    formatDate: formatDate,
+    isoDate: isoDate,
+    dateBounds: dateBounds,
+    announce: announce,
+    validateField: function (input) { return validateField(input); },
+    getLang: function () { return lang; },
+    reduceMotion: reduceMotion
+  };
 
   initMenu();
   initScroll();
