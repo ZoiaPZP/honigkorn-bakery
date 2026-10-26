@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 340">
+  <defs>
+    <linearGradient id="t1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FBE3D7"/><stop offset="1" stop-color="#EFC3B0"/>
+    </linearGradient>
+    <linearGradient id="t2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFF6EA"/><stop offset="1" stop-color="#F3DFC4"/>
+    </linearGradient>
+  </defs>
+  <circle cx="180" cy="176" r="150" fill="#F6DCCF"/>
+  <!-- stand -->
+  <ellipse cx="180" cy="318" rx="62" ry="10" fill="#E2C7A8"/>
+  <path d="M168 266h24l6 50h-36z" fill="#EBD5BB"/>
+  <ellipse cx="180" cy="264" rx="136" ry="17" fill="#FFFDF9" stroke="#E2C7A8" stroke-width="2"/>
+  <!-- bottom tier -->
+  <path d="M70 178v74a110 14 0 0 0 220 0v-74z" fill="url(#t1)"/>
+  <rect x="70" y="228" width="220" height="12" fill="#E0A43B"/>
+  <rect x="70" y="231" width="220" height="2" fill="#FFF4DE" opacity=".6"/>
+  <ellipse cx="180" cy="178" rx="110" ry="16" fill="#FDEEE6"/>
+  <path d="M70 180c0 10 8 16 12 6 4 14 12 18 14 6 4 10 12 12 14 2 6 16 14 16 16 4 6 10 14 12 16 0 4 14 14 14 16 2 6 10 14 12 16 2 4 12 14 12 16 0 4 12 12 12 16 2 2 10 10 10 14 0" fill="#FDEEE6"/>
+  <!-- top tier -->
+  <path d="M112 118v56a68 10 0 0 0 136 0v-56z" fill="url(#t2)"/>
+  <ellipse cx="180" cy="118" rx="68" ry="11" fill="#FFFDF9"/>
+  <g fill="#FFFDF9" stroke="#F0DCC3" stroke-width="1.5">
+    <circle cx="120" cy="178" r="7"/><circle cx="142" cy="183" r="7"/><circle cx="166" cy="185" r="7"/>
+    <circle cx="194" cy="185" r="7"/><circle cx="218" cy="183" r="7"/><circle cx="240" cy="178" r="7"/>
+  </g>
+  <!-- berries and leaves -->
+  <path d="M156 110c-10-8-22-6-28 2 10 6 20 6 28-2zM204 110c10-8 22-6 28 2-10 6-20 6-28-2z" fill="#7F9150"/>
+  <g fill="#B8433A">
+    <circle cx="164" cy="108" r="10"/><circle cx="186" cy="102" r="11"/><circle cx="204" cy="110" r="9"/>
+  </g>
+  <g fill="#fff" opacity=".55">
+    <circle cx="161" cy="104" r="2.5"/><circle cx="182" cy="97" r="2.8"/><circle cx="201" cy="106" r="2.2"/>
+  </g>
+  <g fill="#5E3A6A" opacity=".85">
+    <circle cx="96" cy="170" r="5"/><circle cx="262" cy="172" r="5"/><circle cx="252" cy="166" r="4"/>
+  </g>
+  <!-- sparkles -->
+  <g fill="#FFFDF9">
+    <path d="M70 70l4 10 10 4-10 4-4 10-4-10-10-4 10-4z"/>
+    <path d="M292 96l3 7 7 3-7 3-3 7-3-7-7-3 7-3z"/>
+  </g>
+</svg>

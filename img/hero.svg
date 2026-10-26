@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 480">
+  <defs>
+    <radialGradient id="bg" cx=".5" cy=".42" r=".6">
+      <stop offset="0" stop-color="#F7DDA6"/><stop offset="1" stop-color="#EDBE6E"/>
+    </radialGradient>
+    <linearGradient id="loaf" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#D99B4E"/><stop offset="1" stop-color="#8A5A2B"/>
+    </linearGradient>
+    <linearGradient id="crois" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F3C67D"/><stop offset="1" stop-color="#BB7C22"/>
+    </linearGradient>
+    <radialGradient id="roll" cx=".4" cy=".35" r=".75">
+      <stop offset="0" stop-color="#F0BF72"/><stop offset="1" stop-color="#B07220"/>
+    </radialGradient>
+    <linearGradient id="board" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#B57B42"/><stop offset="1" stop-color="#8A5A2B"/>
+    </linearGradient>
+  </defs>
+
+  <circle cx="260" cy="236" r="214" fill="url(#bg)"/>
+  <circle cx="260" cy="236" r="182" fill="none" stroke="#FFF4DE" stroke-opacity=".5" stroke-width="2" stroke-dasharray="2 10" stroke-linecap="round"/>
+
+  <!-- wheat ears -->
+  <g fill="#C98A3E">
+    <g transform="rotate(-24 120 360)">
+      <rect x="118" y="150" width="4" height="210" rx="2"/>
+      <ellipse cx="112" cy="176" rx="6" ry="13" transform="rotate(-25 112 176)"/><ellipse cx="128" cy="176" rx="6" ry="13" transform="rotate(25 128 176)"/>
+      <ellipse cx="112" cy="200" rx="6" ry="13" transform="rotate(-25 112 200)"/><ellipse cx="128" cy="200" rx="6" ry="13" transform="rotate(25 128 200)"/>
+      <ellipse cx="112" cy="224" rx="6" ry="13" transform="rotate(-25 112 224)"/><ellipse cx="128" cy="224" rx="6" ry="13" transform="rotate(25 128 224)"/>
+      <ellipse cx="120" cy="154" rx="5.5" ry="12"/>
+    </g>
+    <g transform="rotate(22 410 360)">
+      <rect x="408" y="160" width="4" height="200" rx="2"/>
+      <ellipse cx="402" cy="186" rx="6" ry="13" transform="rotate(-25 402 186)"/><ellipse cx="418" cy="186" rx="6" ry="13" transform="rotate(25 418 186)"/>
+      <ellipse cx="402" cy="210" rx="6" ry="13" transform="rotate(-25 402 210)"/><ellipse cx="418" cy="210" rx="6" ry="13" transform="rotate(25 418 210)"/>
+      <ellipse cx="402" cy="234" rx="6" ry="13" transform="rotate(-25 402 234)"/><ellipse cx="418" cy="234" rx="6" ry="13" transform="rotate(25 418 234)"/>
+      <ellipse cx="410" cy="164" rx="5.5" ry="12"/>
+    </g>
+  </g>
+
+  <!-- steam -->
+  <g fill="none" stroke="#FFFDF9" stroke-width="5" stroke-linecap="round" opacity=".75">
+    <path d="M236 216c-14-14 14-26 0-42s12-28 0-42"/>
+    <path d="M276 206c-12-14 12-24 0-38s10-24 0-36"/>
+    <path d="M314 216c-12-12 12-22 0-34"/>
+  </g>
+
+  <!-- board -->
+  <ellipse cx="262" cy="412" rx="210" ry="18" fill="#3B2618" opacity=".14"/>
+  <rect x="62" y="374" width="400" height="32" rx="16" fill="url(#board)"/>
+  <rect x="78" y="378" width="368" height="4" rx="2" fill="#FFF4DE" opacity=".25"/>
+  <circle cx="440" cy="390" r="5" fill="#5E3A1C"/>
+
+  <!-- loaf -->
+  <path d="M146 374c0-74 58-124 128-124s128 50 128 124z" fill="url(#loaf)"/>
+  <path d="M176 336c10-38 38-62 76-72" stroke="#fff" stroke-opacity=".2" stroke-width="12" stroke-linecap="round" fill="none"/>
+  <path d="M194 320c16-20 40-24 58-12M244 296c16-20 40-24 58-12M296 310c16-20 40-24 58-12" stroke="#F1D2A0" stroke-width="10" stroke-linecap="round" fill="none"/>
+  <g fill="#F7E6C4">
+    <ellipse cx="220" cy="350" rx="5" ry="2.4" transform="rotate(-20 220 350)"/>
+    <ellipse cx="262" cy="338" rx="5" ry="2.4" transform="rotate(25 262 338)"/>
+    <ellipse cx="300" cy="352" rx="5" ry="2.4" transform="rotate(-10 300 352)"/>
+    <ellipse cx="340" cy="340" rx="5" ry="2.4" transform="rotate(30 340 340)"/>
+    <ellipse cx="282" cy="276" rx="5" ry="2.4" transform="rotate(10 282 276)"/>
+    <ellipse cx="364" cy="358" rx="5" ry="2.4" transform="rotate(-25 364 358)"/>
+    <ellipse cx="190" cy="360" rx="5" ry="2.4" transform="rotate(15 190 360)"/>
+  </g>
+
+  <!-- croissant -->
+  <g transform="translate(70 290)" fill="url(#crois)" stroke="#8A5A2B" stroke-opacity=".45" stroke-width="2.5">
+    <ellipse cx="42" cy="78" rx="18" ry="11" transform="rotate(-40 42 78)"/>
+    <ellipse cx="158" cy="78" rx="18" ry="11" transform="rotate(40 158 78)"/>
+    <ellipse cx="66" cy="62" rx="24" ry="18" transform="rotate(-24 66 62)"/>
+    <ellipse cx="134" cy="62" rx="24" ry="18" transform="rotate(24 134 62)"/>
+    <ellipse cx="100" cy="54" rx="30" ry="27"/>
+  </g>
+  <g transform="translate(70 290)" fill="#fff" opacity=".28">
+    <ellipse cx="92" cy="40" rx="13" ry="6" transform="rotate(-15 92 40)"/>
+    <ellipse cx="60" cy="52" rx="8" ry="4" transform="rotate(-35 60 52)"/>
+  </g>
+
+  <!-- roll -->
+  <g transform="translate(300 300)">
+    <ellipse cx="100" cy="54" rx="58" ry="40" fill="url(#roll)"/>
+    <g stroke="#8A5A2B" stroke-opacity=".55" stroke-width="4" stroke-linecap="round" fill="none">
+      <path d="M100 54q12-22-4-36"/>
+      <path d="M100 54q12-22-4-36" transform="rotate(72 100 54) translate(0 6)"/>
+      <path d="M100 54q12-22-4-36" transform="rotate(144 100 54) translate(0 2)"/>
+      <path d="M100 54q12-22-4-36" transform="rotate(216 100 54) translate(0 2)"/>
+      <path d="M100 54q12-22-4-36" transform="rotate(288 100 54) translate(0 6)"/>
+    </g>
+    <ellipse cx="80" cy="34" rx="14" ry="6" fill="#fff" opacity=".22" transform="rotate(-25 80 34)"/>
+  </g>
+
+  <!-- sparkles -->
+  <g fill="#FFFDF9">
+    <path d="M96 116l4 10 10 4-10 4-4 10-4-10-10-4 10-4z" opacity=".9"/>
+    <path d="M430 96l3 7 7 3-7 3-3 7-3-7-7-3 7-3z" opacity=".8"/>
+    <circle cx="448" cy="160" r="4" opacity=".7"/>
+    <circle cx="74" cy="200" r="3" opacity=".7"/>
+  </g>
+</svg>

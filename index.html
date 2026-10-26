@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Backstube Honigkorn – Bäckerei in Kelkheim (Taunus)</title>
+  <meta name="description" content="Backstube Honigkorn in Kelkheim (Taunus): jeden Morgen frisch gebackenes Brot, Brötchen, Croissants und Torten auf Bestellung. Demo-Projekt.">
+  <meta name="theme-color" content="#FBF6EE">
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Backstube Honigkorn">
+  <meta property="og:title" content="Backstube Honigkorn – Jeden Morgen frisch gebacken">
+  <meta property="og:description" content="Brot, Brötchen, Croissants und Torten auf Bestellung aus Kelkheim (Taunus). Ein Demo-Projekt.">
+  <meta property="og:image" content="img/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:locale:alternate" content="en_GB">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preload" href="fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/style.css">
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body data-title-key="meta.title" data-desc-key="meta.description">
+  <a class="skip-link" href="#main" data-i18n="skip">Zum Inhalt springen</a>
+
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="Backstube Honigkorn" data-i18n-attr="aria-label:brand.home">
+        <img src="img/favicon.svg" alt="" width="40" height="40">
+        <span class="brand-text"><span class="brand-small">Backstube</span><span class="brand-name">Honigkorn</span></span>
+      </a>
+
+      <nav class="main-nav" id="main-nav" aria-label="Hauptnavigation" data-i18n-attr="aria-label:nav.label">
+        <ul>
+          <li><a href="#ueber-uns" data-i18n="nav.about">Über uns</a></li>
+          <li><a href="#sortiment" data-i18n="nav.products">Sortiment</a></li>
+          <li><a href="#torten" data-i18n="nav.cakes">Torten</a></li>
+          <li><a href="#besuch" data-i18n="nav.visit">Öffnungszeiten</a></li>
+          <li class="nav-cta"><a class="btn btn-primary btn-sm" href="#vorbestellen" data-i18n="nav.order">Vorbestellen</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <div class="lang-switch" role="group" aria-label="Sprache" data-i18n-attr="aria-label:lang.label">
+          <button type="button" data-lang="de" aria-pressed="true" lang="de" aria-label="Deutsch">DE</button>
+          <button type="button" data-lang="en" aria-pressed="false" lang="en" aria-label="English">EN</button>
+        </div>
+        <button class="menu-toggle" type="button" aria-controls="main-nav" aria-expanded="false" aria-label="Menü öffnen" data-i18n-attr="aria-label:nav.open">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <p class="eyebrow" data-i18n="hero.eyebrow">Backstube in Kelkheim (Taunus)</p>
+          <h1 id="hero-title">Backstube <em>Honigkorn</em></h1>
+          <p class="hero-slogan" data-i18n="hero.slogan">Jeden Morgen frisch gebacken</p>
+          <p class="hero-lead" data-i18n="hero.lead">Ehrliches Brot, knusprige Brötchen und Kuchen wie bei Oma – von Hand gemacht, mit Zeit und guten Zutaten.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#vorbestellen" data-i18n="hero.cta">Jetzt vorbestellen</a>
+            <a class="btn btn-ghost" href="#sortiment" data-i18n="hero.secondary">Sortiment ansehen</a>
+          </div>
+          <ul class="hero-facts">
+            <li><strong>6:30</strong> <span data-i18n="hero.fact1">Uhr öffnen wir</span></li>
+            <li><strong>48 h</strong> <span data-i18n="hero.fact2">Teigruhe</span></li>
+            <li><strong>100 %</strong> <span data-i18n="hero.fact3">Handarbeit</span></li>
+          </ul>
+        </div>
+        <div class="hero-art">
+          <img src="img/hero.svg" width="520" height="480" alt="Illustration: frisches Brot, Croissant und Brötchen auf einem Holzbrett" data-i18n-attr="alt:hero.alt" fetchpriority="high">
+        </div>
+      </div>
+    </section>
+
+    <!-- Über uns -->
+    <section class="section" id="ueber-uns" aria-labelledby="about-title">
+      <div class="container about">
+        <div class="about-intro reveal">
+          <p class="eyebrow" data-i18n="about.eyebrow">Über uns</p>
+          <h2 id="about-title" data-i18n="about.title">Handwerk mit Herz und Honig</h2>
+          <p data-i18n="about.text1">Seit 2009 backen wir in unserer kleinen Backstube mitten in Kelkheim. Unsere Teige bekommen Zeit zum Reifen – manche bis zu 48 Stunden.</p>
+          <p data-i18n="about.text2">Das schmeckt man: in der Kruste, in der Krume, in jedem Bissen. Und weil wir unsere Nachbarn kennen, backen wir genau so, wie wir es selbst am liebsten essen.</p>
+        </div>
+        <ul class="features">
+          <li class="feature reveal">
+            <span class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19c0-8 6-14 15-14 0 9-6 15-14 15"/><path d="M5 19c3-4 6.5-7 10-9"/></svg>
+            </span>
+            <h3 data-i18n="about.f1.title">Natürliche Zutaten</h3>
+            <p data-i18n="about.f1.text">Mehl aus regionalen Mühlen, echte Butter, Honig vom Imker nebenan – ohne Backmischungen und Zusatzstoffe.</p>
+          </li>
+          <li class="feature reveal">
+            <span class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18h18"/><path d="M7 18a5 5 0 0 1 10 0"/><path d="M12 6v3M5.6 9.6l1.8 1.8M18.4 9.6l-1.8 1.8M2.5 14h2M19.5 14h2"/></svg>
+            </span>
+            <h3 data-i18n="about.f2.title">Täglich frisch</h3>
+            <p data-i18n="about.f2.text">Wir backen jede Nacht ab 3 Uhr, damit morgens alles noch warm im Regal liegt.</p>
+          </li>
+          <li class="feature reveal">
+            <span class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.2 7-11.5a7 7 0 0 0-14 0C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+            </span>
+            <h3 data-i18n="about.f3.title">Regional</h3>
+            <p data-i18n="about.f3.text">Unsere Zutaten kommen aus dem Taunus und der Wetterau – kurze Wege, faire Partner.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Sortiment -->
+    <section class="section section-tinted" id="sortiment" aria-labelledby="products-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow" data-i18n="products.eyebrow">Sortiment</p>
+          <h2 id="products-title" data-i18n="products.title">Frisch aus dem Ofen</h2>
+          <p data-i18n="products.lead">Eine kleine Auswahl aus unserer Theke. Das ganze Sortiment wechselt mit den Jahreszeiten.</p>
+        </div>
+
+        <div class="filters reveal" role="tablist" aria-label="Kategorien" data-i18n-attr="aria-label:products.filterLabel">
+          <button type="button" role="tab" id="tab-all" aria-selected="true" aria-controls="product-grid" data-filter="all" data-i18n="filter.all">Alle</button>
+          <button type="button" role="tab" id="tab-brot" aria-selected="false" aria-controls="product-grid" tabindex="-1" data-filter="brot" data-i18n="filter.brot">Brot</button>
+          <button type="button" role="tab" id="tab-broetchen" aria-selected="false" aria-controls="product-grid" tabindex="-1" data-filter="broetchen" data-i18n="filter.broetchen">Brötchen</button>
+          <button type="button" role="tab" id="tab-suesses" aria-selected="false" aria-controls="product-grid" tabindex="-1" data-filter="suesses" data-i18n="filter.suesses">Süßes</button>
+          <button type="button" role="tab" id="tab-torten" aria-selected="false" aria-controls="product-grid" tabindex="-1" data-filter="torten" data-i18n="filter.torten">Torten</button>
+        </div>
+
+        <ul class="product-grid" id="product-grid" role="tabpanel" aria-labelledby="tab-all" aria-live="polite">
+          <li class="product reveal" data-category="brot">
+            <div class="product-media"><img src="img/products/honigkorn-laib.svg" width="200" height="160" loading="lazy" alt="Illustration: Honigkorn-Laib" data-i18n-alt="p1.name"></div>
+            <div class="product-body">
+              <span class="product-tag" data-i18n="filter.brot">Brot</span>
+              <h3 data-i18n="p1.name">Honigkorn-Laib</h3>
+              <p data-i18n="p1.desc">Dinkel-Sauerteig mit Waldhonig und Sonnenblumenkernen. Unser Hausbrot, 750 g.</p>
+              <p class="price" data-price="5.20">5,20 €</p>
+            </div>
+          </li>
+          <li class="product reveal" data-category="brot">
+            <div class="product-media"><img src="img/products/bauernbrot.svg" width="200" height="160" loading="lazy" alt="Illustration: Taunus-Bauernbrot" data-i18n-alt="p2.name"></div>
+            <div class="product-body">
+              <span class="product-tag" data-i18n="filter.brot">Brot</span>
+              <h3 data-i18n="p2.name">Taunus-Bauernbrot</h3>
+              <p data-i18n="p2.desc">Kräftiges Roggenmischbrot mit dunkler Kruste, 48 Stunden gereift. 1 kg.</p>
+              <p class="price" data-price="4.80">4,80 €</p>
+            </div>
+          </li>
+          <li class="product reveal" data-category="broetchen">
+            <div class="product-media"><img src="img/products/kaiserbroetchen.svg" width="200" height="160" loading="lazy" alt="Illustration: Kaiserbrötchen" data-i18n-alt="p3.name"></div>
+            <div class="product-body">
+              <span class="product-tag" data-i18n="filter.broetchen">Brötchen</span>
+              <h3 data-i18n="p3.name">Kaiserbrötchen</h3>
+              <p data-i18n="p3.desc">Der Klassiker zum Frühstück: außen knusprig, innen fluffig.</p>
+              <p class="price" data-price="0.55">0,55 €</p>
+            </div>
+          </li>
+          <li class="product reveal" data-category="broetchen">
+            <div class="product-media"><img src="img/products/laugenbrezel.svg" width="200" height="160" loading="lazy" alt="Illustration: Laugenbrezel" data-i18n-alt="p4.name"></div>
+            <div class="product-body">
+              <span class="product-tag" data-i18n="filter.broetchen">Brötchen</span>
+              <h3 data-i18n="p4.name">Laugenbrezel</h3>
+              <p data-i18n="p4.desc">Von Hand geschlungen, mit grobem Salz – schwäbische Art, im Taunus gebacken.</p>
+              <p class="price" data-price="0.95">0,95 €</p>
+            </div>
+          </li>
+          <li class="product reveal" data-category="suesses">
+            <div class="product-media"><img src="img/products/croissant.svg" width="200" height="160" loading="lazy" alt="Illustration: Buttercroissant" data-i18n-alt="p5.name"></div>
+            <div class="product-body">
+              <span class="product-tag" data-i18n="filter.suesses">Süßes</span>
+              <h3 data-i18n="p5.name">Buttercroissant</h3>
+              <p data-i18n="p5.desc">Drei Tage Arbeit, 27 Schichten und viel französische Butter.</p>
+              <p class="price" data-price="1.80">1,80 €</p>
+            </div>
+          </li>
+          <li class="product reveal" data-category="suesses">
+            <div class="product-media"><img src="img/products/zimtschnecke.svg" width="200" height="160" loading="lazy" alt="Illustration: Zimtschnecke" data-i18n-alt="p6.name"></div>
+            <div class="product-body">
+              <span class="product-tag" data-i18n="filter.suesses">Süßes</span>
+              <h3 data-i18n="p6.name">Zimtschnecke</h3>
+              <p data-i18n="p6.desc">Hefeteig mit Zimt, braunem Zucker und Vanilleglasur.</p>
+              <p class="price" data-price="2.40">2,40 €</p>
+            </div>
+          </li>
+          <li class="product reveal" data-category="torten">
+            <div class="product-media"><img src="img/products/frankfurter-kranz.svg" width="200" height="160" loading="lazy" alt="Illustration: Frankfurter Kranz (Stück)" data-i18n-alt="p7.name"></div>
+            <div class="product-body">
+              <span class="product-tag" data-i18n="filter.torten">Torten</span>
+              <h3 data-i18n="p7.name">Frankfurter Kranz (Stück)</h3>
+              <p data-i18n="p7.desc">Buttercreme, Johannisbeergelee und Krokant – hessisch durch und durch.</p>
+              <p class="price" data-price="3.90">3,90 €</p>
+            </div>
+          </li>
+          <li class="product reveal" data-category="torten">
+            <div class="product-media"><img src="img/products/schwarzwaelder.svg" width="200" height="160" loading="lazy" alt="Illustration: Schwarzwälder Kirschtorte (Stück)" data-i18n-alt="p8.name"></div>
+            <div class="product-body">
+              <span class="product-tag" data-i18n="filter.torten">Torten</span>
+              <h3 data-i18n="p8.name">Schwarzwälder Kirschtorte (Stück)</h3>
+              <p data-i18n="p8.desc">Schokobiskuit, Sauerkirschen, Sahne und ein Schuss Kirschwasser.</p>
+              <p class="price" data-price="3.80">3,80 €</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Torten auf Bestellung -->
+    <section class="section" id="torten" aria-labelledby="cakes-title">
+      <div class="container cakes">
+        <div class="cakes-art reveal">
+          <img src="img/torte.svg" width="360" height="340" loading="lazy" alt="Illustration: zweistöckige Torte mit Beeren auf einem Tortenständer" data-i18n-attr="alt:cakes.alt">
+        </div>
+        <div class="cakes-text reveal">
+          <p class="eyebrow" data-i18n="cakes.eyebrow">Torten auf Bestellung</p>
+          <h2 id="cakes-title" data-i18n="cakes.title">Ihre Wunschtorte, mit Liebe gebacken</h2>
+          <p data-i18n="cakes.text">Ob Geburtstag, Hochzeit oder einfach so – wir backen Ihre Torte nach Wunsch. Erzählen Sie uns von Anlass, Geschmack und Größe, den Rest übernehmen wir.</p>
+          <ul class="checklist">
+            <li data-i18n="cakes.li1">Bestellung mindestens 3 Tage im Voraus</li>
+            <li data-i18n="cakes.li2">Glutenfreie und vegane Varianten möglich</li>
+            <li data-i18n="cakes.li3">Ab 34 € für 12 Stücke</li>
+          </ul>
+          <a class="btn btn-primary" href="#vorbestellen" data-i18n="cakes.cta">Torte anfragen</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Öffnungszeiten & Anfahrt -->
+    <section class="section section-tinted" id="besuch" aria-labelledby="visit-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow" data-i18n="visit.eyebrow">Besuchen Sie uns</p>
+          <h2 id="visit-title" data-i18n="visit.title">Öffnungszeiten &amp; Anfahrt</h2>
+        </div>
+        <div class="visit">
+          <div class="card visit-info reveal">
+            <div class="visit-status" id="open-status" hidden>
+              <span class="status-dot" aria-hidden="true"></span><span class="status-text"></span>
+            </div>
+            <h3 data-i18n="visit.hoursTitle">Öffnungszeiten</h3>
+            <table class="hours">
+              <caption class="visually-hidden" data-i18n="visit.hoursTitle">Öffnungszeiten</caption>
+              <tbody>
+                <tr data-days="1,2,3,4,5" data-open="6:30" data-close="18:00">
+                  <th scope="row" data-i18n="visit.weekdays">Montag – Freitag</th>
+                  <td data-i18n="visit.weekdaysTime">6:30 – 18:00 Uhr</td>
+                </tr>
+                <tr data-days="6" data-open="6:30" data-close="13:00">
+                  <th scope="row" data-i18n="visit.saturday">Samstag</th>
+                  <td data-i18n="visit.saturdayTime">6:30 – 13:00 Uhr</td>
+                </tr>
+                <tr data-days="0" data-open="7:30" data-close="11:00">
+                  <th scope="row" data-i18n="visit.sunday">Sonntag</th>
+                  <td data-i18n="visit.sundayTime">7:30 – 11:00 Uhr</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h3 data-i18n="visit.addressTitle">Adresse</h3>
+            <address>
+              Backstube Honigkorn<br>
+              Musterstraße 12<br>
+              65779 Kelkheim (Taunus)
+            </address>
+            <p class="muted" data-i18n="visit.note">Parkplätze direkt vor der Tür, 5 Minuten zu Fuß vom Bahnhof.</p>
+          </div>
+
+          <figure class="card map reveal">
+            <svg class="map-svg" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" role="img" aria-labelledby="map-caption">
+              <rect width="400" height="300" fill="#EFE3CC"/>
+              <path d="M-10 60c60 10 90-30 150-10s70 60 140 40 90-40 130-30" fill="none" stroke="#CFE0DC" stroke-width="18" stroke-linecap="round"/>
+              <path d="M250 190c30-20 80-24 110 0s20 70-30 80-110-10-100-40 0-28 20-40z" fill="#DCE2C2"/>
+              <path d="M30 220c20-30 70-30 80 0s-20 50-50 46-40-26-30-46z" fill="#DCE2C2"/>
+              <g stroke="#FFFDF9" stroke-linecap="round" fill="none">
+                <path d="M-10 160h420" stroke-width="12"/>
+                <path d="M190 -10l20 320" stroke-width="12"/>
+                <path d="M-10 250l160-40 260 20" stroke-width="7"/>
+                <path d="M90 -10l30 330" stroke-width="6"/>
+                <path d="M300 -10l-20 320" stroke-width="6"/>
+                <path d="M-10 100l200 20 220-30" stroke-width="5"/>
+              </g>
+              <g fill="#E6D4B5">
+                <rect x="130" y="124" width="44" height="24" rx="4"/><rect x="220" y="122" width="56" height="26" rx="4"/>
+                <rect x="220" y="172" width="40" height="30" rx="4"/><rect x="130" y="174" width="46" height="22" rx="4"/>
+                <rect x="20" y="120" width="56" height="26" rx="4"/><rect x="316" y="110" width="60" height="38" rx="4"/>
+              </g>
+              <circle cx="200" cy="160" r="34" fill="#E0A43B" opacity=".22"/>
+              <path d="M200 162s-20-17-20-32a20 20 0 0 1 40 0c0 15-20 32-20 32z" fill="#8A5A2B"/>
+              <circle cx="200" cy="130" r="7" fill="#FBF6EE"/>
+            </svg>
+            <figcaption id="map-caption" class="map-caption" data-i18n="visit.map">Kartenplatzhalter – keine echte Karte</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Vorbestellung -->
+    <section class="section order-section" id="vorbestellen" aria-labelledby="order-title">
+      <div class="container order">
+        <div class="order-intro reveal">
+          <p class="eyebrow" data-i18n="order.eyebrow">Vorbestellung</p>
+          <h2 id="order-title" data-i18n="order.title">Bestellen Sie vor, wir legen es zurück</h2>
+          <p data-i18n="order.lead">Einfach das Formular ausfüllen und zur gewünschten Zeit abholen – ganz ohne Warten an der Theke.</p>
+          <p class="demo-note" data-i18n="order.demo">Demo: Es werden keine Daten gesendet oder gespeichert.</p>
+        </div>
+
+        <div class="card order-card reveal">
+          <form id="order-form" novalidate>
+            <div class="field">
+              <label for="f-name" data-i18n="form.name">Name</label>
+              <input id="f-name" name="name" type="text" autocomplete="name" required minlength="2" aria-describedby="e-name">
+              <p class="error" id="e-name" aria-live="polite"></p>
+            </div>
+            <div class="field">
+              <label for="f-phone" data-i18n="form.phone">Telefon</label>
+              <input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required aria-describedby="e-phone">
+              <p class="error" id="e-phone" aria-live="polite"></p>
+            </div>
+            <div class="field field-full">
+              <label for="f-order" data-i18n="form.order">Was dürfen wir für Sie backen?</label>
+              <textarea id="f-order" name="order" rows="3" required placeholder="z. B. 1 Honigkorn-Laib, 6 Kaiserbrötchen" data-i18n-attr="placeholder:form.orderPh" aria-describedby="e-order"></textarea>
+              <p class="error" id="e-order" aria-live="polite"></p>
+            </div>
+            <div class="field">
+              <label for="f-date" data-i18n="form.date">Abholdatum</label>
+              <input id="f-date" name="date" type="date" required aria-describedby="h-date e-date">
+              <p class="hint" id="h-date" data-i18n="form.dateHint">Frühestens morgen, höchstens 30 Tage im Voraus.</p>
+              <p class="error" id="e-date" aria-live="polite"></p>
+            </div>
+            <div class="field field-submit">
+              <button class="btn btn-primary btn-block" type="submit" data-i18n="form.submit">Vorbestellung absenden</button>
+            </div>
+          </form>
+
+          <div class="form-success" id="form-success" tabindex="-1" hidden>
+            <span class="success-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+            </span>
+            <p class="success-title" data-i18n="form.successTitle">Danke! Dies ist eine Demo.</p>
+            <p data-i18n="form.successText">Ihre Bestellung wurde nicht übermittelt – auf dieser Seite werden keine Daten gesendet.</p>
+            <button class="btn btn-ghost" type="button" id="form-reset" data-i18n="form.again">Neue Bestellung</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a class="brand brand-light" href="#top" aria-label="Backstube Honigkorn" data-i18n-attr="aria-label:brand.home">
+          <img src="img/favicon.svg" alt="" width="40" height="40">
+          <span class="brand-text"><span class="brand-small">Backstube</span><span class="brand-name">Honigkorn</span></span>
+        </a>
+        <p data-i18n="footer.tagline">Jeden Morgen frisch gebacken – in Kelkheim (Taunus).</p>
+      </div>
+      <div class="footer-col">
+        <h2 class="footer-title" data-i18n="footer.contact">Kontakt</h2>
+        <ul>
+          <li>Musterstraße 12, 65779 Kelkheim (Taunus)</li>
+          <li><a href="tel:+490000000000">+49 0000 000000</a></li>
+          <li><a href="mailto:hallo@honigkorn.example">hallo@honigkorn.example</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h2 class="footer-title" data-i18n="footer.legal">Rechtliches</h2>
+        <ul>
+          <li><a href="impressum.html" data-i18n="footer.imprint">Impressum</a></li>
+          <li><a href="datenschutz.html" data-i18n="footer.privacy">Datenschutz</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>© 2026 Backstube Honigkorn · <span data-i18n="footer.demo">Demo-Projekt – keine echte Bäckerei</span></p>
+      <p data-i18n="footer.noCookies">Ohne Cookies, Tracking und Analyse.</p>
+    </div>
+  </footer>
+
+  <a class="to-top" id="to-top" href="#top" aria-label="Nach oben" data-i18n-attr="aria-label:toTop">
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+  </a>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
