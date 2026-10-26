@@ -122,7 +122,11 @@
     counter.textContent = textInput.value.length + '/' + opts.textMax;
     renderPreview(cfg);
     renderPrice(cfg);
+    // Picked up by the optional 3D preview (cake-3d.js).
+    document.dispatchEvent(new CustomEvent('app:cake-change', { detail: cfg }));
   }
+
+  window.CakeBuilder = { config: config };
 
   function setDateBounds() {
     const b = App.dateBounds(opts.minDays, opts.maxDays);

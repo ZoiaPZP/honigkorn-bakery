@@ -1697,6 +1697,73 @@ html.scroll-locked body { padding-right: var(--scrollbar-gap, 0px); }
 }
 .swatch-name { font-size: .9rem; line-height: 1.2; }
 .cake-sample-note { margin: .6rem 0 0; color: var(--cocoa); font-size: .78rem; font-style: italic; }
+.cake-3d-note { display: none; margin: .6rem 0 0; color: var(--cocoa); font-size: .78rem; font-style: italic; }
+
+/* Experimental 3D preview (cake-3d.js). Without .is-3d the sample photos above are used. */
+.cake-3d,
+.cake-3d-hint { display: none; }
+.builder-preview.is-3d .cake-shot,
+.builder-preview.is-3d .cake-ribbon,
+.builder-preview.is-3d .cake-stage::after,
+.builder-preview.is-3d .cake-sample-note { display: none; }
+.builder-preview.is-3d .cake-3d-note { display: block; }
+.builder-preview.is-3d .cake-stage { background: radial-gradient(circle at 50% 42%, #FFF9EF, #F2E1CC 78%); }
+.builder-preview.is-3d .cake-3d {
+  display: block;
+  position: absolute;
+  inset: 0;
+  cursor: grab;
+}
+.builder-preview.is-3d .cake-3d:active { cursor: grabbing; }
+.cake-3d canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity .6s var(--ease);
+}
+.is-3d-ready .cake-3d canvas { opacity: 1; }
+
+.builder-preview.is-3d-ready .cake-3d-hint {
+  position: absolute;
+  left: 0; right: 0; bottom: .85rem;
+  z-index: 2;
+  display: flex;
+  width: fit-content;
+  align-items: center;
+  gap: .4rem;
+  margin: 0 auto;
+  padding: .35rem .8rem;
+  border-radius: 999px;
+  background: rgba(255, 253, 249, .88);
+  color: var(--cocoa);
+  font-size: .78rem;
+  font-weight: 500;
+  white-space: nowrap;
+  pointer-events: none;
+  transition: opacity .4s var(--ease);
+}
+.cake-3d-hint svg { flex: none; }
+.builder-preview.is-3d-touched .cake-3d-hint { opacity: 0; }
+
+.cake-3d-reset { display: none; }
+.builder-preview.is-3d-ready .cake-3d-reset {
+  position: absolute;
+  top: .75rem; right: .75rem;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 40px; height: 40px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 253, 249, .9);
+  box-shadow: 0 4px 14px -6px rgba(59, 38, 24, .35);
+  color: var(--espresso);
+  cursor: pointer;
+  transition: background-color .2s, transform .3s var(--ease);
+}
+.cake-3d-reset:hover { background: #fff; transform: rotate(-30deg); }
 
 .builder-form { grid-area: form; display: grid; gap: 1.4rem; }
 

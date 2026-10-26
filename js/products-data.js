@@ -152,7 +152,7 @@ window.BakeryData = (function () {
     creams: [
       { id: 'whipped', price: 0, color: '#FFFBF3' },
       { id: 'butter', price: 2, color: '#F6DFA4' },
-      { id: 'cheese', price: 4, color: '#F7E4DC' }
+      { id: 'cheese', price: 4, color: '#F2EADC' }
     ],
     fillings: [
       { id: 'strawberry', price: 4, color: '#D9434B', image: 'images/cakes/strawberry' },
