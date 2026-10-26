@@ -6,14 +6,14 @@
   <title>Backstube Honigkorn – Bäckerei in Kelkheim (Taunus)</title>
   <meta name="description" content="Backstube Honigkorn in Kelkheim (Taunus): jeden Morgen frisch gebackenes Brot, Brötchen, Croissants und Torten auf Bestellung. Demo-Projekt.">
   <meta name="theme-color" content="#FBF6EE">
-  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Backstube Honigkorn">
   <meta property="og:title" content="Backstube Honigkorn – Jeden Morgen frisch gebacken">
   <meta property="og:description" content="Brot, Brötchen, Croissants und Torten auf Bestellung aus Kelkheim (Taunus). Ein Demo-Projekt.">
-  <meta property="og:image" content="img/og-image.png">
+  <meta property="og:image" content="images/og-image.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:locale" content="de_DE">
@@ -31,7 +31,7 @@
   <header class="site-header" id="site-header">
     <div class="container header-inner">
       <a class="brand" href="#top" aria-label="Backstube Honigkorn" data-i18n-attr="aria-label:brand.home">
-        <img src="img/favicon.svg" alt="" width="40" height="40">
+        <img src="images/favicon.svg" alt="" width="40" height="40">
         <span class="brand-text"><span class="brand-small">Backstube</span><span class="brand-name">Honigkorn</span></span>
       </a>
 
@@ -77,7 +77,13 @@
           </ul>
         </div>
         <div class="hero-art">
-          <img src="img/hero.svg" width="520" height="480" alt="Illustration: frisches Brot, Croissant und Brötchen auf einem Holzbrett" data-i18n-attr="alt:hero.alt" fetchpriority="high">
+          <figure class="hero-photo">
+            <picture>
+              <source type="image/webp" srcset="images/hero-800.webp 800w, images/hero-1120.webp 1120w" sizes="(min-width: 900px) 520px, calc(100vw - 2rem)">
+              <img src="images/hero-1120.jpg" srcset="images/hero-800.jpg 800w, images/hero-1120.jpg 1120w" sizes="(min-width: 900px) 520px, calc(100vw - 2rem)" width="1120" height="1400" alt="Rustikaler Sauerteiglaib auf einem Holzbrett mit Leinentuch und Weizenähren" data-i18n-attr="alt:hero.alt" fetchpriority="high" decoding="async">
+            </picture>
+          </figure>
+          <p class="hero-badge"><span class="hero-badge-dot" aria-hidden="true"></span><span data-i18n="hero.badge">Handgemacht in Kelkheim</span></p>
         </div>
       </div>
     </section>
@@ -136,7 +142,7 @@
 
         <ul class="product-grid" id="product-grid" role="tabpanel" aria-labelledby="tab-all" aria-live="polite">
           <li class="product reveal" data-category="brot">
-            <div class="product-media"><img src="img/products/honigkorn-laib.svg" width="200" height="160" loading="lazy" alt="Illustration: Honigkorn-Laib" data-i18n-alt="p1.name"></div>
+            <div class="product-media"><picture><source type="image/webp" srcset="images/products/honigkorn-laib.webp"><img src="images/products/honigkorn-laib.jpg" width="800" height="600" loading="lazy" decoding="async" alt="Kastenbrot mit Haferflocken und Körnern auf hellem Grund" data-i18n-attr="alt:p1.alt"></picture></div>
             <div class="product-body">
               <span class="product-tag" data-i18n="filter.brot">Brot</span>
               <h3 data-i18n="p1.name">Honigkorn-Laib</h3>
@@ -145,7 +151,7 @@
             </div>
           </li>
           <li class="product reveal" data-category="brot">
-            <div class="product-media"><img src="img/products/bauernbrot.svg" width="200" height="160" loading="lazy" alt="Illustration: Taunus-Bauernbrot" data-i18n-alt="p2.name"></div>
+            <div class="product-media"><picture><source type="image/webp" srcset="images/products/bauernbrot.webp"><img src="images/products/bauernbrot.jpg" width="800" height="600" loading="lazy" decoding="async" alt="Angeschnittenes dunkles Roggenbrot auf einem Holzbrett" data-i18n-attr="alt:p2.alt"></picture></div>
             <div class="product-body">
               <span class="product-tag" data-i18n="filter.brot">Brot</span>
               <h3 data-i18n="p2.name">Taunus-Bauernbrot</h3>
@@ -154,7 +160,7 @@
             </div>
           </li>
           <li class="product reveal" data-category="broetchen">
-            <div class="product-media"><img src="img/products/kaiserbroetchen.svg" width="200" height="160" loading="lazy" alt="Illustration: Kaiserbrötchen" data-i18n-alt="p3.name"></div>
+            <div class="product-media"><picture><source type="image/webp" srcset="images/products/kaiserbroetchen.webp"><img src="images/products/kaiserbroetchen.jpg" width="800" height="600" loading="lazy" decoding="async" alt="Knusprige Brötchen auf einem rot-weiß karierten Tuch" data-i18n-attr="alt:p3.alt"></picture></div>
             <div class="product-body">
               <span class="product-tag" data-i18n="filter.broetchen">Brötchen</span>
               <h3 data-i18n="p3.name">Kaiserbrötchen</h3>
@@ -163,7 +169,7 @@
             </div>
           </li>
           <li class="product reveal" data-category="broetchen">
-            <div class="product-media"><img src="img/products/laugenbrezel.svg" width="200" height="160" loading="lazy" alt="Illustration: Laugenbrezel" data-i18n-alt="p4.name"></div>
+            <div class="product-media"><picture><source type="image/webp" srcset="images/products/laugenbrezel.webp"><img src="images/products/laugenbrezel.jpg" width="800" height="600" loading="lazy" decoding="async" alt="Drei goldbraune Brezeln auf einem Holzbrett" data-i18n-attr="alt:p4.alt"></picture></div>
             <div class="product-body">
               <span class="product-tag" data-i18n="filter.broetchen">Brötchen</span>
               <h3 data-i18n="p4.name">Laugenbrezel</h3>
@@ -172,7 +178,7 @@
             </div>
           </li>
           <li class="product reveal" data-category="suesses">
-            <div class="product-media"><img src="img/products/croissant.svg" width="200" height="160" loading="lazy" alt="Illustration: Buttercroissant" data-i18n-alt="p5.name"></div>
+            <div class="product-media"><picture><source type="image/webp" srcset="images/products/croissant.webp"><img src="images/products/croissant.jpg" width="800" height="600" loading="lazy" decoding="async" alt="Buttercroissant auf einem runden Korkuntersetzer" data-i18n-attr="alt:p5.alt"></picture></div>
             <div class="product-body">
               <span class="product-tag" data-i18n="filter.suesses">Süßes</span>
               <h3 data-i18n="p5.name">Buttercroissant</h3>
@@ -181,7 +187,7 @@
             </div>
           </li>
           <li class="product reveal" data-category="suesses">
-            <div class="product-media"><img src="img/products/zimtschnecke.svg" width="200" height="160" loading="lazy" alt="Illustration: Zimtschnecke" data-i18n-alt="p6.name"></div>
+            <div class="product-media"><picture><source type="image/webp" srcset="images/products/zimtschnecke.webp"><img src="images/products/zimtschnecke.jpg" width="800" height="600" loading="lazy" decoding="async" alt="Zimtschnecken, eine davon mit Zuckerglasur" data-i18n-attr="alt:p6.alt"></picture></div>
             <div class="product-body">
               <span class="product-tag" data-i18n="filter.suesses">Süßes</span>
               <h3 data-i18n="p6.name">Zimtschnecke</h3>
@@ -190,7 +196,7 @@
             </div>
           </li>
           <li class="product reveal" data-category="torten">
-            <div class="product-media"><img src="img/products/frankfurter-kranz.svg" width="200" height="160" loading="lazy" alt="Illustration: Frankfurter Kranz (Stück)" data-i18n-alt="p7.name"></div>
+            <div class="product-media"><picture><source type="image/webp" srcset="images/products/frankfurter-kranz.webp"><img src="images/products/frankfurter-kranz.jpg" width="800" height="600" loading="lazy" decoding="async" alt="Frankfurter Kranz mit Buttercreme, Krokant und Belegkirschen" data-i18n-attr="alt:p7.alt"></picture></div>
             <div class="product-body">
               <span class="product-tag" data-i18n="filter.torten">Torten</span>
               <h3 data-i18n="p7.name">Frankfurter Kranz (Stück)</h3>
@@ -199,7 +205,7 @@
             </div>
           </li>
           <li class="product reveal" data-category="torten">
-            <div class="product-media"><img src="img/products/schwarzwaelder.svg" width="200" height="160" loading="lazy" alt="Illustration: Schwarzwälder Kirschtorte (Stück)" data-i18n-alt="p8.name"></div>
+            <div class="product-media"><picture><source type="image/webp" srcset="images/products/schwarzwaelder.webp"><img src="images/products/schwarzwaelder.jpg" width="800" height="600" loading="lazy" decoding="async" alt="Stück Schwarzwälder Kirschtorte mit Sahne, Schokoraspeln und Kirsche" data-i18n-attr="alt:p8.alt"></picture></div>
             <div class="product-body">
               <span class="product-tag" data-i18n="filter.torten">Torten</span>
               <h3 data-i18n="p8.name">Schwarzwälder Kirschtorte (Stück)</h3>
@@ -215,7 +221,12 @@
     <section class="section" id="torten" aria-labelledby="cakes-title">
       <div class="container cakes">
         <div class="cakes-art reveal">
-          <img src="img/torte.svg" width="360" height="340" loading="lazy" alt="Illustration: zweistöckige Torte mit Beeren auf einem Tortenständer" data-i18n-attr="alt:cakes.alt">
+          <figure class="photo-frame">
+            <picture>
+              <source type="image/webp" srcset="images/torte.webp">
+              <img src="images/torte.jpg" width="800" height="1000" loading="lazy" decoding="async" alt="Dreistöckige weiße Hochzeitstorte mit rosa Blumen vor einem Fenster" data-i18n-attr="alt:cakes.alt">
+            </picture>
+          </figure>
         </div>
         <div class="cakes-text reveal">
           <p class="eyebrow" data-i18n="cakes.eyebrow">Torten auf Bestellung</p>
@@ -355,7 +366,7 @@
     <div class="container footer-inner">
       <div class="footer-brand">
         <a class="brand brand-light" href="#top" aria-label="Backstube Honigkorn" data-i18n-attr="aria-label:brand.home">
-          <img src="img/favicon.svg" alt="" width="40" height="40">
+          <img src="images/favicon.svg" alt="" width="40" height="40">
           <span class="brand-text"><span class="brand-small">Backstube</span><span class="brand-name">Honigkorn</span></span>
         </a>
         <p data-i18n="footer.tagline">Jeden Morgen frisch gebacken – in Kelkheim (Taunus).</p>

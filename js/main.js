@@ -37,10 +37,6 @@
       });
     });
 
-    document.querySelectorAll('[data-i18n-alt]').forEach(function (el) {
-      el.alt = t('illu') + t(el.dataset.i18nAlt);
-    });
-
     document.querySelectorAll('[data-price]').forEach(function (el) {
       el.textContent = formatPrice(Number(el.dataset.price));
     });
