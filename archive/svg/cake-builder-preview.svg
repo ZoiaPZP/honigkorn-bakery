@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="cake-svg" viewBox="0 0 400 320" data-filling="strawberry" style="--sponge:#F0CF8E;--cream:#FFFBF3;--fruit:#D9434B">
+  <!-- Archived: self-drawn cake preview of the cake builder (replaced by photos).
+       cake-builder.js used to set the CSS variables sponge, cream and fruit (colours), data-filling
+       (strawberry, raspberry, cherry, none), cake-scale on #cake-body (.84 / .92 / 1) and the plaque text + width. -->
+  <style><![CDATA[
+.cake-svg { display: block; width: 100%; max-width: 440px; margin: 0 auto; overflow: visible; }
+.cake-plate { fill: #FFFDF9; stroke: #E6D2B8; stroke-width: 2; }
+.cake-svg [data-part] { transition: fill .45s cubic-bezier(.22,.61,.36,1); }
+.cake-svg [data-part="sponge"] { fill: var(--sponge, #F0CF8E); }
+.cake-svg [data-part="cream"] { fill: var(--cream, #FFFBF3); }
+.cake-svg [data-part="fruit"] { fill: var(--fruit, #D9434B); }
+.cake-rosettes circle { stroke: rgba(59, 38, 24, .1); stroke-width: 1; }
+.cake-top-shine { fill: #fff; opacity: .25; }
+.fruit-layer { transition: opacity .35s cubic-bezier(.22,.61,.36,1), fill .45s cubic-bezier(.22,.61,.36,1); }
+.cake-svg[data-filling="none"] .fruit-layer { opacity: 0; }
+
+.cake-body {
+  transform: scale(var(--cake-scale, 1));
+  transform-box: view-box;
+  transform-origin: 200px 288px;
+  transition: transform .5s cubic-bezier(.22,.61,.36,1);
+}
+
+.fruits {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity .35s cubic-bezier(.22,.61,.36,1), transform .35s cubic-bezier(.22,.61,.36,1);
+}
+.cake-svg[data-filling="strawberry"] .fruits-strawberry,
+.cake-svg[data-filling="raspberry"] .fruits-raspberry,
+.cake-svg[data-filling="cherry"] .fruits-cherry { opacity: 1; transform: none; }
+.fruits-strawberry .fruit-body { fill: #D9434B; }
+.fruits-strawberry .fruit-leaf { fill: #6E8B3D; }
+.fruits-strawberry .fruit-seed { fill: #F6E3BE; }
+.fruits-raspberry .fruit-body { fill: #C2386A; stroke: #9C2550; stroke-width: .6; }
+.fruits-cherry .fruit-body { fill: #8C1D2C; }
+.fruits-cherry .fruit-stem { fill: none; stroke: #5B6B2E; stroke-width: 1.6; stroke-linecap: round; }
+.fruits-cherry .fruit-shine { fill: #fff; opacity: .5; }
+
+.cake-plaque {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity .3s cubic-bezier(.22,.61,.36,1), transform .3s cubic-bezier(.22,.61,.36,1);
+}
+.cake-plaque.is-visible { opacity: 1; transform: none; }
+.cake-plaque rect { fill: #4A2A1A; }
+.cake-plaque text {
+  fill: #F6E3BE;
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 16px;
+  font-style: italic;
+}
+  ]]></style>
+                <ellipse cx="200" cy="296" rx="168" ry="18" fill="#3B2618" opacity=".07"/>
+                <ellipse class="cake-plate" cx="200" cy="288" rx="160" ry="18"/>
+                <g class="cake-body" id="cake-body">
+                  <path data-part="sponge" d="M84 228a116 14 0 0 0 232 0V262a116 14 0 0 1-232 0z"/>
+                  <path data-part="cream" d="M84 214a116 14 0 0 0 232 0V228a116 14 0 0 1-232 0z"/>
+                  <path data-part="fruit" class="fruit-layer" d="M84 219a116 14 0 0 0 232 0V223a116 14 0 0 1-232 0z"/>
+                  <path data-part="sponge" d="M84 172a116 14 0 0 0 232 0V214a116 14 0 0 1-232 0z"/>
+                  <path data-part="cream" d="M84 158a116 14 0 0 0 232 0V172a116 14 0 0 1-232 0z"/>
+                  <path data-part="fruit" class="fruit-layer" d="M84 163a116 14 0 0 0 232 0V167a116 14 0 0 1-232 0z"/>
+                  <path data-part="sponge" d="M84 124a116 14 0 0 0 232 0V158a116 14 0 0 1-232 0z"/>
+                  <g data-part="cream"><rect x="87.5" y="123.1" width="9" height="16" rx="4.5"/><rect x="105.5" y="126.8" width="9" height="22" rx="4.5"/><rect x="123.5" y="129.0" width="9" height="14" rx="4.5"/><rect x="141.5" y="130.4" width="9" height="20" rx="4.5"/><rect x="159.5" y="131.3" width="9" height="26" rx="4.5"/><rect x="177.5" y="131.8" width="9" height="15" rx="4.5"/><rect x="195.5" y="132.0" width="9" height="19" rx="4.5"/><rect x="213.5" y="131.8" width="9" height="24" rx="4.5"/><rect x="231.5" y="131.3" width="9" height="13" rx="4.5"/><rect x="249.5" y="130.4" width="9" height="21" rx="4.5"/><rect x="267.5" y="129.0" width="9" height="17" rx="4.5"/><rect x="285.5" y="126.8" width="9" height="23" rx="4.5"/><rect x="303.5" y="123.1" width="9" height="15" rx="4.5"/></g>
+                  <ellipse data-part="cream" cx="200" cy="124" rx="116" ry="14"/>
+                  <ellipse class="cake-top-shine" cx="200" cy="122" rx="100" ry="9"/>
+                  <g data-part="cream" class="cake-rosettes"><circle cx="184.0" cy="111.6" r="7.5"/><circle cx="246.0" cy="112.8" r="7.5"/><circle cx="129.5" cy="114.9" r="7.5"/><circle cx="286.5" cy="117.8" r="7.5"/><circle cx="108.0" cy="121.0" r="7.5"/><circle cx="286.5" cy="124.2" r="7.5"/><circle cx="129.5" cy="127.1" r="7.5"/><circle cx="246.0" cy="129.2" r="7.5"/><circle cx="184.0" cy="130.4" r="7.5"/></g>
+                  <g class="fruits fruits-strawberry"><g transform="translate(184.0 103.6)"><path class="fruit-body" d="M0-7c5.5 0 8.5 4 6.5 8.5S1.5 9 0 10C-1.5 9-4.5 6-6.5 1.5S-5.5-7 0-7z"/><path class="fruit-leaf" d="M-5-6.5l2.5 2 2.5-3 2.5 3 2.5-2-1 3.5h-8z"/><g class="fruit-seed"><circle cx="-2.5" cy="0" r=".7"/><circle cx="2" cy="-1" r=".7"/><circle cx="0" cy="4" r=".7"/><circle cx="3" cy="3" r=".7"/><circle cx="-3" cy="4.5" r=".7"/></g></g><g transform="translate(246.0 104.8)"><path class="fruit-body" d="M0-7c5.5 0 8.5 4 6.5 8.5S1.5 9 0 10C-1.5 9-4.5 6-6.5 1.5S-5.5-7 0-7z"/><path class="fruit-leaf" d="M-5-6.5l2.5 2 2.5-3 2.5 3 2.5-2-1 3.5h-8z"/><g class="fruit-seed"><circle cx="-2.5" cy="0" r=".7"/><circle cx="2" cy="-1" r=".7"/><circle cx="0" cy="4" r=".7"/><circle cx="3" cy="3" r=".7"/><circle cx="-3" cy="4.5" r=".7"/></g></g><g transform="translate(129.5 106.9)"><path class="fruit-body" d="M0-7c5.5 0 8.5 4 6.5 8.5S1.5 9 0 10C-1.5 9-4.5 6-6.5 1.5S-5.5-7 0-7z"/><path class="fruit-leaf" d="M-5-6.5l2.5 2 2.5-3 2.5 3 2.5-2-1 3.5h-8z"/><g class="fruit-seed"><circle cx="-2.5" cy="0" r=".7"/><circle cx="2" cy="-1" r=".7"/><circle cx="0" cy="4" r=".7"/><circle cx="3" cy="3" r=".7"/><circle cx="-3" cy="4.5" r=".7"/></g></g><g transform="translate(286.5 109.8)"><path class="fruit-body" d="M0-7c5.5 0 8.5 4 6.5 8.5S1.5 9 0 10C-1.5 9-4.5 6-6.5 1.5S-5.5-7 0-7z"/><path class="fruit-leaf" d="M-5-6.5l2.5 2 2.5-3 2.5 3 2.5-2-1 3.5h-8z"/><g class="fruit-seed"><circle cx="-2.5" cy="0" r=".7"/><circle cx="2" cy="-1" r=".7"/><circle cx="0" cy="4" r=".7"/><circle cx="3" cy="3" r=".7"/><circle cx="-3" cy="4.5" r=".7"/></g></g><g transform="translate(108.0 113.0)"><path class="fruit-body" d="M0-7c5.5 0 8.5 4 6.5 8.5S1.5 9 0 10C-1.5 9-4.5 6-6.5 1.5S-5.5-7 0-7z"/><path class="fruit-leaf" d="M-5-6.5l2.5 2 2.5-3 2.5 3 2.5-2-1 3.5h-8z"/><g class="fruit-seed"><circle cx="-2.5" cy="0" r=".7"/><circle cx="2" cy="-1" r=".7"/><circle cx="0" cy="4" r=".7"/><circle cx="3" cy="3" r=".7"/><circle cx="-3" cy="4.5" r=".7"/></g></g><g transform="translate(286.5 116.2)"><path class="fruit-body" d="M0-7c5.5 0 8.5 4 6.5 8.5S1.5 9 0 10C-1.5 9-4.5 6-6.5 1.5S-5.5-7 0-7z"/><path class="fruit-leaf" d="M-5-6.5l2.5 2 2.5-3 2.5 3 2.5-2-1 3.5h-8z"/><g class="fruit-seed"><circle cx="-2.5" cy="0" r=".7"/><circle cx="2" cy="-1" r=".7"/><circle cx="0" cy="4" r=".7"/><circle cx="3" cy="3" r=".7"/><circle cx="-3" cy="4.5" r=".7"/></g></g><g transform="translate(129.5 119.1)"><path class="fruit-body" d="M0-7c5.5 0 8.5 4 6.5 8.5S1.5 9 0 10C-1.5 9-4.5 6-6.5 1.5S-5.5-7 0-7z"/><path class="fruit-leaf" d="M-5-6.5l2.5 2 2.5-3 2.5 3 2.5-2-1 3.5h-8z"/><g class="fruit-seed"><circle cx="-2.5" cy="0" r=".7"/><circle cx="2" cy="-1" r=".7"/><circle cx="0" cy="4" r=".7"/><circle cx="3" cy="3" r=".7"/><circle cx="-3" cy="4.5" r=".7"/></g></g><g transform="translate(246.0 121.2)"><path class="fruit-body" d="M0-7c5.5 0 8.5 4 6.5 8.5S1.5 9 0 10C-1.5 9-4.5 6-6.5 1.5S-5.5-7 0-7z"/><path class="fruit-leaf" d="M-5-6.5l2.5 2 2.5-3 2.5 3 2.5-2-1 3.5h-8z"/><g class="fruit-seed"><circle cx="-2.5" cy="0" r=".7"/><circle cx="2" cy="-1" r=".7"/><circle cx="0" cy="4" r=".7"/><circle cx="3" cy="3" r=".7"/><circle cx="-3" cy="4.5" r=".7"/></g></g><g transform="translate(184.0 122.4)"><path class="fruit-body" d="M0-7c5.5 0 8.5 4 6.5 8.5S1.5 9 0 10C-1.5 9-4.5 6-6.5 1.5S-5.5-7 0-7z"/><path class="fruit-leaf" d="M-5-6.5l2.5 2 2.5-3 2.5 3 2.5-2-1 3.5h-8z"/><g class="fruit-seed"><circle cx="-2.5" cy="0" r=".7"/><circle cx="2" cy="-1" r=".7"/><circle cx="0" cy="4" r=".7"/><circle cx="3" cy="3" r=".7"/><circle cx="-3" cy="4.5" r=".7"/></g></g></g>
+                  <g class="fruits fruits-raspberry"><g transform="translate(184.0 104.6)" class="fruit-body"><circle cx="-3" cy="-3" r="2.6"/><circle cx="0" cy="-4" r="2.6"/><circle cx="3" cy="-3" r="2.6"/><circle cx="-4.5" cy="0.5" r="2.6"/><circle cx="-1.5" cy="0" r="2.6"/><circle cx="1.5" cy="0" r="2.6"/><circle cx="4.5" cy="0.5" r="2.6"/><circle cx="-3" cy="3.5" r="2.6"/><circle cx="0" cy="4" r="2.6"/><circle cx="3" cy="3.5" r="2.6"/><circle cx="0" cy="7" r="2.6"/></g><g transform="translate(246.0 105.8)" class="fruit-body"><circle cx="-3" cy="-3" r="2.6"/><circle cx="0" cy="-4" r="2.6"/><circle cx="3" cy="-3" r="2.6"/><circle cx="-4.5" cy="0.5" r="2.6"/><circle cx="-1.5" cy="0" r="2.6"/><circle cx="1.5" cy="0" r="2.6"/><circle cx="4.5" cy="0.5" r="2.6"/><circle cx="-3" cy="3.5" r="2.6"/><circle cx="0" cy="4" r="2.6"/><circle cx="3" cy="3.5" r="2.6"/><circle cx="0" cy="7" r="2.6"/></g><g transform="translate(129.5 107.9)" class="fruit-body"><circle cx="-3" cy="-3" r="2.6"/><circle cx="0" cy="-4" r="2.6"/><circle cx="3" cy="-3" r="2.6"/><circle cx="-4.5" cy="0.5" r="2.6"/><circle cx="-1.5" cy="0" r="2.6"/><circle cx="1.5" cy="0" r="2.6"/><circle cx="4.5" cy="0.5" r="2.6"/><circle cx="-3" cy="3.5" r="2.6"/><circle cx="0" cy="4" r="2.6"/><circle cx="3" cy="3.5" r="2.6"/><circle cx="0" cy="7" r="2.6"/></g><g transform="translate(286.5 110.8)" class="fruit-body"><circle cx="-3" cy="-3" r="2.6"/><circle cx="0" cy="-4" r="2.6"/><circle cx="3" cy="-3" r="2.6"/><circle cx="-4.5" cy="0.5" r="2.6"/><circle cx="-1.5" cy="0" r="2.6"/><circle cx="1.5" cy="0" r="2.6"/><circle cx="4.5" cy="0.5" r="2.6"/><circle cx="-3" cy="3.5" r="2.6"/><circle cx="0" cy="4" r="2.6"/><circle cx="3" cy="3.5" r="2.6"/><circle cx="0" cy="7" r="2.6"/></g><g transform="translate(108.0 114.0)" class="fruit-body"><circle cx="-3" cy="-3" r="2.6"/><circle cx="0" cy="-4" r="2.6"/><circle cx="3" cy="-3" r="2.6"/><circle cx="-4.5" cy="0.5" r="2.6"/><circle cx="-1.5" cy="0" r="2.6"/><circle cx="1.5" cy="0" r="2.6"/><circle cx="4.5" cy="0.5" r="2.6"/><circle cx="-3" cy="3.5" r="2.6"/><circle cx="0" cy="4" r="2.6"/><circle cx="3" cy="3.5" r="2.6"/><circle cx="0" cy="7" r="2.6"/></g><g transform="translate(286.5 117.2)" class="fruit-body"><circle cx="-3" cy="-3" r="2.6"/><circle cx="0" cy="-4" r="2.6"/><circle cx="3" cy="-3" r="2.6"/><circle cx="-4.5" cy="0.5" r="2.6"/><circle cx="-1.5" cy="0" r="2.6"/><circle cx="1.5" cy="0" r="2.6"/><circle cx="4.5" cy="0.5" r="2.6"/><circle cx="-3" cy="3.5" r="2.6"/><circle cx="0" cy="4" r="2.6"/><circle cx="3" cy="3.5" r="2.6"/><circle cx="0" cy="7" r="2.6"/></g><g transform="translate(129.5 120.1)" class="fruit-body"><circle cx="-3" cy="-3" r="2.6"/><circle cx="0" cy="-4" r="2.6"/><circle cx="3" cy="-3" r="2.6"/><circle cx="-4.5" cy="0.5" r="2.6"/><circle cx="-1.5" cy="0" r="2.6"/><circle cx="1.5" cy="0" r="2.6"/><circle cx="4.5" cy="0.5" r="2.6"/><circle cx="-3" cy="3.5" r="2.6"/><circle cx="0" cy="4" r="2.6"/><circle cx="3" cy="3.5" r="2.6"/><circle cx="0" cy="7" r="2.6"/></g><g transform="translate(246.0 122.2)" class="fruit-body"><circle cx="-3" cy="-3" r="2.6"/><circle cx="0" cy="-4" r="2.6"/><circle cx="3" cy="-3" r="2.6"/><circle cx="-4.5" cy="0.5" r="2.6"/><circle cx="-1.5" cy="0" r="2.6"/><circle cx="1.5" cy="0" r="2.6"/><circle cx="4.5" cy="0.5" r="2.6"/><circle cx="-3" cy="3.5" r="2.6"/><circle cx="0" cy="4" r="2.6"/><circle cx="3" cy="3.5" r="2.6"/><circle cx="0" cy="7" r="2.6"/></g><g transform="translate(184.0 123.4)" class="fruit-body"><circle cx="-3" cy="-3" r="2.6"/><circle cx="0" cy="-4" r="2.6"/><circle cx="3" cy="-3" r="2.6"/><circle cx="-4.5" cy="0.5" r="2.6"/><circle cx="-1.5" cy="0" r="2.6"/><circle cx="1.5" cy="0" r="2.6"/><circle cx="4.5" cy="0.5" r="2.6"/><circle cx="-3" cy="3.5" r="2.6"/><circle cx="0" cy="4" r="2.6"/><circle cx="3" cy="3.5" r="2.6"/><circle cx="0" cy="7" r="2.6"/></g></g>
+                  <g class="fruits fruits-cherry"><g transform="translate(184.0 104.6)"><path class="fruit-stem" d="M0-5c1-6 4-9 8-10"/><circle class="fruit-body" r="6.5"/><circle class="fruit-shine" cx="-2.2" cy="-2.2" r="1.6"/></g><g transform="translate(246.0 105.8)"><path class="fruit-stem" d="M0-5c1-6 4-9 8-10"/><circle class="fruit-body" r="6.5"/><circle class="fruit-shine" cx="-2.2" cy="-2.2" r="1.6"/></g><g transform="translate(129.5 107.9)"><path class="fruit-stem" d="M0-5c1-6 4-9 8-10"/><circle class="fruit-body" r="6.5"/><circle class="fruit-shine" cx="-2.2" cy="-2.2" r="1.6"/></g><g transform="translate(286.5 110.8)"><path class="fruit-stem" d="M0-5c1-6 4-9 8-10"/><circle class="fruit-body" r="6.5"/><circle class="fruit-shine" cx="-2.2" cy="-2.2" r="1.6"/></g><g transform="translate(108.0 114.0)"><path class="fruit-stem" d="M0-5c1-6 4-9 8-10"/><circle class="fruit-body" r="6.5"/><circle class="fruit-shine" cx="-2.2" cy="-2.2" r="1.6"/></g><g transform="translate(286.5 117.2)"><path class="fruit-stem" d="M0-5c1-6 4-9 8-10"/><circle class="fruit-body" r="6.5"/><circle class="fruit-shine" cx="-2.2" cy="-2.2" r="1.6"/></g><g transform="translate(129.5 120.1)"><path class="fruit-stem" d="M0-5c1-6 4-9 8-10"/><circle class="fruit-body" r="6.5"/><circle class="fruit-shine" cx="-2.2" cy="-2.2" r="1.6"/></g><g transform="translate(246.0 122.2)"><path class="fruit-stem" d="M0-5c1-6 4-9 8-10"/><circle class="fruit-body" r="6.5"/><circle class="fruit-shine" cx="-2.2" cy="-2.2" r="1.6"/></g><g transform="translate(184.0 123.4)"><path class="fruit-stem" d="M0-5c1-6 4-9 8-10"/><circle class="fruit-body" r="6.5"/><circle class="fruit-shine" cx="-2.2" cy="-2.2" r="1.6"/></g></g>
+                  <g class="cake-plaque is-visible" id="cake-plaque">
+                    <rect x="140" y="64" width="120" height="30" rx="8"/>
+                    <text x="200" y="84" text-anchor="middle">Alles Gute!</text>
+                  </g>
+                </g>
+              </svg>

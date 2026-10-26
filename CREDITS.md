@@ -19,8 +19,15 @@ the site does not load anything from Unsplash at runtime.
 | Frankfurter Kranz (Stück) | `images/products/frankfurter-kranz` | [Jürgen Scheeff](https://unsplash.com/@sardinien_blog) | [unsplash.com/photos/nK9jVWHml5o](https://unsplash.com/photos/nK9jVWHml5o) |
 | Schwarzwälder Kirschtorte (Stück) | `images/products/schwarzwaelder` | [montatip lilitsanong](https://unsplash.com/@montatip) | [unsplash.com/photos/LcfX-wo4RkY](https://unsplash.com/photos/LcfX-wo4RkY) |
 | Torten auf Bestellung | `images/torte` | [Frank Zhang](https://unsplash.com/@frankzphoto) | [unsplash.com/photos/53nLF9woXE0](https://unsplash.com/photos/53nLF9woXE0) |
+| Tortenkonfigurator – Erdbeere | `images/cakes/strawberry` | [amirali mirhashemian](https://unsplash.com/@amir_v_ali) | [unsplash.com/photos/cZFU60dKB6U](https://unsplash.com/photos/cZFU60dKB6U) |
+| Tortenkonfigurator – Himbeere | `images/cakes/raspberry` | [Alina Karpenko](https://unsplash.com/@alinasagirova) | [unsplash.com/photos/IAYQuCqD00g](https://unsplash.com/photos/IAYQuCqD00g) |
+| Tortenkonfigurator – Kirsche | `images/cakes/cherry` | [Paulina Kaminska](https://unsplash.com/@paulinaka) | [unsplash.com/photos/1dufXyfEV4A](https://unsplash.com/photos/1dufXyfEV4A) |
+| Tortenkonfigurator – ohne Früchte | `images/cakes/none` | [Delfina Iacub](https://unsplash.com/@delfinaiacub) | [unsplash.com/photos/OiJDyCr3Ohk](https://unsplash.com/photos/OiJDyCr3Ohk) |
 
 Note: the wedding cake photo (Torten auf Bestellung) shows a decorative cake topper reading
 "The Adventure Begins" – a generic phrase, not a brand or logo.
 
-The earlier self-drawn SVG illustrations are kept in `archive/svg/` and are not used by the site.
+The cake builder photos are generic examples (one per fruit option); sponge/cream choices are shown as colour swatches.
+
+The earlier self-drawn SVG illustrations (incl. the old cake builder preview `cake-builder-preview.svg`)
+are kept in `archive/svg/` and are not used by the site.

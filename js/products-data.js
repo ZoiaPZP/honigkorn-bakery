@@ -131,7 +131,7 @@ window.BakeryData = (function () {
     { id: 'milk', icon: '<path d="M9 3h6M9.5 3v3L7 9.5V20a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V9.5L14.5 6V3"/><path d="M7 13h10"/>' },
     { id: 'nuts', icon: '<path d="M5 10.5h14"/><path d="M6 10.5c0 6 3 10 6 10s6-4 6-10"/><path d="M6 10.5C6 7 8.5 5 12 5s6 2 6 5.5"/><path d="M12 5V3"/>' },
     { id: 'celery', icon: '<path d="M9 21c0-6 .5-10 1-13M15 21c0-6-.5-10-1-13M12 21V8"/><path d="M10 8c-3 0-4-2.5-3-5 2 .5 3 2 3 5zM14 8c3 0 4-2.5 3-5-2 .5-3 2-3 5zM12 8c-1.5-1.5-1.5-3.5 0-5 1.5 1.5 1.5 3.5 0 5z"/>' },
-    { id: 'mustard', icon: '<path d="M8 8h8l1 12a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1z"/><path d="M9 8V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V8"/><path d="M8 13h8"/>' },
+    { id: 'mustard', icon: '<path d="M5 12h14v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2z"/><path d="M4 9.5h16V12H4z"/><path d="M12.5 9.5 17 4"/><ellipse cx="18.2" cy="2.9" rx="1.2" ry="1.9" transform="rotate(42 18.2 2.9)"/><path d="M8 16.5c1.3-1.2 2.7-1.2 4 0s2.7 1.2 4 0"/>' },
     { id: 'sesame', icon: '<ellipse cx="8" cy="8" rx="2" ry="3" transform="rotate(-30 8 8)"/><ellipse cx="16" cy="9" rx="2" ry="3" transform="rotate(25 16 9)"/><ellipse cx="11" cy="16" rx="2" ry="3" transform="rotate(10 11 16)"/>' },
     { id: 'sulphites', icon: '<path d="M8 3h8l-.5 6a3.5 3.5 0 0 1-7 0z"/><path d="M12 12.5V20M8.5 21h7"/><path d="M8.3 6.5h7.4"/>' },
     { id: 'lupin', icon: '<path d="M12 21V11"/><path d="M12 11c-2.5 0-3.5-1.5-3.5-3S10 5 12 3c2 2 3.5 3.5 3.5 5S14.5 11 12 11z"/><path d="M12 15c-2-1-4.5-1-6 1M12 15c2-1 4.5-1 6 1"/>' },
@@ -155,10 +155,10 @@ window.BakeryData = (function () {
       { id: 'cheese', price: 4, color: '#F7E4DC' }
     ],
     fillings: [
-      { id: 'strawberry', price: 4, color: '#D9434B' },
-      { id: 'raspberry', price: 5, color: '#C2386A' },
-      { id: 'cherry', price: 4, color: '#8C1D2C' },
-      { id: 'none', price: 0, color: null }
+      { id: 'strawberry', price: 4, color: '#D9434B', image: 'images/cakes/strawberry' },
+      { id: 'raspberry', price: 5, color: '#C2386A', image: 'images/cakes/raspberry' },
+      { id: 'cherry', price: 4, color: '#8C1D2C', image: 'images/cakes/cherry' },
+      { id: 'none', price: 0, color: null, image: 'images/cakes/none' }
     ],
     inscriptionPrice: 3,
     textMax: 30,

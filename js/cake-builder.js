@@ -1,4 +1,5 @@
-// Cake builder: live price, SVG preview and "add to cart" with all chosen options.
+// Cake builder: live price, photo preview (sample photo per fruit, size badge, swatches,
+// inscription ribbon) and "add to cart" with all chosen options.
 (function () {
   'use strict';
 
@@ -8,11 +9,12 @@
   const form = document.getElementById('cake-form');
   if (!form) return;
 
-  const svg = document.getElementById('cake-svg');
-  const body = document.getElementById('cake-body');
-  const plaque = document.getElementById('cake-plaque');
-  const plaqueRect = plaque.querySelector('rect');
-  const plaqueText = plaque.querySelector('text');
+  const shots = Array.prototype.slice.call(document.querySelectorAll('.cake-shot'));
+  const sizeBadge = document.getElementById('cake-size-badge');
+  const ribbon = document.getElementById('cake-ribbon');
+  const ribbonText = document.getElementById('cake-ribbon-text');
+  const swatchSponge = document.getElementById('swatch-sponge');
+  const swatchCream = document.getElementById('swatch-cream');
   const previewDesc = document.getElementById('cake-preview-desc');
   const priceEl = document.getElementById('cake-price');
   const breakdownEl = document.getElementById('cake-breakdown');
@@ -57,25 +59,35 @@
       App.t('builder.textHint', { max: opts.textMax, price: App.formatPrice(opts.inscriptionPrice) });
   }
 
+  function setSwatch(item, color, key) {
+    item.style.setProperty('--swatch', color);
+    item.querySelector('.swatch-name').textContent = App.t(key);
+  }
+
   function renderPreview(cfg) {
     const sponge = data.findById(opts.sponges, cfg.sponge);
     const cream = data.findById(opts.creams, cfg.cream);
-    const filling = data.findById(opts.fillings, cfg.filling);
     const size = data.findById(opts.sizes, cfg.size);
 
-    svg.style.setProperty('--sponge', sponge.color);
-    svg.style.setProperty('--cream', cream.color);
-    svg.style.setProperty('--fruit', filling.color || cream.color);
-    svg.dataset.filling = filling.id;
-    body.style.setProperty('--cake-scale', size.scale);
+    // Sample photo per fruit choice; CSS cross-fades between the stacked pictures.
+    shots.forEach(function (shot) {
+      shot.classList.toggle('is-active', shot.dataset.shot === cfg.filling);
+    });
 
-    plaque.classList.toggle('is-visible', Boolean(cfg.text));
-    if (cfg.text) {
-      plaqueText.textContent = cfg.text;
-      const width = Math.min(250, Math.max(70, plaqueText.getComputedTextLength() + 30));
-      plaqueRect.setAttribute('width', width);
-      plaqueRect.setAttribute('x', 200 - width / 2);
+    const badge = App.t('builder.sizeBadge', {
+      size: cfg.size,
+      servings: App.t('builder.servings', { n: size.servings })
+    });
+    if (sizeBadge.textContent !== badge) {
+      sizeBadge.textContent = badge;
+      pop(sizeBadge);
     }
+
+    setSwatch(swatchSponge, sponge.color, 'cake.sponge.' + sponge.id);
+    setSwatch(swatchCream, cream.color, 'cake.cream.' + cream.id);
+
+    ribbon.classList.toggle('is-visible', Boolean(cfg.text));
+    if (cfg.text) ribbonText.textContent = cfg.text;
 
     const parts = [
       App.t('cake.name', { size: cfg.size }),
@@ -85,6 +97,12 @@
     ];
     if (cfg.text) parts.push(App.t('cake.inscription', { text: cfg.text }));
     previewDesc.textContent = App.t('builder.previewLabel', { desc: parts.join(', ') });
+  }
+
+  function pop(el) {
+    el.classList.remove('is-pop');
+    void el.offsetWidth;
+    el.classList.add('is-pop');
   }
 
   function renderPrice(cfg) {
@@ -153,9 +171,6 @@
     update();
     if (dateError.dataset.key) dateError.textContent = App.t(dateError.dataset.key, { days: opts.minDays });
   });
-
-  // Fonts change the text width on the chocolate plaque.
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(update);
 
   setDateBounds();
   renderMeta();

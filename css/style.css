@@ -1314,8 +1314,6 @@ html.scroll-locked body { padding-right: var(--scrollbar-gap, 0px); }
 }
 .cart-thumb picture,
 .cart-thumb img { display: block; width: 100%; height: 100%; object-fit: cover; }
-.cart-thumb-cake { display: grid; place-items: center; background: #F6DCCF; }
-.cart-thumb-cake svg { width: 56px; height: 56px; }
 
 .cart-name {
   margin: 0;
@@ -1516,7 +1514,9 @@ html.scroll-locked body { padding-right: var(--scrollbar-gap, 0px); }
   transition: transform .25s var(--ease);
 }
 .allergen-all[open] summary::after { transform: rotate(-135deg); }
+.allergen-all summary:focus-visible { border-radius: var(--radius-sm); outline-offset: -2px; }
 .allergen-grid {
+  margin-top: .75rem;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   gap: .45rem;
@@ -1588,60 +1588,115 @@ html.scroll-locked body { padding-right: var(--scrollbar-gap, 0px); }
   grid-template-areas: "preview" "form" "summary";
 }
 
-.builder-preview {
-  grid-area: preview;
-  padding: 1rem .5rem .5rem;
+.builder-preview { grid-area: preview; min-width: 0; }
+
+/* Photo stage: one sample photo per fruit, stacked and cross-faded. */
+.cake-stage {
+  position: relative;
+  aspect-ratio: 5 / 4;
+  overflow: hidden;
+  isolation: isolate;
   border-radius: var(--radius);
-  background: radial-gradient(circle at 50% 38%, #FFF8EC, #F6DCCF 78%);
+  background: var(--oat);
+  box-shadow: var(--shadow-sm);
 }
-
-.cake-svg { display: block; width: 100%; max-width: 440px; margin: 0 auto; overflow: visible; }
-.cake-plate { fill: #FFFDF9; stroke: #E6D2B8; stroke-width: 2; }
-.cake-svg [data-part] { transition: fill .45s var(--ease); }
-.cake-svg [data-part="sponge"] { fill: var(--sponge, #F0CF8E); }
-.cake-svg [data-part="cream"] { fill: var(--cream, #FFFBF3); }
-.cake-svg [data-part="fruit"] { fill: var(--fruit, #D9434B); }
-.cake-rosettes circle { stroke: rgba(59, 38, 24, .1); stroke-width: 1; }
-.cake-top-shine { fill: #fff; opacity: .25; }
-.fruit-layer { transition: opacity .35s var(--ease), fill .45s var(--ease); }
-.cake-svg[data-filling="none"] .fruit-layer { opacity: 0; }
-
-.cake-body {
-  transform: scale(var(--cake-scale, 1));
-  transform-box: view-box;
-  transform-origin: 200px 288px;
-  transition: transform .5s var(--ease);
+.cake-stage::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(160deg, rgba(224, 164, 59, .10), transparent 45%, rgba(59, 38, 24, .16));
+  pointer-events: none;
 }
-
-.fruits {
+.cake-shot {
+  position: absolute;
+  inset: 0;
   opacity: 0;
-  transform: translateY(-10px);
-  transition: opacity .35s var(--ease), transform .35s var(--ease);
+  transform: scale(1.04);
+  transition: opacity .6s var(--ease), transform 1.2s var(--ease);
 }
-.cake-svg[data-filling="strawberry"] .fruits-strawberry,
-.cake-svg[data-filling="raspberry"] .fruits-raspberry,
-.cake-svg[data-filling="cherry"] .fruits-cherry { opacity: 1; transform: none; }
-.fruits-strawberry .fruit-body { fill: #D9434B; }
-.fruits-strawberry .fruit-leaf { fill: #6E8B3D; }
-.fruits-strawberry .fruit-seed { fill: #F6E3BE; }
-.fruits-raspberry .fruit-body { fill: #C2386A; stroke: #9C2550; stroke-width: .6; }
-.fruits-cherry .fruit-body { fill: #8C1D2C; }
-.fruits-cherry .fruit-stem { fill: none; stroke: #5B6B2E; stroke-width: 1.6; stroke-linecap: round; }
-.fruits-cherry .fruit-shine { fill: #fff; opacity: .5; }
+.cake-shot.is-active { opacity: 1; transform: none; }
+.cake-shot img { width: 100%; height: 100%; object-fit: cover; }
 
-.cake-plaque {
+.cake-size-badge {
+  position: absolute;
+  top: .85rem; left: .85rem;
+  z-index: 2;
+  margin: 0;
+  padding: .4rem .85rem;
+  border-radius: 999px;
+  background: rgba(255, 253, 249, .92);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 4px 14px -6px rgba(59, 38, 24, .35);
+  color: var(--espresso);
+  font-size: .85rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.cake-size-badge.is-pop { animation: bump .45s var(--ease); }
+
+/* Inscription as a chocolate ribbon with notched ends. */
+.cake-ribbon {
+  position: absolute;
+  left: 0; right: 0; bottom: 1.1rem;
+  z-index: 2;
+  width: fit-content;
+  max-width: calc(100% - 2rem);
+  margin: 0 auto;
+  padding: .5rem 2rem .6rem;
+  background: #4A2A1A;
+  color: #F6E3BE;
+  clip-path: polygon(0 0, 100% 0, calc(100% - 14px) 50%, 100% 100%, 0 100%, 14px 50%);
+  filter: drop-shadow(0 6px 10px rgba(42, 27, 17, .35));
+  font-family: var(--font-serif);
+  font-size: clamp(1.05rem, 3.6vw, 1.35rem);
+  font-style: italic;
+  line-height: 1.25;
+  text-align: center;
+  overflow-wrap: anywhere;
   opacity: 0;
-  transform: translateY(10px);
+  transform: translateY(12px) rotate(-1.5deg);
   transition: opacity .3s var(--ease), transform .3s var(--ease);
 }
-.cake-plaque.is-visible { opacity: 1; transform: none; }
-.cake-plaque rect { fill: #4A2A1A; }
-.cake-plaque text {
-  fill: #F6E3BE;
-  font-family: var(--font-serif);
-  font-size: 16px;
-  font-style: italic;
+.cake-ribbon.is-visible { opacity: 1; transform: rotate(-1.5deg); }
+
+.cake-swatches {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, max-content));
+  gap: .5rem;
+  margin: .9rem 0 0;
+  padding: 0;
+  list-style: none;
 }
+.cake-swatch {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: .6rem;
+  padding: .4rem .9rem .4rem .45rem;
+  border: 1px solid rgba(59, 38, 24, .12);
+  border-radius: 999px;
+  background: var(--paper);
+}
+.swatch-dot {
+  flex: none;
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  background: var(--swatch, var(--oat));
+  box-shadow: inset 0 0 0 1px rgba(59, 38, 24, .18), inset 0 -4px 6px rgba(59, 38, 24, .12);
+  transition: background-color .4s var(--ease);
+}
+.swatch-text { display: flex; flex-direction: column; min-width: 0; line-height: 1.2; }
+.swatch-label {
+  color: var(--crust);
+  font-size: .68rem;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+.swatch-name { font-size: .9rem; line-height: 1.2; }
+.cake-sample-note { margin: .6rem 0 0; color: var(--cocoa); font-size: .78rem; font-style: italic; }
 
 .builder-form { grid-area: form; display: grid; gap: 1.4rem; }
 

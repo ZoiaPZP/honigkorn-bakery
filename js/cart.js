@@ -196,18 +196,10 @@ window.Cart = (function () {
   function thumb(item) {
     const wrap = el('div', 'cart-thumb');
     if (item.type === 'cake') {
-      const cfg = item.config;
-      const sponge = data.findById(data.cake.sponges, cfg.sponge).color;
-      const cream = data.findById(data.cake.creams, cfg.cream).color;
-      const fruit = data.findById(data.cake.fillings, cfg.filling).color;
-      wrap.classList.add('cart-thumb-cake');
-      wrap.innerHTML =
-        '<svg viewBox="0 0 64 64" aria-hidden="true">' +
-        '<rect x="10" y="30" width="44" height="22" rx="4" fill="' + sponge + '"/>' +
-        '<rect x="10" y="38" width="44" height="5" fill="' + cream + '"/>' +
-        '<path d="M8 30a24 7 0 0 1 48 0v3H8z" fill="' + cream + '"/>' +
-        (fruit ? '<circle cx="22" cy="24" r="4" fill="' + fruit + '"/><circle cx="32" cy="22" r="4" fill="' + fruit + '"/><circle cx="42" cy="24" r="4" fill="' + fruit + '"/>' : '') +
-        '</svg>';
+      // Same sample photo as in the cake builder for the chosen fruit.
+      const base = data.findById(data.cake.fillings, item.config.filling).image;
+      wrap.innerHTML = '<picture><source type="image/webp" srcset="' + base + '.webp">' +
+        '<img src="' + base + '.jpg" width="1400" height="1120" alt="" loading="lazy" decoding="async"></picture>';
     } else {
       const base = data.getProduct(item.id).image;
       wrap.innerHTML = '<picture><source type="image/webp" srcset="' + base + '.webp">' +

@@ -54,7 +54,9 @@
     const name = App.t(id + '.name');
     const price = App.formatPrice(p.price);
 
-    els.source.srcset = p.image + '.webp';
+    // 1600px versions keep the modal photo sharp on Retina; cards stay at 800px.
+    els.source.srcset = p.image + '.webp 800w, ' + p.image + '-1600.webp 1600w';
+    els.img.srcset = p.image + '.jpg 800w, ' + p.image + '-1600.jpg 1600w';
     els.img.src = p.image + '.jpg';
     els.img.alt = App.t(id + '.alt');
     els.tag.textContent = App.t('filter.' + p.category);
