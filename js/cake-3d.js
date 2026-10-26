@@ -19,8 +19,8 @@ const SLICE = [GAP_CENTER - GAP / 2, GAP_CENTER + GAP / 2];
 
 // Layers bottom → top: sponge, cream, fruit layer (cream with fruit pieces), sponge, top cream.
 const SPONGE_H = 0.3;
-const CREAM_H = 0.07;
-const FRUIT_H = 0.085;
+const CREAM_H = 0.1;
+const FRUIT_H = 0.115;
 const L_CREAM = SPONGE_H;
 const L_FRUIT = L_CREAM + CREAM_H;
 const L_SPONGE2 = L_FRUIT + FRUIT_H;
@@ -28,7 +28,7 @@ const L_TOP = L_SPONGE2 + SPONGE_H;
 const TOP_BEVEL = 0.035;
 const CREAM_TOP = L_TOP + TOP_BEVEL * 2 + 0.05;
 const ROSETTE_Y = CREAM_TOP - 0.02;
-const FRUIT_Y = CREAM_TOP + 0.15;
+const FRUIT_Y = CREAM_TOP + 0.22; // sits in the top of the rosette
 
 const SMALL_PLATE = { angle: GAP_CENTER - 0.12, dist: 2.62, top: -0.026 }; // top = plate surface
 
@@ -216,8 +216,8 @@ function build(THREE, OrbitControls, RoomEnvironment) {
 
   // Sponge crumb: many small pores (holes) – colour map plus a matching bump map.
   const pores = [];
-  for (let i = 0; i < 2600; i++) {
-    pores.push([Math.random(), Math.random(), 0.7 + Math.pow(Math.random(), 2.2) * 4.2, rand(0.6, 1.4), rand(0, Math.PI)]);
+  for (let i = 0; i < 900; i++) {
+    pores.push([Math.random(), Math.random(), 2 + Math.pow(Math.random(), 1.8) * 7, rand(0.6, 1.4), rand(0, Math.PI)]);
   }
   function drawPores(ctx, w, h, hole, rimColor) {
     pores.forEach(function (p) {
@@ -240,15 +240,17 @@ function build(THREE, OrbitControls, RoomEnvironment) {
   const crumbMap = canvasTexture(512, 512, function (ctx, w, h) {
     ctx.fillStyle = '#ffffff';
     ctx.fillRect(0, 0, w, h);
-    drawPores(ctx, w, h, 'rgba(95,62,35,0.42)', 'rgba(255,255,255,0.75)');
+    ctx.filter = 'blur(1.4px)'; // soft-edged pores read as crumb, not sand
+    drawPores(ctx, w, h, 'rgba(120,82,48,0.2)', 'rgba(255,255,255,0.5)');
   });
   const crumbBump = canvasTexture(512, 512, function (ctx, w, h) {
     ctx.fillStyle = '#ffffff';
     ctx.fillRect(0, 0, w, h);
-    drawPores(ctx, w, h, '#2a2a2a', null);
+    ctx.filter = 'blur(2px)';
+    drawPores(ctx, w, h, '#6a6a6a', null);
   }, false);
-  crumbMap.repeat.set(2.2, 2.2);
-  crumbBump.repeat.set(2.2, 2.2);
+  crumbMap.repeat.set(1.5, 1.5);
+  crumbBump.repeat.set(1.5, 1.5);
 
   // Cream: soft, blotchy unevenness for the bump map.
   const creamBump = canvasTexture(256, 256, function (ctx, w, h) {
@@ -306,7 +308,7 @@ function build(THREE, OrbitControls, RoomEnvironment) {
   });
 
   // ----- materials -----
-  const spongeMat = new THREE.MeshStandardMaterial({ map: crumbMap, bumpMap: crumbBump, bumpScale: 1.6, roughness: 0.95 });
+  const spongeMat = new THREE.MeshStandardMaterial({ map: crumbMap, bumpMap: crumbBump, bumpScale: 0.9, roughness: 0.95 });
   const creamProps = {
     roughness: 0.42, sheen: 0.6, sheenRoughness: 0.55, sheenColor: 0xffffff,
     clearcoat: 0.22, clearcoatRoughness: 0.5, bumpMap: creamBump, bumpScale: 0.35,
@@ -411,7 +413,7 @@ function build(THREE, OrbitControls, RoomEnvironment) {
     const pts = [];
     for (let i = 0; i <= 12; i++) {
       const t = i / 12;
-      pts.push([0.15 * Math.pow(1 - t, 0.75) * (1 + 0.22 * Math.sin(Math.PI * t)), 0.2 * t]);
+      pts.push([0.2 * Math.pow(1 - t, 0.7) * (1 + 0.28 * Math.sin(Math.PI * t)), 0.27 * t]);
     }
     const geo = lathe(pts, 64);
     const p = geo.attributes.position;
@@ -419,7 +421,7 @@ function build(THREE, OrbitControls, RoomEnvironment) {
       // Star-tip ridges with a twist.
       const x = p.getX(i);
       const z = p.getZ(i);
-      const k = 1 + 0.16 * Math.cos(8 * Math.atan2(z, x) + p.getY(i) * 22);
+      const k = 1 + 0.17 * Math.cos(9 * Math.atan2(z, x) + p.getY(i) * 18);
       p.setX(i, x * k);
       p.setZ(i, z * k);
     }
@@ -686,21 +688,30 @@ function build(THREE, OrbitControls, RoomEnvironment) {
   blob(2.1, sp.x, sp.z);
 
   const fork = (function () {
-    const handle = new THREE.CapsuleGeometry(0.035, 0.62, 4, 12);
-    handle.rotateZ(Math.PI / 2);
-    handle.scale(1, 0.35, 1);
-    handle.translate(-0.42, 0, 0);
-    const neck = new THREE.BoxGeometry(0.16, 0.014, 0.05);
-    neck.translate(-0.02, 0, 0);
-    const head = new THREE.BoxGeometry(0.06, 0.014, 0.15);
-    head.translate(0.07, 0, 0);
-    const parts = [handle, neck, head];
+    // Top-view outline (x = length, tines towards +x), extruded thin and laid flat.
+    const o = new THREE.Shape();
+    o.moveTo(-0.6, -0.045);
+    o.quadraticCurveTo(-0.67, 0, -0.6, 0.045);
+    o.lineTo(-0.05, 0.018);
+    o.quadraticCurveTo(0.06, 0.02, 0.12, 0.0955);
+    const TINE = 0.032;
+    const GAP = 0.021;
     for (let i = 0; i < 4; i++) {
-      const tine = new THREE.BoxGeometry(0.2, 0.012, 0.022);
-      tine.translate(0.19, 0, -0.06 + i * 0.04);
-      parts.push(tine);
+      const top = 0.0955 - i * (TINE + GAP);
+      const bottom = top - TINE;
+      o.lineTo(0.34, top);
+      o.quadraticCurveTo(0.375, top - TINE / 2, 0.34, bottom);
+      if (i < 3) {
+        o.lineTo(0.16, bottom);
+        o.quadraticCurveTo(0.15, bottom - GAP / 2, 0.16, bottom - GAP);
+      }
     }
-    const m = new THREE.Mesh(merge(parts), forkMat);
+    o.lineTo(0.12, -0.0955);
+    o.quadraticCurveTo(0.06, -0.02, -0.05, -0.018);
+    o.lineTo(-0.6, -0.045);
+    const geo = new THREE.ExtrudeGeometry(o, { depth: 0.012, bevelEnabled: true, bevelThickness: 0.004, bevelSize: 0.004, bevelSegments: 2, curveSegments: 10 });
+    geo.rotateX(-Math.PI / 2);
+    const m = new THREE.Mesh(geo, forkMat);
     m.castShadow = true;
     return m;
   })();
@@ -709,7 +720,7 @@ function build(THREE, OrbitControls, RoomEnvironment) {
     // Grows with the cake so the 26 cm slice still fits on the plate.
     const k = 0.75 + 0.3 * s;
     smallPlate.scale.set(k, 1, k);
-    fork.position.set(sp.x + 0.14 * k, SMALL_PLATE.top + 0.008, sp.z + 0.6 * k);
+    fork.position.set(sp.x + 0.1 * k, SMALL_PLATE.top + 0.002, sp.z + 0.58 * k);
   }
   fork.rotation.set(0, 0.25, 0);
   scene.add(fork);

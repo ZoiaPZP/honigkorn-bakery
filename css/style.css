@@ -1745,6 +1745,10 @@ html.scroll-locked body { padding-right: var(--scrollbar-gap, 0px); }
 }
 .cake-3d-hint svg { flex: none; }
 .builder-preview.is-3d-touched .cake-3d-hint { opacity: 0; }
+/* On phones the pill would cover the fork on the small plate. */
+@media (max-width: 479px) {
+  .builder-preview.is-3d-ready .cake-3d-hint { display: none; }
+}
 
 .cake-3d-reset { display: none; }
 .builder-preview.is-3d-ready .cake-3d-reset {
