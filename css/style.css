@@ -1173,6 +1173,20 @@ html.scroll-locked body { padding-right: var(--scrollbar-gap, 0px); }
   .brand-small { font-size: .6rem; }
   .lang-switch button { min-width: 38px; padding: 0 .5rem; }
 }
+/* 320–359px: "BACKSTUBE" is as wide as "Honigkorn" and ran into the cart button. Keep only
+   the name (the link's aria-label still says "Backstube Honigkorn") and tighten the buttons. */
+@media (max-width: 359px) {
+  .header-inner { gap: .4rem; }
+  .header-actions { gap: .1rem; }
+  .site-header .brand { gap: .4rem; }
+  .site-header .brand img { width: 28px; height: 28px; }
+  .site-header .brand-small { display: none; }
+  .site-header .brand-name { margin-top: 0; font-size: 1.05rem; }
+  .cart-toggle,
+  .menu-toggle { width: 40px; height: 40px; }
+  .menu-toggle { padding: 0 10px; }
+  .lang-switch button { min-width: 32px; padding: 0 .35rem; }
+}
 
 /* ---------- Product cards: details + add to cart ---------- */
 
