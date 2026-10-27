@@ -6,14 +6,14 @@
   <title>Backstube Honigkorn – Bäckerei in Kelkheim (Taunus)</title>
   <meta name="description" content="Backstube Honigkorn in Kelkheim (Taunus): jeden Morgen frisch gebackenes Brot, Brötchen, Croissants und Torten auf Bestellung. Demo-Projekt.">
   <meta name="theme-color" content="#FBF6EE">
-  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Backstube Honigkorn">
   <meta property="og:title" content="Backstube Honigkorn – Jeden Morgen frisch gebacken">
   <meta property="og:description" content="Brot, Brötchen, Croissants und Torten auf Bestellung aus Kelkheim (Taunus). Ein Demo-Projekt.">
-  <meta property="og:image" content="img/og-image.png">
+  <meta property="og:image" content="images/og-image.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:locale" content="de_DE">
@@ -31,7 +31,7 @@
   <header class="site-header" id="site-header">
     <div class="container header-inner">
       <a class="brand" href="#top" aria-label="Backstube Honigkorn" data-i18n-attr="aria-label:brand.home">
-        <img src="img/favicon.svg" alt="" width="40" height="40">
+        <img src="images/favicon.svg" alt="" width="40" height="40">
         <span class="brand-text"><span class="brand-small">Backstube</span><span class="brand-name">Honigkorn</span></span>
       </a>
 
@@ -46,6 +46,10 @@
       </nav>
 
       <div class="header-actions">
+        <button class="cart-toggle" id="cart-toggle" type="button" aria-controls="cart-drawer" aria-expanded="false" aria-haspopup="dialog" aria-label="Warenkorb, 0 Artikel">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1.2 11.1a2 2 0 0 1-2 1.9H8.2a2 2 0 0 1-2-1.9z"/><path d="M9 10V7a3 3 0 0 1 6 0v3"/></svg>
+          <span class="cart-count" id="cart-count" aria-hidden="true" hidden>0</span>
+        </button>
         <div class="lang-switch" role="group" aria-label="Sprache" data-i18n-attr="aria-label:lang.label">
           <button type="button" data-lang="de" aria-pressed="true" lang="de" aria-label="Deutsch">DE</button>
           <button type="button" data-lang="en" aria-pressed="false" lang="en" aria-label="English">EN</button>
@@ -77,7 +81,13 @@
           </ul>
         </div>
         <div class="hero-art">
-          <img src="img/hero.svg" width="520" height="480" alt="Illustration: frisches Brot, Croissant und Brötchen auf einem Holzbrett" data-i18n-attr="alt:hero.alt" fetchpriority="high">
+          <figure class="hero-photo">
+            <picture>
+              <source type="image/webp" srcset="images/hero-800.webp 800w, images/hero-1120.webp 1120w" sizes="(min-width: 900px) 520px, calc(100vw - 2rem)">
+              <img src="images/hero-1120.jpg" srcset="images/hero-800.jpg 800w, images/hero-1120.jpg 1120w" sizes="(min-width: 900px) 520px, calc(100vw - 2rem)" width="1120" height="1400" alt="Rustikaler Sauerteiglaib auf einem Holzbrett mit Leinentuch und Weizenähren" data-i18n-attr="alt:hero.alt" fetchpriority="high" decoding="async">
+            </picture>
+          </figure>
+          <p class="hero-badge"><span class="hero-badge-dot" aria-hidden="true"></span><span data-i18n="hero.badge">Handgemacht in Kelkheim</span></p>
         </div>
       </div>
     </section>
@@ -135,76 +145,100 @@
         </div>
 
         <ul class="product-grid" id="product-grid" role="tabpanel" aria-labelledby="tab-all" aria-live="polite">
-          <li class="product reveal" data-category="brot">
-            <div class="product-media"><img src="img/products/honigkorn-laib.svg" width="200" height="160" loading="lazy" alt="Illustration: Honigkorn-Laib" data-i18n-alt="p1.name"></div>
+          <li class="product reveal" data-product="p1" data-category="brot">
+            <div class="product-media"><picture><source type="image/webp" srcset="images/products/honigkorn-laib.webp"><img src="images/products/honigkorn-laib.jpg" width="800" height="600" loading="lazy" decoding="async" alt="Kastenbrot mit Haferflocken und Körnern auf hellem Grund" data-i18n-attr="alt:p1.alt"></picture></div>
             <div class="product-body">
               <span class="product-tag" data-i18n="filter.brot">Brot</span>
-              <h3 data-i18n="p1.name">Honigkorn-Laib</h3>
+              <h3><button class="product-link" type="button" aria-haspopup="dialog" data-i18n="p1.name">Honigkorn-Laib</button></h3>
               <p data-i18n="p1.desc">Dinkel-Sauerteig mit Waldhonig und Sonnenblumenkernen. Unser Hausbrot, 750 g.</p>
-              <p class="price" data-price="5.20">5,20 €</p>
+              <div class="product-foot">
+                <p class="price" data-price="5.20">5,20 €</p>
+                <button class="btn btn-add" type="button" data-add-to-cart="p1"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1.2 11.1a2 2 0 0 1-2 1.9H8.2a2 2 0 0 1-2-1.9z"/><path d="M9 10V7a3 3 0 0 1 6 0v3"/><path d="M12 12.5v5M9.5 15h5"/></svg><span data-add-label data-i18n="cart.add">In den Warenkorb</span></button>
+              </div>
             </div>
           </li>
-          <li class="product reveal" data-category="brot">
-            <div class="product-media"><img src="img/products/bauernbrot.svg" width="200" height="160" loading="lazy" alt="Illustration: Taunus-Bauernbrot" data-i18n-alt="p2.name"></div>
+          <li class="product reveal" data-product="p2" data-category="brot">
+            <div class="product-media"><picture><source type="image/webp" srcset="images/products/bauernbrot.webp"><img src="images/products/bauernbrot.jpg" width="800" height="600" loading="lazy" decoding="async" alt="Angeschnittenes dunkles Roggenbrot auf einem Holzbrett" data-i18n-attr="alt:p2.alt"></picture></div>
             <div class="product-body">
               <span class="product-tag" data-i18n="filter.brot">Brot</span>
-              <h3 data-i18n="p2.name">Taunus-Bauernbrot</h3>
+              <h3><button class="product-link" type="button" aria-haspopup="dialog" data-i18n="p2.name">Taunus-Bauernbrot</button></h3>
               <p data-i18n="p2.desc">Kräftiges Roggenmischbrot mit dunkler Kruste, 48 Stunden gereift. 1 kg.</p>
-              <p class="price" data-price="4.80">4,80 €</p>
+              <div class="product-foot">
+                <p class="price" data-price="4.80">4,80 €</p>
+                <button class="btn btn-add" type="button" data-add-to-cart="p2"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1.2 11.1a2 2 0 0 1-2 1.9H8.2a2 2 0 0 1-2-1.9z"/><path d="M9 10V7a3 3 0 0 1 6 0v3"/><path d="M12 12.5v5M9.5 15h5"/></svg><span data-add-label data-i18n="cart.add">In den Warenkorb</span></button>
+              </div>
             </div>
           </li>
-          <li class="product reveal" data-category="broetchen">
-            <div class="product-media"><img src="img/products/kaiserbroetchen.svg" width="200" height="160" loading="lazy" alt="Illustration: Kaiserbrötchen" data-i18n-alt="p3.name"></div>
+          <li class="product reveal" data-product="p3" data-category="broetchen">
+            <div class="product-media"><picture><source type="image/webp" srcset="images/products/kaiserbroetchen.webp"><img src="images/products/kaiserbroetchen.jpg" width="800" height="600" loading="lazy" decoding="async" alt="Knusprige Brötchen auf einem rot-weiß karierten Tuch" data-i18n-attr="alt:p3.alt"></picture></div>
             <div class="product-body">
               <span class="product-tag" data-i18n="filter.broetchen">Brötchen</span>
-              <h3 data-i18n="p3.name">Kaiserbrötchen</h3>
+              <h3><button class="product-link" type="button" aria-haspopup="dialog" data-i18n="p3.name">Kaiserbrötchen</button></h3>
               <p data-i18n="p3.desc">Der Klassiker zum Frühstück: außen knusprig, innen fluffig.</p>
-              <p class="price" data-price="0.55">0,55 €</p>
+              <div class="product-foot">
+                <p class="price" data-price="0.55">0,55 €</p>
+                <button class="btn btn-add" type="button" data-add-to-cart="p3"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1.2 11.1a2 2 0 0 1-2 1.9H8.2a2 2 0 0 1-2-1.9z"/><path d="M9 10V7a3 3 0 0 1 6 0v3"/><path d="M12 12.5v5M9.5 15h5"/></svg><span data-add-label data-i18n="cart.add">In den Warenkorb</span></button>
+              </div>
             </div>
           </li>
-          <li class="product reveal" data-category="broetchen">
-            <div class="product-media"><img src="img/products/laugenbrezel.svg" width="200" height="160" loading="lazy" alt="Illustration: Laugenbrezel" data-i18n-alt="p4.name"></div>
+          <li class="product reveal" data-product="p4" data-category="broetchen">
+            <div class="product-media"><picture><source type="image/webp" srcset="images/products/laugenbrezel.webp"><img src="images/products/laugenbrezel.jpg" width="800" height="600" loading="lazy" decoding="async" alt="Drei goldbraune Brezeln auf einem Holzbrett" data-i18n-attr="alt:p4.alt"></picture></div>
             <div class="product-body">
               <span class="product-tag" data-i18n="filter.broetchen">Brötchen</span>
-              <h3 data-i18n="p4.name">Laugenbrezel</h3>
+              <h3><button class="product-link" type="button" aria-haspopup="dialog" data-i18n="p4.name">Laugenbrezel</button></h3>
               <p data-i18n="p4.desc">Von Hand geschlungen, mit grobem Salz – schwäbische Art, im Taunus gebacken.</p>
-              <p class="price" data-price="0.95">0,95 €</p>
+              <div class="product-foot">
+                <p class="price" data-price="0.95">0,95 €</p>
+                <button class="btn btn-add" type="button" data-add-to-cart="p4"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1.2 11.1a2 2 0 0 1-2 1.9H8.2a2 2 0 0 1-2-1.9z"/><path d="M9 10V7a3 3 0 0 1 6 0v3"/><path d="M12 12.5v5M9.5 15h5"/></svg><span data-add-label data-i18n="cart.add">In den Warenkorb</span></button>
+              </div>
             </div>
           </li>
-          <li class="product reveal" data-category="suesses">
-            <div class="product-media"><img src="img/products/croissant.svg" width="200" height="160" loading="lazy" alt="Illustration: Buttercroissant" data-i18n-alt="p5.name"></div>
+          <li class="product reveal" data-product="p5" data-category="suesses">
+            <div class="product-media"><picture><source type="image/webp" srcset="images/products/croissant.webp"><img src="images/products/croissant.jpg" width="800" height="600" loading="lazy" decoding="async" alt="Buttercroissant auf einem runden Korkuntersetzer" data-i18n-attr="alt:p5.alt"></picture></div>
             <div class="product-body">
               <span class="product-tag" data-i18n="filter.suesses">Süßes</span>
-              <h3 data-i18n="p5.name">Buttercroissant</h3>
+              <h3><button class="product-link" type="button" aria-haspopup="dialog" data-i18n="p5.name">Buttercroissant</button></h3>
               <p data-i18n="p5.desc">Drei Tage Arbeit, 27 Schichten und viel französische Butter.</p>
-              <p class="price" data-price="1.80">1,80 €</p>
+              <div class="product-foot">
+                <p class="price" data-price="1.80">1,80 €</p>
+                <button class="btn btn-add" type="button" data-add-to-cart="p5"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1.2 11.1a2 2 0 0 1-2 1.9H8.2a2 2 0 0 1-2-1.9z"/><path d="M9 10V7a3 3 0 0 1 6 0v3"/><path d="M12 12.5v5M9.5 15h5"/></svg><span data-add-label data-i18n="cart.add">In den Warenkorb</span></button>
+              </div>
             </div>
           </li>
-          <li class="product reveal" data-category="suesses">
-            <div class="product-media"><img src="img/products/zimtschnecke.svg" width="200" height="160" loading="lazy" alt="Illustration: Zimtschnecke" data-i18n-alt="p6.name"></div>
+          <li class="product reveal" data-product="p6" data-category="suesses">
+            <div class="product-media"><picture><source type="image/webp" srcset="images/products/zimtschnecke.webp"><img src="images/products/zimtschnecke.jpg" width="800" height="600" loading="lazy" decoding="async" alt="Zimtschnecken, eine davon mit Zuckerglasur" data-i18n-attr="alt:p6.alt"></picture></div>
             <div class="product-body">
               <span class="product-tag" data-i18n="filter.suesses">Süßes</span>
-              <h3 data-i18n="p6.name">Zimtschnecke</h3>
+              <h3><button class="product-link" type="button" aria-haspopup="dialog" data-i18n="p6.name">Zimtschnecke</button></h3>
               <p data-i18n="p6.desc">Hefeteig mit Zimt, braunem Zucker und Vanilleglasur.</p>
-              <p class="price" data-price="2.40">2,40 €</p>
+              <div class="product-foot">
+                <p class="price" data-price="2.40">2,40 €</p>
+                <button class="btn btn-add" type="button" data-add-to-cart="p6"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1.2 11.1a2 2 0 0 1-2 1.9H8.2a2 2 0 0 1-2-1.9z"/><path d="M9 10V7a3 3 0 0 1 6 0v3"/><path d="M12 12.5v5M9.5 15h5"/></svg><span data-add-label data-i18n="cart.add">In den Warenkorb</span></button>
+              </div>
             </div>
           </li>
-          <li class="product reveal" data-category="torten">
-            <div class="product-media"><img src="img/products/frankfurter-kranz.svg" width="200" height="160" loading="lazy" alt="Illustration: Frankfurter Kranz (Stück)" data-i18n-alt="p7.name"></div>
+          <li class="product reveal" data-product="p7" data-category="torten">
+            <div class="product-media"><picture><source type="image/webp" srcset="images/products/frankfurter-kranz.webp"><img src="images/products/frankfurter-kranz.jpg" width="800" height="600" loading="lazy" decoding="async" alt="Frankfurter Kranz mit Buttercreme, Krokant und Belegkirschen" data-i18n-attr="alt:p7.alt"></picture></div>
             <div class="product-body">
               <span class="product-tag" data-i18n="filter.torten">Torten</span>
-              <h3 data-i18n="p7.name">Frankfurter Kranz (Stück)</h3>
+              <h3><button class="product-link" type="button" aria-haspopup="dialog" data-i18n="p7.name">Frankfurter Kranz (Stück)</button></h3>
               <p data-i18n="p7.desc">Buttercreme, Johannisbeergelee und Krokant – hessisch durch und durch.</p>
-              <p class="price" data-price="3.90">3,90 €</p>
+              <div class="product-foot">
+                <p class="price" data-price="3.90">3,90 €</p>
+                <button class="btn btn-add" type="button" data-add-to-cart="p7"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1.2 11.1a2 2 0 0 1-2 1.9H8.2a2 2 0 0 1-2-1.9z"/><path d="M9 10V7a3 3 0 0 1 6 0v3"/><path d="M12 12.5v5M9.5 15h5"/></svg><span data-add-label data-i18n="cart.add">In den Warenkorb</span></button>
+              </div>
             </div>
           </li>
-          <li class="product reveal" data-category="torten">
-            <div class="product-media"><img src="img/products/schwarzwaelder.svg" width="200" height="160" loading="lazy" alt="Illustration: Schwarzwälder Kirschtorte (Stück)" data-i18n-alt="p8.name"></div>
+          <li class="product reveal" data-product="p8" data-category="torten">
+            <div class="product-media"><picture><source type="image/webp" srcset="images/products/schwarzwaelder.webp"><img src="images/products/schwarzwaelder.jpg" width="800" height="600" loading="lazy" decoding="async" alt="Stück Schwarzwälder Kirschtorte mit Sahne, Schokoraspeln und Kirsche" data-i18n-attr="alt:p8.alt"></picture></div>
             <div class="product-body">
               <span class="product-tag" data-i18n="filter.torten">Torten</span>
-              <h3 data-i18n="p8.name">Schwarzwälder Kirschtorte (Stück)</h3>
+              <h3><button class="product-link" type="button" aria-haspopup="dialog" data-i18n="p8.name">Schwarzwälder Kirschtorte (Stück)</button></h3>
               <p data-i18n="p8.desc">Schokobiskuit, Sauerkirschen, Sahne und ein Schuss Kirschwasser.</p>
-              <p class="price" data-price="3.80">3,80 €</p>
+              <div class="product-foot">
+                <p class="price" data-price="3.80">3,80 €</p>
+                <button class="btn btn-add" type="button" data-add-to-cart="p8"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1.2 11.1a2 2 0 0 1-2 1.9H8.2a2 2 0 0 1-2-1.9z"/><path d="M9 10V7a3 3 0 0 1 6 0v3"/><path d="M12 12.5v5M9.5 15h5"/></svg><span data-add-label data-i18n="cart.add">In den Warenkorb</span></button>
+              </div>
             </div>
           </li>
         </ul>
@@ -215,7 +249,12 @@
     <section class="section" id="torten" aria-labelledby="cakes-title">
       <div class="container cakes">
         <div class="cakes-art reveal">
-          <img src="img/torte.svg" width="360" height="340" loading="lazy" alt="Illustration: zweistöckige Torte mit Beeren auf einem Tortenständer" data-i18n-attr="alt:cakes.alt">
+          <figure class="photo-frame">
+            <picture>
+              <source type="image/webp" srcset="images/torte.webp">
+              <img src="images/torte.jpg" width="800" height="1000" loading="lazy" decoding="async" alt="Dreistöckige weiße Hochzeitstorte mit rosa Blumen vor einem Fenster" data-i18n-attr="alt:cakes.alt">
+            </picture>
+          </figure>
         </div>
         <div class="cakes-text reveal">
           <p class="eyebrow" data-i18n="cakes.eyebrow">Torten auf Bestellung</p>
@@ -224,9 +263,188 @@
           <ul class="checklist">
             <li data-i18n="cakes.li1">Bestellung mindestens 3 Tage im Voraus</li>
             <li data-i18n="cakes.li2">Glutenfreie und vegane Varianten möglich</li>
-            <li data-i18n="cakes.li3">Ab 34 € für 12 Stücke</li>
+            <li data-i18n="cakes.li3">Ab 34 € für Ø 18 cm (8–10 Stücke)</li>
           </ul>
-          <a class="btn btn-primary" href="#vorbestellen" data-i18n="cakes.cta">Torte anfragen</a>
+          <a class="btn btn-primary" href="#cake-builder" data-i18n="cakes.cta">Torte gestalten</a>
+        </div>
+      </div>
+      <div class="container">
+        <div class="card cake-builder reveal" id="cake-builder" role="region" aria-labelledby="builder-title">
+          <div class="builder-head">
+            <p class="eyebrow" data-i18n="builder.eyebrow">Tortenkonfigurator</p>
+            <h3 id="builder-title" data-i18n="builder.title">Stellen Sie Ihre Torte zusammen</h3>
+            <p data-i18n="builder.lead">Wählen Sie Größe, Biskuit, Creme und Früchte – Vorschau und Preis passen sich sofort an.</p>
+          </div>
+
+          <div class="builder-grid">
+            <div class="builder-preview">
+              <div class="cake-stage" role="img" aria-labelledby="cake-preview-desc">
+                <picture class="cake-shot is-active" data-shot="strawberry">
+                  <source type="image/webp" srcset="images/cakes/3d/strawberry.webp">
+                  <img src="images/cakes/3d/strawberry.jpg" width="1000" height="800" alt="" loading="lazy" decoding="async">
+                </picture>
+                <picture class="cake-shot" data-shot="raspberry">
+                  <source type="image/webp" srcset="images/cakes/3d/raspberry.webp">
+                  <img src="images/cakes/3d/raspberry.jpg" width="1000" height="800" alt="" loading="lazy" decoding="async">
+                </picture>
+                <picture class="cake-shot" data-shot="cherry">
+                  <source type="image/webp" srcset="images/cakes/3d/cherry.webp">
+                  <img src="images/cakes/3d/cherry.jpg" width="1000" height="800" alt="" loading="lazy" decoding="async">
+                </picture>
+                <picture class="cake-shot" data-shot="none">
+                  <source type="image/webp" srcset="images/cakes/3d/none.webp">
+                  <img src="images/cakes/3d/none.jpg" width="1000" height="800" alt="" loading="lazy" decoding="async">
+                </picture>
+                <div class="cake-3d" id="cake-3d" aria-hidden="true"></div>
+                <button class="cake-3d-reset" id="cake-3d-reset" type="button" aria-label="Ansicht zurücksetzen" data-i18n-attr="aria-label:builder.resetView;title:builder.resetView" title="Ansicht zurücksetzen"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 12a8.5 8.5 0 1 0 2.6-6.1"/><path d="M3.5 3.5v4.4h4.4"/></svg></button>
+                <p class="cake-3d-hint" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15.5-6.2M21 12a9 9 0 0 1-15.5 6.2"/><path d="M18.5 2v4h-4M5.5 22v-4h4"/></svg><span data-i18n="builder.dragHint">Zum Drehen ziehen</span></p>
+                <p class="cake-size-badge" id="cake-size-badge" aria-hidden="true">Ø 22 cm · 12–14 Stück</p>
+                <p class="cake-plaque" id="cake-plaque" aria-hidden="true"><span id="cake-plaque-text"></span></p>
+              </div>
+              <ul class="cake-swatches" aria-hidden="true">
+                <li class="cake-swatch" id="swatch-sponge"><span class="swatch-dot"></span><span class="swatch-text"><span class="swatch-label" data-i18n="builder.sponge">Biskuit</span><strong class="swatch-name">Vanille</strong></span></li>
+                <li class="cake-swatch" id="swatch-cream"><span class="swatch-dot"></span><span class="swatch-text"><span class="swatch-label" data-i18n="builder.cream">Creme</span><strong class="swatch-name">Sahne</strong></span></li>
+              </ul>
+              <p class="cake-note" data-i18n="builder.previewNote">3D-Vorschau – jede Torte wird individuell gestaltet.</p>
+              <p class="visually-hidden" id="cake-preview-desc"></p>
+            </div>
+
+            <form class="builder-form" id="cake-form" novalidate>
+              <fieldset class="choice-group">
+                <legend data-i18n="builder.size">Größe</legend>
+                <div class="choices choices-3">
+                  <label class="choice">
+                    <input type="radio" name="size" value="18">
+                    <span class="choice-body">
+                      <span class="choice-title">Ø 18 cm</span>
+                      <span class="choice-meta" data-meta="size-18"></span>
+                    </span>
+                  </label>
+                  <label class="choice">
+                    <input type="radio" name="size" value="22" checked>
+                    <span class="choice-body">
+                      <span class="choice-title">Ø 22 cm</span>
+                      <span class="choice-meta" data-meta="size-22"></span>
+                    </span>
+                  </label>
+                  <label class="choice">
+                    <input type="radio" name="size" value="26">
+                    <span class="choice-body">
+                      <span class="choice-title">Ø 26 cm</span>
+                      <span class="choice-meta" data-meta="size-26"></span>
+                    </span>
+                  </label>
+                </div>
+              </fieldset>
+              <fieldset class="choice-group">
+                <legend data-i18n="builder.sponge">Biskuit</legend>
+                <div class="choices choices-3">
+                  <label class="choice">
+                    <input type="radio" name="sponge" value="vanilla" checked>
+                    <span class="choice-body">
+                      <span class="choice-title" data-i18n="cake.sponge.vanilla">Vanille</span>
+                      <span class="choice-meta" data-meta="sponge-vanilla"></span>
+                    </span>
+                  </label>
+                  <label class="choice">
+                    <input type="radio" name="sponge" value="chocolate">
+                    <span class="choice-body">
+                      <span class="choice-title" data-i18n="cake.sponge.chocolate">Schoko</span>
+                      <span class="choice-meta" data-meta="sponge-chocolate"></span>
+                    </span>
+                  </label>
+                  <label class="choice">
+                    <input type="radio" name="sponge" value="nut">
+                    <span class="choice-body">
+                      <span class="choice-title" data-i18n="cake.sponge.nut">Nuss</span>
+                      <span class="choice-meta" data-meta="sponge-nut"></span>
+                    </span>
+                  </label>
+                </div>
+              </fieldset>
+              <fieldset class="choice-group">
+                <legend data-i18n="builder.cream">Creme</legend>
+                <div class="choices choices-3">
+                  <label class="choice">
+                    <input type="radio" name="cream" value="whipped" checked>
+                    <span class="choice-body">
+                      <span class="choice-title" data-i18n="cake.cream.whipped">Sahne</span>
+                      <span class="choice-meta" data-meta="cream-whipped"></span>
+                    </span>
+                  </label>
+                  <label class="choice">
+                    <input type="radio" name="cream" value="butter">
+                    <span class="choice-body">
+                      <span class="choice-title" data-i18n="cake.cream.butter">Buttercreme</span>
+                      <span class="choice-meta" data-meta="cream-butter"></span>
+                    </span>
+                  </label>
+                  <label class="choice">
+                    <input type="radio" name="cream" value="cheese">
+                    <span class="choice-body">
+                      <span class="choice-title" data-i18n="cake.cream.cheese">Frischkäse</span>
+                      <span class="choice-meta" data-meta="cream-cheese"></span>
+                    </span>
+                  </label>
+                </div>
+              </fieldset>
+              <fieldset class="choice-group">
+                <legend data-i18n="builder.filling">Früchte</legend>
+                <div class="choices choices-4">
+                  <label class="choice">
+                    <input type="radio" name="filling" value="strawberry" checked>
+                    <span class="choice-body">
+                      <span class="choice-title" data-i18n="cake.filling.strawberry">Erdbeere</span>
+                      <span class="choice-meta" data-meta="filling-strawberry"></span>
+                    </span>
+                  </label>
+                  <label class="choice">
+                    <input type="radio" name="filling" value="raspberry">
+                    <span class="choice-body">
+                      <span class="choice-title" data-i18n="cake.filling.raspberry">Himbeere</span>
+                      <span class="choice-meta" data-meta="filling-raspberry"></span>
+                    </span>
+                  </label>
+                  <label class="choice">
+                    <input type="radio" name="filling" value="cherry">
+                    <span class="choice-body">
+                      <span class="choice-title" data-i18n="cake.filling.cherry">Kirsche</span>
+                      <span class="choice-meta" data-meta="filling-cherry"></span>
+                    </span>
+                  </label>
+                  <label class="choice">
+                    <input type="radio" name="filling" value="none">
+                    <span class="choice-body">
+                      <span class="choice-title" data-i18n="cake.filling.none">ohne</span>
+                      <span class="choice-meta" data-meta="filling-none"></span>
+                    </span>
+                  </label>
+                </div>
+              </fieldset>
+              <div class="builder-fields">
+                <div class="field">
+                  <label for="cake-text" data-i18n="builder.text">Aufschrift</label>
+                  <input id="cake-text" name="text" type="text" maxlength="30" autocomplete="off" placeholder="z. B. Alles Gute, Anna!" data-i18n-attr="placeholder:builder.textPh" aria-describedby="cake-text-hint cake-text-count">
+                  <p class="hint field-hint-row"><span id="cake-text-hint"></span><span class="char-count" id="cake-text-count">0/30</span></p>
+                </div>
+                <div class="field">
+                  <label for="cake-date" data-i18n="builder.date">Abholdatum</label>
+                  <input id="cake-date" name="date" type="date" required aria-describedby="cake-date-hint cake-date-error">
+                  <p class="hint" id="cake-date-hint" data-i18n="builder.dateHint">Frühestens in 3 Tagen, höchstens 30 Tage im Voraus.</p>
+                  <p class="error" id="cake-date-error" aria-live="polite"></p>
+                </div>
+              </div>
+            </form>
+
+            <div class="builder-summary">
+              <div class="builder-total">
+                <span class="builder-total-label" data-i18n="builder.price">Ihr Preis</span>
+                <strong class="builder-price" id="cake-price" aria-live="polite" aria-atomic="true">50,00 €</strong>
+                <span class="builder-breakdown" id="cake-breakdown"></span>
+              </div>
+              <button class="btn btn-primary" type="submit" form="cake-form" id="cake-add"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1.2 11.1a2 2 0 0 1-2 1.9H8.2a2 2 0 0 1-2-1.9z"/><path d="M9 10V7a3 3 0 0 1 6 0v3"/><path d="M12 12.5v5M9.5 15h5"/></svg><span data-add-label data-i18n="cart.add">In den Warenkorb</span></button>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -271,30 +489,48 @@
             <p class="muted" data-i18n="visit.note">Parkplätze direkt vor der Tür, 5 Minuten zu Fuß vom Bahnhof.</p>
           </div>
 
-          <figure class="card map reveal">
-            <svg class="map-svg" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" role="img" aria-labelledby="map-caption">
-              <rect width="400" height="300" fill="#EFE3CC"/>
-              <path d="M-10 60c60 10 90-30 150-10s70 60 140 40 90-40 130-30" fill="none" stroke="#CFE0DC" stroke-width="18" stroke-linecap="round"/>
-              <path d="M250 190c30-20 80-24 110 0s20 70-30 80-110-10-100-40 0-28 20-40z" fill="#DCE2C2"/>
-              <path d="M30 220c20-30 70-30 80 0s-20 50-50 46-40-26-30-46z" fill="#DCE2C2"/>
-              <g stroke="#FFFDF9" stroke-linecap="round" fill="none">
-                <path d="M-10 160h420" stroke-width="12"/>
-                <path d="M190 -10l20 320" stroke-width="12"/>
-                <path d="M-10 250l160-40 260 20" stroke-width="7"/>
-                <path d="M90 -10l30 330" stroke-width="6"/>
-                <path d="M300 -10l-20 320" stroke-width="6"/>
-                <path d="M-10 100l200 20 220-30" stroke-width="5"/>
-              </g>
-              <g fill="#E6D4B5">
-                <rect x="130" y="124" width="44" height="24" rx="4"/><rect x="220" y="122" width="56" height="26" rx="4"/>
-                <rect x="220" y="172" width="40" height="30" rx="4"/><rect x="130" y="174" width="46" height="22" rx="4"/>
-                <rect x="20" y="120" width="56" height="26" rx="4"/><rect x="316" y="110" width="60" height="38" rx="4"/>
-              </g>
-              <circle cx="200" cy="160" r="34" fill="#E0A43B" opacity=".22"/>
-              <path d="M200 162s-20-17-20-32a20 20 0 0 1 40 0c0 15-20 32-20 32z" fill="#8A5A2B"/>
-              <circle cx="200" cy="130" r="7" fill="#FBF6EE"/>
-            </svg>
-            <figcaption id="map-caption" class="map-caption" data-i18n="visit.map">Kartenplatzhalter – keine echte Karte</figcaption>
+          <figure class="card map reveal" id="map" aria-labelledby="map-title">
+            <h3 class="visually-hidden" id="map-title" data-i18n="map.title">Karte und Anfahrt</h3>
+            <div class="map-area">
+              <!-- Two-click solution: nothing is loaded from OpenStreetMap before the visitor agrees. -->
+              <div class="map-consent" id="map-consent">
+              <svg class="map-svg" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+                <rect width="400" height="300" fill="#EFE3CC"/>
+                <path d="M-10 60c60 10 90-30 150-10s70 60 140 40 90-40 130-30" fill="none" stroke="#CFE0DC" stroke-width="18" stroke-linecap="round"/>
+                <path d="M250 190c30-20 80-24 110 0s20 70-30 80-110-10-100-40 0-28 20-40z" fill="#DCE2C2"/>
+                <path d="M30 220c20-30 70-30 80 0s-20 50-50 46-40-26-30-46z" fill="#DCE2C2"/>
+                <g stroke="#FFFDF9" stroke-linecap="round" fill="none">
+                  <path d="M-10 160h420" stroke-width="12"/>
+                  <path d="M190 -10l20 320" stroke-width="12"/>
+                  <path d="M-10 250l160-40 260 20" stroke-width="7"/>
+                  <path d="M90 -10l30 330" stroke-width="6"/>
+                  <path d="M300 -10l-20 320" stroke-width="6"/>
+                  <path d="M-10 100l200 20 220-30" stroke-width="5"/>
+                </g>
+                <g fill="#E6D4B5">
+                  <rect x="130" y="124" width="44" height="24" rx="4"/><rect x="220" y="122" width="56" height="26" rx="4"/>
+                  <rect x="220" y="172" width="40" height="30" rx="4"/><rect x="130" y="174" width="46" height="22" rx="4"/>
+                  <rect x="20" y="120" width="56" height="26" rx="4"/><rect x="316" y="110" width="60" height="38" rx="4"/>
+                </g>
+                <circle cx="200" cy="160" r="34" fill="#E0A43B" opacity=".22"/>
+                <path d="M200 162s-20-17-20-32a20 20 0 0 1 40 0c0 15-20 32-20 32z" fill="#8A5A2B"/>
+                <circle cx="200" cy="130" r="7" fill="#FBF6EE"/>
+              </svg>
+                <div class="map-consent-box">
+                  <p class="map-consent-text" id="map-consent-text" data-i18n="map.consent">Karte laden – dabei werden Daten (z. B. Ihre IP-Adresse) an OpenStreetMap übertragen.</p>
+                  <button class="btn btn-primary btn-sm" type="button" id="map-load" aria-describedby="map-consent-text" data-i18n="map.load">Karte laden</button>
+                  <label class="map-remember"><input type="checkbox" id="map-remember"><span data-i18n="map.remember">Karte immer laden</span></label>
+                  <a class="map-privacy" href="datenschutz.html#karte" data-i18n="map.privacy">Mehr dazu im Datenschutz</a>
+                  <p class="map-status" id="map-status" role="status"></p>
+                </div>
+              </div>
+              <div class="map-canvas" id="map-canvas" role="region" aria-label="Karte: Kelkheim (Taunus)" data-i18n-attr="aria-label:map.label" hidden></div>
+            </div>
+            <figcaption class="map-footer">
+              <a class="btn btn-primary btn-sm" id="map-route" href="https://www.google.com/maps/dir/?api=1&amp;destination=50.1372%2C8.4505" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l18-8-8 18-2-8z"/></svg><span data-i18n="map.route">Route planen</span><span class="visually-hidden"> – <span data-i18n="map.routeGoogle">Google Maps</span>, <span data-i18n="map.newTab">öffnet in neuem Tab</span></span></a>
+              <a class="map-route-alt" href="https://www.openstreetmap.org/directions?to=50.1372%2C8.4505#map=15/50.1372/8.4505" target="_blank" rel="noopener"><span data-i18n="map.routeOsm">oder mit OpenStreetMap</span><span class="visually-hidden"> – <span data-i18n="map.newTab">öffnet in neuem Tab</span></span></a>
+              <button class="map-forget" type="button" id="map-forget" hidden data-i18n="map.forget">Karte nicht mehr automatisch laden</button>
+            </figcaption>
           </figure>
         </div>
       </div>
@@ -355,7 +591,7 @@
     <div class="container footer-inner">
       <div class="footer-brand">
         <a class="brand brand-light" href="#top" aria-label="Backstube Honigkorn" data-i18n-attr="aria-label:brand.home">
-          <img src="img/favicon.svg" alt="" width="40" height="40">
+          <img src="images/favicon.svg" alt="" width="40" height="40">
           <span class="brand-text"><span class="brand-small">Backstube</span><span class="brand-name">Honigkorn</span></span>
         </a>
         <p data-i18n="footer.tagline">Jeden Morgen frisch gebacken – in Kelkheim (Taunus).</p>
@@ -386,7 +622,106 @@
     <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
   </a>
 
+  <div class="drawer" id="cart-drawer" role="dialog" aria-modal="true" aria-labelledby="cart-title" hidden>
+    <div class="drawer-backdrop" data-dialog-close></div>
+    <div class="drawer-panel">
+      <div class="drawer-head">
+        <div>
+          <h2 id="cart-title" data-i18n="cart.title">Ihr Warenkorb</h2>
+          <p class="drawer-count" id="cart-drawer-count"></p>
+        </div>
+        <button class="icon-btn drawer-close" type="button" data-dialog-close aria-label="Warenkorb schließen" data-i18n-attr="aria-label:cart.close"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      </div>
+      <div class="drawer-body">
+        <ul class="cart-list" id="cart-list"></ul>
+        <div class="cart-empty" id="cart-empty">
+          <svg class="cart-empty-art" viewBox="0 0 160 120" aria-hidden="true">
+            <ellipse cx="80" cy="104" rx="56" ry="8" fill="#3B2618" opacity=".07"/>
+            <path d="M34 50h92l-8 46a8 8 0 0 1-8 6.6H50a8 8 0 0 1-8-6.6z" fill="#F3E7D3"/>
+            <path d="M34 50h92l-8 46a8 8 0 0 1-8 6.6H50a8 8 0 0 1-8-6.6z" fill="none" stroke="#8A5A2B" stroke-width="3" stroke-linejoin="round"/>
+            <path d="M58 50l12-26M102 50L90 24" stroke="#8A5A2B" stroke-width="3" stroke-linecap="round"/>
+            <path d="M52 66l4 26M80 66v26M108 66l-4 26" stroke="#C9A779" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="126" cy="26" r="5" fill="#E0A43B"/><circle cx="36" cy="30" r="3" fill="#E8B4A0"/>
+          </svg>
+          <p class="cart-empty-title" data-i18n="cart.empty">Ihr Warenkorb ist leer</p>
+          <p class="cart-empty-text" data-i18n="cart.emptyText">Stöbern Sie in unserem Sortiment oder stellen Sie sich Ihre Wunschtorte zusammen.</p>
+          <button class="btn btn-ghost" type="button" id="cart-browse" data-i18n="cart.browse">Sortiment ansehen</button>
+        </div>
+      </div>
+      <div class="drawer-foot" id="cart-foot">
+        <div class="cart-total-row">
+          <span data-i18n="cart.total">Gesamtsumme</span>
+          <strong id="cart-total">0,00 €</strong>
+        </div>
+        <p class="cart-note" data-i18n="cart.note">Bezahlung bei Abholung. Demo – es wird nichts bestellt.</p>
+        <button class="btn btn-primary btn-block" type="button" id="cart-checkout" data-i18n="cart.checkout">Zur Vorbestellung</button>
+        <button class="link-btn" type="button" id="cart-clear" data-i18n="cart.clear">Warenkorb leeren</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="product-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-desc" hidden>
+    <div class="modal-backdrop" data-dialog-close></div>
+    <div class="modal-dialog">
+      <button class="icon-btn modal-close" type="button" data-dialog-close aria-label="Schließen" data-i18n-attr="aria-label:modal.close"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      <div class="modal-media">
+        <picture>
+          <!-- object-fit: cover fills the desktop column by height, so the photo renders ~910px wide there. -->
+          <source type="image/webp" id="modal-src" sizes="(min-width: 760px) 910px, 100vw">
+          <img id="modal-img" width="1600" height="1200" alt="" decoding="async" sizes="(min-width: 760px) 910px, 100vw">
+        </picture>
+      </div>
+      <div class="modal-content">
+        <div class="modal-body">
+          <span class="product-tag" id="modal-tag"></span>
+          <h2 id="modal-title"></h2>
+          <p class="modal-desc" id="modal-desc"></p>
+          <dl class="modal-facts">
+            <div><dt data-i18n="modal.weight">Gewicht / Menge</dt><dd id="modal-weight"></dd></div>
+            <div><dt data-i18n="modal.price">Preis</dt><dd id="modal-price"></dd></div>
+          </dl>
+          <section class="modal-section" aria-labelledby="modal-ingredients-title">
+            <h3 id="modal-ingredients-title" data-i18n="modal.ingredients">Zutaten</h3>
+            <p id="modal-ingredients"></p>
+          </section>
+          <section class="modal-section" aria-labelledby="modal-allergens-title">
+            <h3 id="modal-allergens-title" data-i18n="modal.allergens">Allergene</h3>
+            <p class="allergen-label" data-i18n="modal.contains">Enthält</p>
+            <ul class="allergen-list" id="modal-allergens"></ul>
+            <div id="modal-traces-wrap">
+              <p class="allergen-label" data-i18n="modal.traces">Kann Spuren enthalten von</p>
+              <ul class="allergen-list" id="modal-traces"></ul>
+            </div>
+            <details class="allergen-all">
+              <summary data-i18n="modal.allAllergens">Alle 14 Hauptallergene (EU)</summary>
+              <ul class="allergen-grid" id="modal-allergen-grid"></ul>
+              <p class="allergen-legend" aria-hidden="true">
+                <span class="legend legend-contains" data-i18n="modal.legendContains">enthalten</span>
+                <span class="legend legend-traces" data-i18n="modal.legendTraces">Spuren möglich</span>
+                <span class="legend legend-free" data-i18n="modal.legendFree">nicht enthalten</span>
+              </p>
+            </details>
+          </section>
+          <p class="modal-demo" data-i18n="modal.demo">Angaben für Demo-Zwecke</p>
+        </div>
+        <div class="modal-foot">
+          <p class="modal-foot-price" id="modal-foot-price"></p>
+          <button class="btn btn-primary" type="button" id="modal-add"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1.2 11.1a2 2 0 0 1-2 1.9H8.2a2 2 0 0 1-2-1.9z"/><path d="M9 10V7a3 3 0 0 1 6 0v3"/><path d="M12 12.5v5M9.5 15h5"/></svg><span data-add-label data-i18n="cart.add">In den Warenkorb</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="visually-hidden" id="sr-status" role="status" aria-live="polite"></div>
+
   <script src="js/i18n.js"></script>
+  <script src="js/products-data.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/dialog.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/modal.js"></script>
+  <script src="js/cake-builder.js"></script>
+  <script src="js/map.js"></script>
+  <script type="module" src="js/cake-3d.js"></script>
 </body>
 </html>

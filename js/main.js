@@ -7,9 +7,16 @@
 
   // ---------- Language ----------
 
-  function t(key) {
+  // t('cart.remove', { name: 'Brezel' }) fills {name} placeholders.
+  function t(key, vars) {
     const dict = window.I18N[lang] || window.I18N.de;
-    return dict[key] != null ? dict[key] : window.I18N.de[key];
+    let value = dict[key] != null ? dict[key] : window.I18N.de[key];
+    if (value != null && vars) {
+      value = value.replace(/\{(\w+)\}/g, function (m, name) {
+        return vars[name] != null ? vars[name] : m;
+      });
+    }
+    return value;
   }
 
   function formatPrice(value) {
@@ -17,6 +24,25 @@
       style: 'currency',
       currency: 'EUR'
     }).format(value);
+  }
+
+  // "2026-10-30" → "30.10.2026" / "30 Oct 2026"
+  function formatDate(iso) {
+    const parts = iso.split('-').map(Number);
+    const date = new Date(parts[0], parts[1] - 1, parts[2]);
+    return new Intl.DateTimeFormat(lang === 'de' ? 'de-DE' : 'en-GB', {
+      day: lang === 'de' ? '2-digit' : 'numeric',
+      month: lang === 'de' ? '2-digit' : 'short',
+      year: 'numeric'
+    }).format(date);
+  }
+
+  function announce(message) {
+    const region = document.getElementById('sr-status');
+    if (!region) return;
+    region.textContent = '';
+    // A fresh text node in the next frame makes screen readers repeat identical messages.
+    window.requestAnimationFrame(function () { region.textContent = message; });
   }
 
   function applyLanguage(next) {
@@ -37,10 +63,6 @@
       });
     });
 
-    document.querySelectorAll('[data-i18n-alt]').forEach(function (el) {
-      el.alt = t('illu') + t(el.dataset.i18nAlt);
-    });
-
     document.querySelectorAll('[data-price]').forEach(function (el) {
       el.textContent = formatPrice(Number(el.dataset.price));
     });
@@ -59,6 +81,7 @@
     updateMenuLabel();
     updateOpenStatus();
     refreshErrors();
+    document.dispatchEvent(new CustomEvent('app:langchange', { detail: { lang: lang } }));
   }
 
   function initLanguage() {
@@ -198,6 +221,8 @@
       if (focus) tab.focus();
     }
 
+    initFilterScroll(tabs[0].parentElement);
+
     tabs.forEach(function (tab, i) {
       tab.addEventListener('click', function () { select(tab, false); });
       tab.addEventListener('keydown', function (e) {
@@ -212,6 +237,70 @@
         }
       });
     });
+  }
+
+  // Phones: the tab row scrolls sideways. Fade the edges that hide more tabs, let a vertical
+  // mouse wheel scroll it, and nudge it once so it is clear the row can be swiped.
+  function initFilterScroll(list) {
+    function overflow() { return list.scrollWidth - list.clientWidth; }
+    function update() {
+      const max = overflow();
+      list.classList.toggle('can-scroll-left', max > 1 && list.scrollLeft > 1);
+      list.classList.toggle('can-scroll-right', max > 1 && list.scrollLeft < max - 1);
+    }
+    // Tune the tab padding (14–24px) so the first cut-off tab shows about half of itself at
+    // the right edge – a clear "peek" at every phone width and in both languages.
+    function fitPeek() {
+      list.style.removeProperty('--tab-pad-x');
+      if (overflow() <= 1 || list.scrollLeft > 1) return;
+      const buttons = Array.from(list.children);
+      let best = null;
+      for (let pad = 14; pad <= 24; pad++) {
+        list.style.setProperty('--tab-pad-x', pad + 'px');
+        const left = list.getBoundingClientRect().left;
+        const view = list.clientWidth;
+        const cut = buttons.find(function (b) { return b.getBoundingClientRect().right - left > view; });
+        if (!cut) continue;
+        const box = cut.getBoundingClientRect();
+        const shown = (view - (box.left - left)) / box.width;
+        const score = Math.abs(shown - 0.5);
+        if (shown > 0 && (!best || score < best.score)) best = { pad: pad, score: score };
+      }
+      if (best) list.style.setProperty('--tab-pad-x', best.pad + 'px');
+      else list.style.removeProperty('--tab-pad-x');
+    }
+    function layout() { fitPeek(); update(); }
+
+    list.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', layout);
+    document.addEventListener('app:langchange', layout); // tab labels change width
+    if (document.fonts) document.fonts.ready.then(layout);
+    layout();
+
+    list.addEventListener('wheel', function (e) {
+      if (Math.abs(e.deltaY) <= Math.abs(e.deltaX)) return; // trackpads scroll sideways natively
+      const max = overflow();
+      if (max <= 1) return;
+      // At either end, let the page scroll instead.
+      if ((e.deltaY < 0 && list.scrollLeft <= 0) || (e.deltaY > 0 && list.scrollLeft >= max - 1)) return;
+      e.preventDefault();
+      list.scrollLeft += e.deltaMode === 1 ? e.deltaY * 16 : e.deltaY;
+    }, { passive: false });
+
+    if (reduceMotion || !('IntersectionObserver' in window)) return;
+    function stopNudge() { list.classList.remove('is-nudging'); }
+    const observer = new IntersectionObserver(function (entries) {
+      if (!entries[0].isIntersecting) return;
+      observer.disconnect();
+      // After the row's own reveal; skipped when nothing is hidden or it was already scrolled.
+      setTimeout(function () {
+        if (overflow() <= 1 || list.scrollLeft > 1) return;
+        list.classList.add('is-nudging');
+        setTimeout(stopNudge, 1200);
+      }, 700);
+    }, { threshold: 0.9 });
+    observer.observe(list);
+    list.addEventListener('pointerdown', stopNudge);
   }
 
   // ---------- Opening hours: highlight today ----------
@@ -261,11 +350,11 @@
     return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate());
   }
 
-  function dateBounds() {
+  function dateBounds(minDays, maxDays) {
     const min = new Date();
-    min.setDate(min.getDate() + 1);
+    min.setDate(min.getDate() + (minDays == null ? 1 : minDays));
     const max = new Date();
-    max.setDate(max.getDate() + 30);
+    max.setDate(max.getDate() + (maxDays == null ? 30 : maxDays));
     return { min: isoDate(min), max: isoDate(max) };
   }
 
@@ -333,6 +422,7 @@
         return;
       }
       // Demo only: nothing is sent anywhere.
+      document.dispatchEvent(new CustomEvent('app:order-submitted'));
       form.hidden = true;
       success.hidden = false;
       success.focus();
@@ -353,6 +443,19 @@
       form.elements.name.focus();
     });
   }
+
+  // Shared helpers for the cart, product modal and cake builder modules.
+  window.App = {
+    t: t,
+    formatPrice: formatPrice,
+    formatDate: formatDate,
+    isoDate: isoDate,
+    dateBounds: dateBounds,
+    announce: announce,
+    validateField: function (input) { return validateField(input); },
+    getLang: function () { return lang; },
+    reduceMotion: reduceMotion
+  };
 
   initMenu();
   initScroll();
