@@ -489,30 +489,48 @@
             <p class="muted" data-i18n="visit.note">Parkplätze direkt vor der Tür, 5 Minuten zu Fuß vom Bahnhof.</p>
           </div>
 
-          <figure class="card map reveal">
-            <svg class="map-svg" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" role="img" aria-labelledby="map-caption">
-              <rect width="400" height="300" fill="#EFE3CC"/>
-              <path d="M-10 60c60 10 90-30 150-10s70 60 140 40 90-40 130-30" fill="none" stroke="#CFE0DC" stroke-width="18" stroke-linecap="round"/>
-              <path d="M250 190c30-20 80-24 110 0s20 70-30 80-110-10-100-40 0-28 20-40z" fill="#DCE2C2"/>
-              <path d="M30 220c20-30 70-30 80 0s-20 50-50 46-40-26-30-46z" fill="#DCE2C2"/>
-              <g stroke="#FFFDF9" stroke-linecap="round" fill="none">
-                <path d="M-10 160h420" stroke-width="12"/>
-                <path d="M190 -10l20 320" stroke-width="12"/>
-                <path d="M-10 250l160-40 260 20" stroke-width="7"/>
-                <path d="M90 -10l30 330" stroke-width="6"/>
-                <path d="M300 -10l-20 320" stroke-width="6"/>
-                <path d="M-10 100l200 20 220-30" stroke-width="5"/>
-              </g>
-              <g fill="#E6D4B5">
-                <rect x="130" y="124" width="44" height="24" rx="4"/><rect x="220" y="122" width="56" height="26" rx="4"/>
-                <rect x="220" y="172" width="40" height="30" rx="4"/><rect x="130" y="174" width="46" height="22" rx="4"/>
-                <rect x="20" y="120" width="56" height="26" rx="4"/><rect x="316" y="110" width="60" height="38" rx="4"/>
-              </g>
-              <circle cx="200" cy="160" r="34" fill="#E0A43B" opacity=".22"/>
-              <path d="M200 162s-20-17-20-32a20 20 0 0 1 40 0c0 15-20 32-20 32z" fill="#8A5A2B"/>
-              <circle cx="200" cy="130" r="7" fill="#FBF6EE"/>
-            </svg>
-            <figcaption id="map-caption" class="map-caption" data-i18n="visit.map">Kartenplatzhalter – keine echte Karte</figcaption>
+          <figure class="card map reveal" id="map" aria-labelledby="map-title">
+            <h3 class="visually-hidden" id="map-title" data-i18n="map.title">Karte und Anfahrt</h3>
+            <div class="map-area">
+              <!-- Two-click solution: nothing is loaded from OpenStreetMap before the visitor agrees. -->
+              <div class="map-consent" id="map-consent">
+              <svg class="map-svg" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+                <rect width="400" height="300" fill="#EFE3CC"/>
+                <path d="M-10 60c60 10 90-30 150-10s70 60 140 40 90-40 130-30" fill="none" stroke="#CFE0DC" stroke-width="18" stroke-linecap="round"/>
+                <path d="M250 190c30-20 80-24 110 0s20 70-30 80-110-10-100-40 0-28 20-40z" fill="#DCE2C2"/>
+                <path d="M30 220c20-30 70-30 80 0s-20 50-50 46-40-26-30-46z" fill="#DCE2C2"/>
+                <g stroke="#FFFDF9" stroke-linecap="round" fill="none">
+                  <path d="M-10 160h420" stroke-width="12"/>
+                  <path d="M190 -10l20 320" stroke-width="12"/>
+                  <path d="M-10 250l160-40 260 20" stroke-width="7"/>
+                  <path d="M90 -10l30 330" stroke-width="6"/>
+                  <path d="M300 -10l-20 320" stroke-width="6"/>
+                  <path d="M-10 100l200 20 220-30" stroke-width="5"/>
+                </g>
+                <g fill="#E6D4B5">
+                  <rect x="130" y="124" width="44" height="24" rx="4"/><rect x="220" y="122" width="56" height="26" rx="4"/>
+                  <rect x="220" y="172" width="40" height="30" rx="4"/><rect x="130" y="174" width="46" height="22" rx="4"/>
+                  <rect x="20" y="120" width="56" height="26" rx="4"/><rect x="316" y="110" width="60" height="38" rx="4"/>
+                </g>
+                <circle cx="200" cy="160" r="34" fill="#E0A43B" opacity=".22"/>
+                <path d="M200 162s-20-17-20-32a20 20 0 0 1 40 0c0 15-20 32-20 32z" fill="#8A5A2B"/>
+                <circle cx="200" cy="130" r="7" fill="#FBF6EE"/>
+              </svg>
+                <div class="map-consent-box">
+                  <p class="map-consent-text" id="map-consent-text" data-i18n="map.consent">Karte laden – dabei werden Daten (z. B. Ihre IP-Adresse) an OpenStreetMap übertragen.</p>
+                  <button class="btn btn-primary btn-sm" type="button" id="map-load" aria-describedby="map-consent-text" data-i18n="map.load">Karte laden</button>
+                  <label class="map-remember"><input type="checkbox" id="map-remember"><span data-i18n="map.remember">Karte immer laden</span></label>
+                  <a class="map-privacy" href="datenschutz.html#karte" data-i18n="map.privacy">Mehr dazu im Datenschutz</a>
+                  <p class="map-status" id="map-status" role="status"></p>
+                </div>
+              </div>
+              <div class="map-canvas" id="map-canvas" role="region" aria-label="Karte: Kelkheim (Taunus)" data-i18n-attr="aria-label:map.label" hidden></div>
+            </div>
+            <figcaption class="map-footer">
+              <a class="btn btn-primary btn-sm" id="map-route" href="https://www.google.com/maps/dir/?api=1&amp;destination=50.1372%2C8.4505" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l18-8-8 18-2-8z"/></svg><span data-i18n="map.route">Route planen</span><span class="visually-hidden"> – <span data-i18n="map.routeGoogle">Google Maps</span>, <span data-i18n="map.newTab">öffnet in neuem Tab</span></span></a>
+              <a class="map-route-alt" href="https://www.openstreetmap.org/directions?to=50.1372%2C8.4505#map=15/50.1372/8.4505" target="_blank" rel="noopener"><span data-i18n="map.routeOsm">oder mit OpenStreetMap</span><span class="visually-hidden"> – <span data-i18n="map.newTab">öffnet in neuem Tab</span></span></a>
+              <button class="map-forget" type="button" id="map-forget" hidden data-i18n="map.forget">Karte nicht mehr automatisch laden</button>
+            </figcaption>
           </figure>
         </div>
       </div>
@@ -703,6 +721,7 @@
   <script src="js/cart.js"></script>
   <script src="js/modal.js"></script>
   <script src="js/cake-builder.js"></script>
+  <script src="js/map.js"></script>
   <script type="module" src="js/cake-3d.js"></script>
 </body>
 </html>
