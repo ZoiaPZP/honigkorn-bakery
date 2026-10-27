@@ -3,7 +3,7 @@
 > **Demo-Projekt – keine echte Bäckerei.** A fictional bakery in Kelkheim (Taunus), built as a portfolio project.
 > All contact details (Musterstraße 12, +49 0000 000000, hallo@honigkorn.example) are placeholders.
 
-**Live demo:** _coming soon_
+**Live demo:** [honigkorn-bakery.vercel.app](https://honigkorn-bakery.vercel.app)
 
 A one-page landing site for a small German bakery: products with allergen info, a cart for pre-orders,
 a 3D cake builder and a map that respects the GDPR (DSGVO). Plain HTML, CSS and JavaScript, no framework and no build step.
