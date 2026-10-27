@@ -2,7 +2,7 @@
 // Everything is built from code: a naked layer cake with a slice that glides out onto a small
 // plate, piped rosettes with fruit, chocolate drips / nut crumbs and a chocolate plaque.
 // three.js is only loaded when WebGL works, "reduce motion" is off and the builder comes near
-// the viewport; otherwise (or on any error) the sample photos from cake-builder.js stay visible.
+// the viewport; otherwise (or on any error) the rendered stills from cake-builder.js stay visible.
 
 const preview = document.querySelector('.builder-preview');
 const stage = document.querySelector('.cake-stage');
@@ -48,14 +48,14 @@ function webglAvailable() {
 }
 
 function fallback(reason) {
-  if (reason) console.warn('[cake-3d] showing photos instead:', reason);
+  if (reason) console.warn('[cake-3d] showing stills instead:', reason);
   if (teardown) teardown();
   teardown = null;
   preview.classList.remove('is-3d', 'is-3d-ready', 'is-3d-touched');
 }
 
 if (preview && stage && mount && data && webglAvailable() && !reduceMotion.matches) {
-  // Hide the photos right away (display: none keeps their lazy images from loading).
+  // Hide the stills right away (display: none keeps their lazy images from loading).
   preview.classList.add('is-3d');
   const io = new IntersectionObserver(function (entries) {
     if (!entries.some(function (e) { return e.isIntersecting; })) return;
@@ -1028,7 +1028,7 @@ function build(THREE, OrbitControls, RoomEnvironment) {
     fallback('WebGL context lost');
   });
 
-  // ----- cleanup when falling back to photos -----
+  // ----- cleanup when falling back to the stills -----
   return function dispose() {
     setRunning(false);
     io.disconnect();

@@ -196,7 +196,7 @@ window.Cart = (function () {
   function thumb(item) {
     const wrap = el('div', 'cart-thumb');
     if (item.type === 'cake') {
-      // Same sample photo as in the cake builder for the chosen fruit.
+      // Same 3D render as the cake builder still for the chosen fruit.
       const base = data.findById(data.cake.fillings, item.config.filling).image;
       wrap.innerHTML = '<picture><source type="image/webp" srcset="' + base + '.webp">' +
         '<img src="' + base + '.jpg" width="1400" height="1120" alt="" loading="lazy" decoding="async"></picture>';

@@ -1590,32 +1590,24 @@ html.scroll-locked body { padding-right: var(--scrollbar-gap, 0px); }
 
 .builder-preview { grid-area: preview; min-width: 0; }
 
-/* Photo stage: one sample photo per fruit, stacked and cross-faded. */
+/* Preview stage: stills rendered from the 3D model (one per fruit, cross-faded);
+   cake-3d.js swaps in the live model. The background matches the renders. */
 .cake-stage {
   position: relative;
   aspect-ratio: 5 / 4;
   overflow: hidden;
   isolation: isolate;
   border-radius: var(--radius);
-  background: var(--oat);
+  background: radial-gradient(circle at 50% 42%, #FFF9EF, #F2E1CC 78%);
   box-shadow: var(--shadow-sm);
-}
-.cake-stage::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background: linear-gradient(160deg, rgba(224, 164, 59, .10), transparent 45%, rgba(59, 38, 24, .16));
-  pointer-events: none;
 }
 .cake-shot {
   position: absolute;
   inset: 0;
   opacity: 0;
-  transform: scale(1.04);
-  transition: opacity .6s var(--ease), transform 1.2s var(--ease);
+  transition: opacity .5s var(--ease);
 }
-.cake-shot.is-active { opacity: 1; transform: none; }
+.cake-shot.is-active { opacity: 1; }
 .cake-shot img { width: 100%; height: 100%; object-fit: cover; }
 
 .cake-size-badge {
@@ -1636,30 +1628,31 @@ html.scroll-locked body { padding-right: var(--scrollbar-gap, 0px); }
 }
 .cake-size-badge.is-pop { animation: bump .45s var(--ease); }
 
-/* Inscription as a chocolate ribbon with notched ends. */
-.cake-ribbon {
+/* Inscription on a chocolate plaque, placed on the top of the cake in the renders
+   (same framing for every fruit, and object-fit keeps the percentages exact). */
+.cake-plaque {
   position: absolute;
-  left: 0; right: 0; bottom: 1.1rem;
+  left: 40%; top: 30%;
   z-index: 2;
-  width: fit-content;
-  max-width: calc(100% - 2rem);
-  margin: 0 auto;
-  padding: .5rem 2rem .6rem;
-  background: #4A2A1A;
-  color: #F6E3BE;
-  clip-path: polygon(0 0, 100% 0, calc(100% - 14px) 50%, 100% 100%, 0 100%, 14px 50%);
-  filter: drop-shadow(0 6px 10px rgba(42, 27, 17, .35));
+  width: max-content;
+  max-width: 38%;
+  margin: 0;
+  padding: .25rem .65rem .3rem;
+  border-radius: 6px;
+  background: linear-gradient(170deg, #4E2D1C, #3A2114);
+  box-shadow: inset 0 0 0 3px #3A2114, inset 0 0 0 4px rgba(247, 230, 196, .55), 0 6px 12px -4px rgba(42, 27, 17, .45);
+  color: #F7E6C4;
   font-family: var(--font-serif);
-  font-size: clamp(1.05rem, 3.6vw, 1.35rem);
+  font-size: clamp(.72rem, 2.2vw, .95rem);
   font-style: italic;
-  line-height: 1.25;
+  line-height: 1.2;
   text-align: center;
   overflow-wrap: anywhere;
   opacity: 0;
-  transform: translateY(12px) rotate(-1.5deg);
+  transform: translate(-50%, calc(-50% + 8px));
   transition: opacity .3s var(--ease), transform .3s var(--ease);
 }
-.cake-ribbon.is-visible { opacity: 1; transform: rotate(-1.5deg); }
+.cake-plaque.is-visible { opacity: 1; transform: translate(-50%, -50%); }
 
 .cake-swatches {
   display: grid;
@@ -1696,18 +1689,13 @@ html.scroll-locked body { padding-right: var(--scrollbar-gap, 0px); }
   text-transform: uppercase;
 }
 .swatch-name { font-size: .9rem; line-height: 1.2; }
-.cake-sample-note { margin: .6rem 0 0; color: var(--cocoa); font-size: .78rem; font-style: italic; }
-.cake-3d-note { display: none; margin: .6rem 0 0; color: var(--cocoa); font-size: .78rem; font-style: italic; }
+.cake-note { margin: .6rem 0 0; color: var(--cocoa); font-size: .78rem; font-style: italic; }
 
-/* Experimental 3D preview (cake-3d.js). Without .is-3d the sample photos above are used. */
+/* Live 3D preview (cake-3d.js). Without .is-3d the rendered stills above are used. */
 .cake-3d,
 .cake-3d-hint { display: none; }
 .builder-preview.is-3d .cake-shot,
-.builder-preview.is-3d .cake-ribbon,
-.builder-preview.is-3d .cake-stage::after,
-.builder-preview.is-3d .cake-sample-note { display: none; }
-.builder-preview.is-3d .cake-3d-note { display: block; }
-.builder-preview.is-3d .cake-stage { background: radial-gradient(circle at 50% 42%, #FFF9EF, #F2E1CC 78%); }
+.builder-preview.is-3d .cake-plaque { display: none; }
 .builder-preview.is-3d .cake-3d {
   display: block;
   position: absolute;

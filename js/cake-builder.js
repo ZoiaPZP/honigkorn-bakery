@@ -1,5 +1,6 @@
-// Cake builder: live price, photo preview (sample photo per fruit, size badge, swatches,
-// inscription ribbon) and "add to cart" with all chosen options.
+// Cake builder: live price, still preview (a render of the 3D cake per fruit, size badge,
+// swatches, inscription plaque) and "add to cart" with all chosen options.
+// cake-3d.js replaces the stills with the live 3D model when WebGL and motion are allowed.
 (function () {
   'use strict';
 
@@ -11,8 +12,8 @@
 
   const shots = Array.prototype.slice.call(document.querySelectorAll('.cake-shot'));
   const sizeBadge = document.getElementById('cake-size-badge');
-  const ribbon = document.getElementById('cake-ribbon');
-  const ribbonText = document.getElementById('cake-ribbon-text');
+  const plaque = document.getElementById('cake-plaque');
+  const plaqueText = document.getElementById('cake-plaque-text');
   const swatchSponge = document.getElementById('swatch-sponge');
   const swatchCream = document.getElementById('swatch-cream');
   const previewDesc = document.getElementById('cake-preview-desc');
@@ -69,7 +70,7 @@
     const cream = data.findById(opts.creams, cfg.cream);
     const size = data.findById(opts.sizes, cfg.size);
 
-    // Sample photo per fruit choice; CSS cross-fades between the stacked pictures.
+    // One render per fruit choice; CSS cross-fades between the stacked pictures.
     shots.forEach(function (shot) {
       shot.classList.toggle('is-active', shot.dataset.shot === cfg.filling);
     });
@@ -86,8 +87,8 @@
     setSwatch(swatchSponge, sponge.color, 'cake.sponge.' + sponge.id);
     setSwatch(swatchCream, cream.color, 'cake.cream.' + cream.id);
 
-    ribbon.classList.toggle('is-visible', Boolean(cfg.text));
-    if (cfg.text) ribbonText.textContent = cfg.text;
+    plaque.classList.toggle('is-visible', Boolean(cfg.text));
+    if (cfg.text) plaqueText.textContent = cfg.text;
 
     const parts = [
       App.t('cake.name', { size: cfg.size }),

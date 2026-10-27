@@ -155,10 +155,10 @@ window.BakeryData = (function () {
       { id: 'cheese', price: 4, color: '#F2EADC' }
     ],
     fillings: [
-      { id: 'strawberry', price: 4, color: '#D9434B', image: 'images/cakes/strawberry' },
-      { id: 'raspberry', price: 5, color: '#C2386A', image: 'images/cakes/raspberry' },
-      { id: 'cherry', price: 4, color: '#8C1D2C', image: 'images/cakes/cherry' },
-      { id: 'none', price: 0, color: null, image: 'images/cakes/none' }
+      { id: 'strawberry', price: 4, color: '#D9434B', image: 'images/cakes/3d/strawberry' },
+      { id: 'raspberry', price: 5, color: '#C2386A', image: 'images/cakes/3d/raspberry' },
+      { id: 'cherry', price: 4, color: '#8C1D2C', image: 'images/cakes/3d/cherry' },
+      { id: 'none', price: 0, color: null, image: 'images/cakes/3d/none' }
     ],
     inscriptionPrice: 3,
     textMax: 30,
