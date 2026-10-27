@@ -1,0 +1,11 @@
+# Never upload local secrets or private notes.
+.env
+.vercel
+CLAUDE.md
+.claude
+
+# Repository files, not part of the site.
+/README.md
+/docs
+/archive
+/deploy.sh
