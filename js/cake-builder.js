@@ -129,6 +129,12 @@
 
   window.CakeBuilder = { config: config };
 
+  // cake-3d.js is an ES module, and browsers do not load modules from file:// – it would
+  // otherwise fail without saying why the stills are shown.
+  if (location.protocol === 'file:') {
+    console.warn('[cake-3d] mode: stills – page opened from file://; the 3D preview needs http(s), e.g. a local server');
+  }
+
   function setDateBounds() {
     const b = App.dateBounds(opts.minDays, opts.maxDays);
     dateInput.min = b.min;

@@ -34,27 +34,48 @@ const SMALL_PLATE = { angle: GAP_CENTER - 0.12, dist: 2.62, top: -0.026 }; // to
 
 let teardown = null;
 
-function webglAvailable() {
+// The chosen mode and the reason go to the console, so a fallback is never silent.
+function logMode(mode, reason) {
+  const text = '[cake-3d] mode: ' + mode + (reason ? ' – ' + reason : '');
+  if (mode === 'stills' && !/reduced motion/.test(reason || '')) console.warn(text);
+  else console.info(text);
+}
+
+// three.js r169 needs WebGL 2. The probe context is handed to the renderer later, so the page
+// creates a single context (no throw-away probe that has to be lost again).
+const CONTEXT_ATTRIBUTES = { antialias: true, alpha: true, powerPreference: 'high-performance' };
+function createContext() {
+  const canvas = document.createElement('canvas');
+  let status = '';
+  canvas.addEventListener('webglcontextcreationerror', function (e) { status = e.statusMessage || ''; });
   try {
-    const canvas = document.createElement('canvas');
-    const gl = canvas.getContext('webgl2') || canvas.getContext('webgl');
-    if (!gl) return false;
-    const lose = gl.getExtension('WEBGL_lose_context');
-    if (lose) lose.loseContext();
-    return true;
+    const gl = canvas.getContext('webgl2', CONTEXT_ATTRIBUTES);
+    if (gl && !gl.isContextLost()) return { canvas: canvas, gl: gl };
   } catch (e) {
-    return false;
+    status = status || String(e);
   }
+  // Chrome blocks WebGL for a site after a GPU reset ("…was blocked") until it is restarted,
+  // even when chrome://gpu reports hardware acceleration.
+  return { error: 'WebGL 2 not available' + (status ? ' (' + status + ')' : '') };
 }
 
 function fallback(reason) {
-  if (reason) console.warn('[cake-3d] showing stills instead:', reason);
+  logMode('stills', reason instanceof Error ? 'error: ' + reason.message : reason);
   if (teardown) teardown();
   teardown = null;
   preview.classList.remove('is-3d', 'is-3d-ready', 'is-3d-touched');
 }
 
-if (preview && stage && mount && data && webglAvailable() && !reduceMotion.matches) {
+function start() {
+  if (reduceMotion.matches) {
+    logMode('stills', 'reduced motion is on (prefers-reduced-motion: reduce)');
+    return;
+  }
+  const context = createContext();
+  if (context.error) {
+    logMode('stills', context.error);
+    return;
+  }
   // Hide the stills right away (display: none keeps their lazy images from loading).
   preview.classList.add('is-3d');
   const io = new IntersectionObserver(function (entries) {
@@ -65,13 +86,17 @@ if (preview && stage && mount && data && webglAvailable() && !reduceMotion.match
       import('../vendor/three/OrbitControls.js'),
       import('../vendor/three/RoomEnvironment.js')
     ]).then(function (mods) {
-      teardown = build(mods[0], mods[1].OrbitControls, mods[2].RoomEnvironment);
+      teardown = build(mods[0], mods[1].OrbitControls, mods[2].RoomEnvironment, context);
+      logMode('live 3D', 'WebGL 2');
     }).catch(fallback);
   }, { rootMargin: '400px 0px' });
   io.observe(stage);
+}
 
+if (preview && stage && mount && data) {
+  start();
   reduceMotion.addEventListener('change', function (e) {
-    if (e.matches) fallback();
+    if (e.matches) fallback('reduced motion was switched on');
   });
 }
 
@@ -91,11 +116,11 @@ function rand(a, b) { return a + Math.random() * (b - a); }
 
 // ---------------------------------------------------------------------------
 
-function build(THREE, OrbitControls, RoomEnvironment) {
+function build(THREE, OrbitControls, RoomEnvironment, context) {
   const opts = data.cake;
 
   // ----- renderer -----
-  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' });
+  const renderer = new THREE.WebGLRenderer(Object.assign({ canvas: context.canvas, context: context.gl }, CONTEXT_ATTRIBUTES));
   let pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
   renderer.setPixelRatio(pixelRatio);
   renderer.outputColorSpace = THREE.SRGBColorSpace;
@@ -108,11 +133,17 @@ function build(THREE, OrbitControls, RoomEnvironment) {
 
   const scene = new THREE.Scene();
   // Soft studio reflections (used lightly so the warm lights still dominate).
-  const pmrem = new THREE.PMREMGenerator(renderer);
-  const envTexture = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
-  scene.environment = envTexture;
+  let envTexture = null;
+  function makeEnvironment() {
+    // Rendered on the GPU, so it has to be rebuilt after a restored context.
+    if (envTexture) envTexture.dispose();
+    const pmrem = new THREE.PMREMGenerator(renderer);
+    envTexture = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+    scene.environment = envTexture;
+    pmrem.dispose();
+  }
+  makeEnvironment();
   scene.environmentIntensity = 0.38;
-  pmrem.dispose();
 
   // ----- camera + controls -----
   const camera = new THREE.PerspectiveCamera(30, 1.25, 0.1, 60);
@@ -201,11 +232,15 @@ function build(THREE, OrbitControls, RoomEnvironment) {
 
   // ----- procedural textures -----
   const textures = [];
+  // 2D canvases stay on the CPU (willReadFrequently): drawing them on a GPU-backed canvas
+  // competes with WebGL for the GPU, and heavy work there can make the browser reset the GPU
+  // and block WebGL for the whole site.
+  function context2d(c) { return c.getContext('2d', { willReadFrequently: true }); }
   function canvasTexture(w, h, draw, srgb) {
     const c = document.createElement('canvas');
     c.width = w;
     c.height = h;
-    draw(c.getContext('2d'), w, h);
+    draw(context2d(c), w, h);
     const t = new THREE.CanvasTexture(c);
     if (srgb !== false) t.colorSpace = THREE.SRGBColorSpace;
     t.wrapS = t.wrapT = THREE.RepeatWrapping;
@@ -237,17 +272,33 @@ function build(THREE, OrbitControls, RoomEnvironment) {
       ctx.restore();
     });
   }
+  // One blur pass over the finished texture (soft-edged pores read as crumb, not sand).
+  // Never set ctx.filter per shape: that is one blur per pore. The texture is tiled 3×3 around
+  // the blur so it still repeats seamlessly.
+  function soften(ctx, w, h, px) {
+    const pad = Math.ceil(px * 3);
+    const tmp = document.createElement('canvas');
+    tmp.width = w + pad * 2;
+    tmp.height = h + pad * 2;
+    const t = context2d(tmp);
+    for (let x = -1; x <= 1; x++) {
+      for (let y = -1; y <= 1; y++) t.drawImage(ctx.canvas, pad + x * w, pad + y * h);
+    }
+    ctx.filter = 'blur(' + px + 'px)';
+    ctx.drawImage(tmp, -pad, -pad);
+    ctx.filter = 'none';
+  }
   const crumbMap = canvasTexture(512, 512, function (ctx, w, h) {
     ctx.fillStyle = '#ffffff';
     ctx.fillRect(0, 0, w, h);
-    ctx.filter = 'blur(1.4px)'; // soft-edged pores read as crumb, not sand
     drawPores(ctx, w, h, 'rgba(120,82,48,0.2)', 'rgba(255,255,255,0.5)');
+    soften(ctx, w, h, 1.4);
   });
   const crumbBump = canvasTexture(512, 512, function (ctx, w, h) {
     ctx.fillStyle = '#ffffff';
     ctx.fillRect(0, 0, w, h);
-    ctx.filter = 'blur(2px)';
     drawPores(ctx, w, h, '#6a6a6a', null);
+    soften(ctx, w, h, 2);
   }, false);
   crumbMap.repeat.set(1.5, 1.5);
   crumbBump.repeat.set(1.5, 1.5);
@@ -1011,7 +1062,8 @@ function build(THREE, OrbitControls, RoomEnvironment) {
       renderer.setAnimationLoop(null);
     }
   }
-  function sync() { setRunning(visible && !document.hidden); }
+  let disposed = false;
+  function sync() { setRunning(!disposed && visible && !document.hidden); }
 
   const io = new IntersectionObserver(function (entries) {
     visible = entries[entries.length - 1].isIntersecting;
@@ -1023,13 +1075,37 @@ function build(THREE, OrbitControls, RoomEnvironment) {
   ro.observe(mount);
   resize();
 
-  canvas.addEventListener('webglcontextlost', function (e) {
+  // A lost context (GPU reset, driver update, too many contexts) is usually restored by the
+  // browser: show the stills meanwhile and only give up if it does not come back.
+  let lostTimer = 0;
+  function onContextLost(e) {
     e.preventDefault();
-    fallback('WebGL context lost');
-  });
+    renderer.setAnimationLoop(null);
+    running = false;
+    preview.classList.remove('is-3d', 'is-3d-ready');
+    logMode('stills', 'WebGL context lost' + (e.statusMessage ? ' (' + e.statusMessage + ')' : '') + ', waiting for the browser to restore it');
+    lostTimer = window.setTimeout(function () {
+      fallback('WebGL context lost and not restored');
+    }, 5000);
+  }
+  function onContextRestored() {
+    window.clearTimeout(lostTimer);
+    // Re-upload the canvas textures and recompile the materials on the new context.
+    textures.forEach(function (t) { t.needsUpdate = true; });
+    scene.traverse(function (o) {
+      if (o.material) o.material.needsUpdate = true;
+    });
+    makeEnvironment();
+    preview.classList.add('is-3d');
+    sync();
+    logMode('live 3D', 'WebGL context restored');
+  }
+  canvas.addEventListener('webglcontextlost', onContextLost);
+  canvas.addEventListener('webglcontextrestored', onContextRestored);
 
   // ----- cleanup when falling back to the stills -----
   return function dispose() {
+    disposed = true;
     setRunning(false);
     io.disconnect();
     ro.disconnect();
@@ -1037,6 +1113,9 @@ function build(THREE, OrbitControls, RoomEnvironment) {
     document.removeEventListener('app:cake-change', onChange);
     if (resetButton) resetButton.removeEventListener('click', onReset);
     window.clearTimeout(resumeTimer);
+    window.clearTimeout(lostTimer);
+    canvas.removeEventListener('webglcontextlost', onContextLost);
+    canvas.removeEventListener('webglcontextrestored', onContextRestored);
     controls.dispose();
     scene.traverse(function (o) {
       if (o.geometry) o.geometry.dispose();
