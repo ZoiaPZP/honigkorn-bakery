@@ -237,6 +237,7 @@ window.I18N = {
     'footer.imprint': 'Impressum',
     'footer.privacy': 'Datenschutz',
     'footer.demo': 'Demo-Projekt – keine echte Bäckerei',
+    'demo.banner': 'Demo-Projekt – keine echte Bäckerei',
     'footer.noCookies': 'Ohne Cookies, Tracking und Analyse.',
 
     'legal.back': '← Zurück zur Startseite',
@@ -496,6 +497,7 @@ window.I18N = {
     'footer.imprint': 'Legal notice',
     'footer.privacy': 'Privacy',
     'footer.demo': 'Demo project – not a real bakery',
+    'demo.banner': 'Demo project – not a real bakery',
     'footer.noCookies': 'No cookies, tracking or analytics.',
 
     'legal.back': '← Back to the homepage',

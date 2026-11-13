@@ -198,6 +198,36 @@ ul { margin: 0; padding: 0; list-style: none; }
 .btn-sm { min-height: 42px; padding: .55rem 1.2rem; font-size: .95rem; }
 .btn-block { width: 100%; }
 
+/* ---------- Demo banner (above the sticky header, scrolls away) ---------- */
+
+.demo-banner {
+  background: var(--oat);
+  border-bottom: 1px solid rgba(138, 90, 43, .18);
+  color: var(--espresso);
+  font-size: .875rem;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: .01em;
+}
+.demo-banner p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .55rem;
+  margin: 0 auto;
+  padding-block: .5rem;
+  text-align: center;
+  text-wrap: balance;
+}
+.demo-banner-dot {
+  flex: none;
+  width: .5rem;
+  height: .5rem;
+  border-radius: 50%;
+  background: var(--honey);
+  box-shadow: 0 0 0 3px rgba(224, 164, 59, .25);
+}
+
 /* ---------- Header ---------- */
 
 .site-header {
