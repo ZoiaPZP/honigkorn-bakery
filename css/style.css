@@ -97,6 +97,10 @@ h2 { font-size: clamp(2rem, 5vw, 3rem); }
 h3 { font-size: 1.3rem; }
 p { margin: 0 0 1em; }
 
+/* No orphans: balanced headings, pretty paragraphs. */
+h1, h2, h3, h4 { text-wrap: balance; }
+p, li, dd, td, figcaption, blockquote, label { text-wrap: pretty; }
+
 a { color: var(--crust); text-underline-offset: .2em; }
 a:hover { color: var(--espresso); }
 
@@ -842,7 +846,7 @@ ul { margin: 0; padding: 0; list-style: none; }
   vertical-align: top;
 }
 .hours th { font-weight: 500; }
-.hours td { text-align: right; color: var(--cocoa); font-variant-numeric: tabular-nums; }
+.hours td { text-align: right; color: var(--cocoa); font-variant-numeric: tabular-nums; white-space: nowrap; }
 .hours tr.is-today th, .hours tr.is-today td { color: var(--espresso); font-weight: 600; }
 
 .today-badge {

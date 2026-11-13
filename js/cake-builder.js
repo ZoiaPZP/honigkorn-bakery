@@ -115,7 +115,7 @@
     });
     if (cfg.text) extras.push(App.t('builder.text') + ' +' + App.formatPrice(opts.inscriptionPrice));
     const size = data.findById(opts.sizes, cfg.size);
-    breakdownEl.textContent = ['Ø ' + cfg.size + ' cm ' + App.formatPrice(size.price)].concat(extras).join(' · ');
+    breakdownEl.textContent = ['Ø\u00A0' + cfg.size + '\u00A0cm\u00A0' + App.formatPrice(size.price)].concat(extras).join(' · ');
   }
 
   function update() {

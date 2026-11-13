@@ -72,7 +72,7 @@
   }
 
   function markerText() {
-    return '<strong>Backstube Honigkorn</strong><br>' + App.t('map.markerNote');
+    return '<strong>Backstube\u00A0Honigkorn</strong><br>' + App.t('map.markerNote');
   }
 
   function showMap(L) {
@@ -90,7 +90,7 @@
       maxZoom: 19,
       attribution: '© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors'
     }).addTo(map);
-    marker = L.marker(CENTER, { icon: pinIcon(L), title: 'Backstube Honigkorn', alt: 'Backstube Honigkorn', keyboard: true })
+    marker = L.marker(CENTER, { icon: pinIcon(L), title: 'Backstube\u00A0Honigkorn', alt: 'Backstube\u00A0Honigkorn', keyboard: true })
       .addTo(map)
       .bindPopup(markerText());
     state = 'ready';
