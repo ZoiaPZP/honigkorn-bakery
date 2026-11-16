@@ -556,12 +556,12 @@
           <form id="order-form" novalidate>
             <div class="field">
               <label for="f-name" data-i18n="form.name">Name</label>
-              <input id="f-name" name="name" type="text" required minlength="2" aria-describedby="e-name">
+              <input id="f-name" name="name" type="text" autocomplete="off" required minlength="2" aria-describedby="e-name">
               <p class="error" id="e-name" aria-live="polite"></p>
             </div>
             <div class="field">
               <label for="f-phone" data-i18n="form.phone">Telefon</label>
-              <input id="f-phone" name="phone" type="tel" inputmode="tel" required aria-describedby="e-phone">
+              <input id="f-phone" name="phone" type="tel" autocomplete="off" inputmode="tel" required aria-describedby="e-phone">
               <p class="error" id="e-phone" aria-live="polite"></p>
             </div>
             <div class="field field-full">
