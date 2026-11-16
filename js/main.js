@@ -175,9 +175,24 @@
     if (toTop) {
       toTop.addEventListener('click', function (e) {
         e.preventDefault();
-        window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
         const skip = document.querySelector('.skip-link');
-        if (skip) skip.focus({ preventScroll: true });
+        window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+        // Move keyboard focus to the top only once the scroll has finished:
+        // focusing during a smooth scroll can stop it half-way in iOS Safari.
+        if (!skip) return;
+        let done = false;
+        const finish = function () {
+          if (done) return;
+          done = true;
+          window.removeEventListener('scroll', onTopScroll);
+          skip.focus({ preventScroll: true });
+        };
+        const onTopScroll = function () { if (window.scrollY < 2) finish(); };
+        if (window.scrollY < 2) finish();
+        else {
+          window.addEventListener('scroll', onTopScroll, { passive: true });
+          setTimeout(finish, 1500);
+        }
       });
     }
   }

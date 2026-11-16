@@ -102,7 +102,9 @@ h1, h2, h3, h4 { text-wrap: balance; }
 p, li, dd, td, figcaption, blockquote, label { text-wrap: pretty; }
 
 a { color: var(--crust); text-underline-offset: .2em; }
-a:hover { color: var(--espresso); }
+@media (hover: hover) and (pointer: fine) {
+  a:hover { color: var(--espresso); }
+}
 
 :focus-visible {
   outline: 3px solid var(--amber);
@@ -140,7 +142,9 @@ ul { margin: 0; padding: 0; list-style: none; }
   font-weight: 600;
   text-decoration: none;
 }
-.skip-link:focus { top: 1rem; color: var(--cream); }
+/* :focus-visible, not :focus – the back-to-top button moves focus here by script;
+   after a tap that must not pop the link up on phones. Keyboard focus still shows it. */
+.skip-link:focus-visible { top: 1rem; color: var(--cream); }
 
 .eyebrow {
   display: inline-flex;
@@ -185,11 +189,13 @@ ul { margin: 0; padding: 0; list-style: none; }
   color: var(--espresso);
   box-shadow: 0 8px 20px -8px rgba(185, 122, 30, .7);
 }
-.btn-primary:hover {
-  background: var(--honey-dark);
-  color: var(--espresso);
-  transform: translateY(-2px);
-  box-shadow: 0 12px 24px -10px rgba(185, 122, 30, .8);
+@media (hover: hover) and (pointer: fine) {
+  .btn-primary:hover {
+    background: var(--honey-dark);
+    color: var(--espresso);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px -10px rgba(185, 122, 30, .8);
+  }
 }
 
 .btn-ghost {
@@ -197,7 +203,9 @@ ul { margin: 0; padding: 0; list-style: none; }
   color: var(--espresso);
   border-color: rgba(59, 38, 24, .25);
 }
-.btn-ghost:hover { border-color: var(--espresso); color: var(--espresso); }
+@media (hover: hover) and (pointer: fine) {
+  .btn-ghost:hover { border-color: var(--espresso); color: var(--espresso); }
+}
 
 .btn-sm { min-height: 44px; padding: .55rem 1.2rem; font-size: .95rem; }
 .btn-block { width: 100%; }
@@ -302,7 +310,9 @@ ul { margin: 0; padding: 0; list-style: none; }
   cursor: pointer;
   transition: background-color .2s, color .2s;
 }
-.lang-switch button:hover { color: var(--espresso); }
+@media (hover: hover) and (pointer: fine) {
+  .lang-switch button:hover { color: var(--espresso); }
+}
 .lang-switch button[aria-pressed="true"] {
   background: var(--paper);
   color: var(--espresso);
@@ -400,7 +410,9 @@ ul { margin: 0; padding: 0; list-style: none; }
     transform-origin: left;
     transition: transform .3s var(--ease);
   }
-  .main-nav a:not(.btn):hover::after { transform: scaleX(1); }
+  @media (hover: hover) and (pointer: fine) {
+    .main-nav a:not(.btn):hover::after { transform: scaleX(1); }
+  }
   .main-nav .nav-cta { margin: 0 0 0 .75rem; }
   .main-nav .nav-cta .btn { width: auto; }
 }
@@ -608,7 +620,9 @@ ul { margin: 0; padding: 0; list-style: none; }
   box-shadow: var(--shadow-sm);
   transition: transform .35s var(--ease), box-shadow .35s var(--ease);
 }
-.feature:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+@media (hover: hover) and (pointer: fine) {
+  .feature:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+}
 .feature h3 { margin: 1.1rem 0 .4rem; }
 .feature p { margin: 0; color: var(--cocoa); }
 
@@ -673,7 +687,9 @@ ul { margin: 0; padding: 0; list-style: none; }
   cursor: pointer;
   transition: background-color .25s var(--ease), border-color .25s var(--ease), color .25s var(--ease);
 }
-.filters button:hover { border-color: var(--espresso); }
+@media (hover: hover) and (pointer: fine) {
+  .filters button:hover { border-color: var(--espresso); }
+}
 .filters button[aria-selected="true"] {
   background: var(--espresso);
   border-color: var(--espresso);
@@ -703,7 +719,9 @@ ul { margin: 0; padding: 0; list-style: none; }
   transition: transform .4s var(--ease), box-shadow .4s var(--ease);
 }
 .product[hidden] { display: none; }
-.product:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+@media (hover: hover) and (pointer: fine) {
+  .product:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+}
 
 .product-media {
   position: relative;
@@ -717,7 +735,9 @@ ul { margin: 0; padding: 0; list-style: none; }
   object-fit: cover;
   transition: transform .6s var(--ease);
 }
-.product:hover .product-media img { transform: scale(1.05); }
+@media (hover: hover) and (pointer: fine) {
+  .product:hover .product-media img { transform: scale(1.05); }
+}
 
 .product-body {
   display: flex;
@@ -1038,8 +1058,10 @@ address { font-style: normal; font-size: 1.05rem; margin-bottom: 1rem; }
 .field input[type="date"]::-webkit-date-and-time-value { text-align: left; }
 .field input::placeholder,
 .field textarea::placeholder { color: #8C7766; }
-.field input:hover,
-.field textarea:hover { border-color: rgba(59, 38, 24, .4); }
+@media (hover: hover) and (pointer: fine) {
+  .field input:hover,
+  .field textarea:hover { border-color: rgba(59, 38, 24, .4); }
+}
 .field input:focus,
 .field textarea:focus {
   outline: none;
@@ -1101,7 +1123,9 @@ address { font-style: normal; font-size: 1.05rem; margin-bottom: 1rem; }
   padding-top: 4rem;
 }
 .site-footer a { color: #F3D9A8; }
-.site-footer a:hover { color: var(--paper); }
+@media (hover: hover) and (pointer: fine) {
+  .site-footer a:hover { color: var(--paper); }
+}
 .site-footer :focus-visible { outline-color: var(--honey); }
 
 .footer-inner {
@@ -1165,6 +1189,8 @@ a[x-apple-data-detectors] {
   visibility: hidden;
   transform: translateY(12px);
   transition: opacity .3s var(--ease), transform .3s var(--ease), visibility 0s .3s, background-color .2s;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 .to-top.is-visible:not(.is-tucked) {
   opacity: 1;
@@ -1173,8 +1199,15 @@ a[x-apple-data-detectors] {
   transition: opacity .3s var(--ease), transform .3s var(--ease), background-color .2s;
 }
 /* Lives inside the footer (landmark); keep its own colours over `.site-footer a`. */
+/* Phones: keep it clear of the bottom edge – with Safari's toolbar collapsed,
+   the first tap down there only brings the toolbar back. */
+@media (pointer: coarse) {
+  .to-top { bottom: calc(3.5rem + env(safe-area-inset-bottom, 0px)); }
+}
 .site-footer .to-top { color: var(--cream); }
-.site-footer .to-top:hover { background: var(--crust); color: var(--cream); }
+@media (hover: hover) and (pointer: fine) {
+  .site-footer .to-top:hover { background: var(--crust); color: var(--cream); }
+}
 
 /* ---------- Reveal on scroll ---------- */
 
@@ -1185,8 +1218,12 @@ a[x-apple-data-detectors] {
 }
 .js .reveal.is-visible { opacity: 1; transform: none; }
 .js .product.reveal.is-visible { transition: opacity .8s var(--ease), transform .4s var(--ease), box-shadow .4s var(--ease); }
-.js .product.reveal.is-visible:hover { transform: translateY(-6px); }
-.js .feature.reveal.is-visible:hover { transform: translateY(-4px); }
+@media (hover: hover) and (pointer: fine) {
+  .js .product.reveal.is-visible:hover { transform: translateY(-6px); }
+}
+@media (hover: hover) and (pointer: fine) {
+  .js .feature.reveal.is-visible:hover { transform: translateY(-4px); }
+}
 .js .reveal.reveal-done { transition-delay: 0s; }
 
 .features .reveal:nth-child(2), .product-grid .reveal:nth-child(4n+2) { transition-delay: .08s; }
@@ -1266,9 +1303,13 @@ html.scroll-locked body { padding-right: var(--scrollbar-gap, 0px); }
   cursor: pointer;
   transition: background-color .2s, color .2s;
 }
-.icon-btn:hover { background: #EAD9BE; }
+@media (hover: hover) and (pointer: fine) {
+  .icon-btn:hover { background: #EAD9BE; }
+}
 .icon-btn-sm { width: 36px; height: 36px; background: transparent; color: var(--cocoa); }
-.icon-btn-sm:hover { background: #F4E1DB; color: var(--error); }
+@media (hover: hover) and (pointer: fine) {
+  .icon-btn-sm:hover { background: #F4E1DB; color: var(--error); }
+}
 
 .link-btn {
   justify-self: center;
@@ -1282,7 +1323,9 @@ html.scroll-locked body { padding-right: var(--scrollbar-gap, 0px); }
   text-underline-offset: .2em;
   cursor: pointer;
 }
-.link-btn:hover { color: var(--espresso); }
+@media (hover: hover) and (pointer: fine) {
+  .link-btn:hover { color: var(--espresso); }
+}
 
 /* ---------- Header cart button ---------- */
 
@@ -1298,7 +1341,9 @@ html.scroll-locked body { padding-right: var(--scrollbar-gap, 0px); }
   cursor: pointer;
   transition: background-color .2s;
 }
-.cart-toggle:hover { background: var(--oat); }
+@media (hover: hover) and (pointer: fine) {
+  .cart-toggle:hover { background: var(--oat); }
+}
 .cart-count {
   position: absolute;
   top: 1px; right: -2px;
@@ -1374,8 +1419,10 @@ html.scroll-locked body { padding-right: var(--scrollbar-gap, 0px); }
   text-underline-offset: .22em;
   transition: text-decoration-color .2s;
 }
-.product-link:hover,
-.product:hover .product-link { text-decoration-color: var(--honey); }
+@media (hover: hover) and (pointer: fine) {
+  .product-link:hover,
+  .product:hover .product-link { text-decoration-color: var(--honey); }
+}
 /* The name stays one text line tall, but the tap area is 44px high. */
 .product-link::before { content: ""; position: absolute; inset: -11px -4px; }
 
@@ -1398,7 +1445,9 @@ html.scroll-locked body { padding-right: var(--scrollbar-gap, 0px); }
   color: var(--espresso);
   font-size: .92rem;
 }
-.btn-add:hover { background: var(--honey); color: var(--espresso); }
+@media (hover: hover) and (pointer: fine) {
+  .btn-add:hover { background: var(--honey); color: var(--espresso); }
+}
 .btn-add.is-added,
 .btn.is-added { background: var(--espresso); color: var(--cream); box-shadow: none; }
 
@@ -1535,7 +1584,9 @@ html.scroll-locked body { padding-right: var(--scrollbar-gap, 0px); }
   cursor: pointer;
   transition: background-color .2s;
 }
-.qty-btn:hover:not(:disabled) { background: #FFF3DC; }
+@media (hover: hover) and (pointer: fine) {
+  .qty-btn:hover:not(:disabled) { background: #FFF3DC; }
+}
 .qty-btn:disabled { opacity: .4; box-shadow: none; cursor: not-allowed; }
 .qty-value { min-width: 1.75rem; font-weight: 600; text-align: center; font-variant-numeric: tabular-nums; }
 
@@ -1939,7 +1990,9 @@ html.scroll-locked body { padding-right: var(--scrollbar-gap, 0px); }
   cursor: pointer;
   transition: background-color .2s, transform .3s var(--ease);
 }
-.cake-3d-reset:hover { background: #fff; transform: rotate(-30deg); }
+@media (hover: hover) and (pointer: fine) {
+  .cake-3d-reset:hover { background: #fff; transform: rotate(-30deg); }
+}
 
 .builder-form { grid-area: form; display: grid; gap: 1.4rem; }
 
@@ -1971,7 +2024,9 @@ html.scroll-locked body { padding-right: var(--scrollbar-gap, 0px); }
   background: var(--cream);
   transition: border-color .2s, background-color .2s, box-shadow .2s;
 }
-.choice:hover .choice-body { border-color: rgba(59, 38, 24, .4); }
+@media (hover: hover) and (pointer: fine) {
+  .choice:hover .choice-body { border-color: rgba(59, 38, 24, .4); }
+}
 .choice input:checked + .choice-body {
   border-color: var(--espresso);
   background: var(--paper);
