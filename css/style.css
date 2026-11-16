@@ -1199,10 +1199,11 @@ a[x-apple-data-detectors] {
   transition: opacity .3s var(--ease), transform .3s var(--ease), background-color .2s;
 }
 /* Lives inside the footer (landmark); keep its own colours over `.site-footer a`. */
-/* Phones: keep it clear of the bottom edge – with Safari's toolbar collapsed,
-   the first tap down there only brings the toolbar back. */
+/* Phones: keep it well clear of the bottom edge – while the bottom toolbar of
+   Safari / Chrome on iPhone is collapsed, a tap in the lower ~100px only brings
+   the toolbar back and never reaches the page. */
 @media (pointer: coarse) {
-  .to-top { bottom: calc(3.5rem + env(safe-area-inset-bottom, 0px)); }
+  .to-top { bottom: calc(6.75rem + env(safe-area-inset-bottom, 0px)); }
 }
 .site-footer .to-top { color: var(--cream); }
 @media (hover: hover) and (pointer: fine) {

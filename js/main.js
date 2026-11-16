@@ -189,21 +189,22 @@
         downAt = null;
         if (moved > 12) return;
         handledAt = Date.now();
-        goTop();
+        goTop(false);
       });
       toTop.addEventListener('click', function (e) {
         e.preventDefault();
         if (Date.now() - handledAt < 1000) return;
-        goTop();
+        // detail 0 = activated from the keyboard (Enter): only then move focus to the top.
+        goTop(e.detail === 0);
       });
     }
 
-    function goTop() {
+    function goTop(moveFocus) {
       const skip = document.querySelector('.skip-link');
       window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
       // Move keyboard focus to the top only once the scroll has finished:
       // focusing during a smooth scroll can stop it half-way in iOS Safari.
-      if (!skip) return;
+      if (!skip || !moveFocus) return;
       let done = false;
       const finish = function () {
         if (done) return;
