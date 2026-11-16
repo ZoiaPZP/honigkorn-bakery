@@ -157,6 +157,21 @@
     }, { passive: true });
     onScroll();
 
+    // Step aside while the footer or the order form's submit button is on screen,
+    // so the floating button never covers them (mainly on phones).
+    if (toTop && 'IntersectionObserver' in window) {
+      const blockers = document.querySelectorAll('.site-footer, .field-submit');
+      const onScreen = new Set();
+      const io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) onScreen.add(entry.target);
+          else onScreen.delete(entry.target);
+        });
+        toTop.classList.toggle('is-tucked', onScreen.size > 0);
+      });
+      blockers.forEach(function (el) { io.observe(el); });
+    }
+
     if (toTop) {
       toTop.addEventListener('click', function (e) {
         e.preventDefault();

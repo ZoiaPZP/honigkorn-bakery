@@ -123,7 +123,7 @@ window.I18N = {
     'form.name': 'Name',
     'form.phone': 'Telefon',
     'form.order': 'Was dürfen wir für Sie backen?',
-    'form.orderPh': 'z.\u00A0B. 1 Honigkorn-Laib, 6 Kaiserbrötchen',
+    'form.orderPh': 'z.\u00A0B. 1\u00A0Honigkorn-Laib, 6\u00A0Kaiserbrötchen',
     'form.date': 'Abholdatum',
     'form.dateHint': 'Frühestens morgen, höchstens 30\u00A0Tage im Voraus.',
     'form.submit': 'Vorbestellung absenden',
@@ -239,6 +239,7 @@ window.I18N = {
     'footer.privacy': 'Datenschutz',
     'footer.demo': 'Demo-Projekt – keine echte Bäckerei',
     'demo.banner': 'Demo-Projekt – keine echte Bäckerei',
+    'demo.label': 'Hinweis',
     'footer.noCookies': 'Ohne Cookies, Tracking und Analyse.',
 
     'legal.back': '← Zurück zur Startseite',
@@ -384,7 +385,7 @@ window.I18N = {
     'form.name': 'Name',
     'form.phone': 'Phone',
     'form.order': 'What can we bake for you?',
-    'form.orderPh': 'e.g. 1 Honigkorn loaf, 6 Kaiser rolls',
+    'form.orderPh': 'e.g. 1\u00A0Honigkorn loaf, 6\u00A0Kaiser rolls',
     'form.date': 'Pickup date',
     'form.dateHint': 'Tomorrow at the earliest, up to\u00A030\u00A0days ahead.',
     'form.submit': 'Send pre-order',
@@ -500,6 +501,7 @@ window.I18N = {
     'footer.privacy': 'Privacy',
     'footer.demo': 'Demo project – not a real bakery',
     'demo.banner': 'Demo project – not a real bakery',
+    'demo.label': 'Notice',
     'footer.noCookies': 'No cookies, tracking or analytics.',
 
     'legal.back': '← Back to the homepage',
