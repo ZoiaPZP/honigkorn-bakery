@@ -556,12 +556,12 @@
           <form id="order-form" novalidate>
             <div class="field">
               <label for="f-name" data-i18n="form.name">Name</label>
-              <input id="f-name" name="name" type="text" autocomplete="name" required minlength="2" aria-describedby="e-name">
+              <input id="f-name" name="name" type="text" required minlength="2" aria-describedby="e-name">
               <p class="error" id="e-name" aria-live="polite"></p>
             </div>
             <div class="field">
               <label for="f-phone" data-i18n="form.phone">Telefon</label>
-              <input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required aria-describedby="e-phone">
+              <input id="f-phone" name="phone" type="tel" inputmode="tel" required aria-describedby="e-phone">
               <p class="error" id="e-phone" aria-live="polite"></p>
             </div>
             <div class="field field-full">
@@ -578,6 +578,7 @@
             <div class="field field-submit">
               <button class="btn btn-primary btn-block" type="submit" data-i18n="form.submit">Vorbestellung absenden</button>
             </div>
+            <p class="form-demo-note" data-i18n="form.demoNote">Demo – Daten werden nicht gesendet</p>
           </form>
 
           <div class="form-success" id="form-success" tabindex="-1" hidden>
@@ -606,8 +607,8 @@
         <h2 class="footer-title" data-i18n="footer.contact">Kontakt</h2>
         <ul>
           <li>Musterstraße&nbsp;12, 65779&nbsp;Kelkheim&nbsp;(Taunus)</li>
-          <li><a href="tel:+490000000000">+49&nbsp;0000&nbsp;000000</a></li>
-          <li><a href="mailto:hallo@honigkorn.example">hallo@honigkorn.example</a></li>
+          <li>+49&nbsp;0000&nbsp;000000</li>
+          <li>hallo@honigkorn.example</li>
         </ul>
       </div>
       <div class="footer-col">
