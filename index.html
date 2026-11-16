@@ -731,5 +731,7 @@
   <script src="js/cake-builder.js"></script>
   <script src="js/map.js"></script>
   <script type="module" src="js/cake-3d.js"></script>
+  <!-- TEMPORARY tap diagnostics (?debug=tap) – remove before merging -->
+  <script>if (/[?&]debug=tap\b/.test(location.search)) { var d = document.createElement('script'); d.src = 'js/debug-tap.js'; document.body.appendChild(d); }</script>
 </body>
 </html>
