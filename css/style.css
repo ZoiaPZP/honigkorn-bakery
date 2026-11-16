@@ -42,7 +42,7 @@
   --rose: #E8B4A0;
   --paper: #FFFDF9;
   --error: #A3352B;
-  --success: #4E7A3A;
+  --success: #44702F; /* 4.8:1 on the #E3EDD9 "open" pill */
 
   --font-serif: 'Fraunces', Georgia, 'Times New Roman', serif;
   --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
@@ -96,6 +96,10 @@ h1, h2, h3 {
 h2 { font-size: clamp(2rem, 5vw, 3rem); }
 h3 { font-size: 1.3rem; }
 p { margin: 0 0 1em; }
+
+/* No orphans: balanced headings, pretty paragraphs. */
+h1, h2, h3, h4 { text-wrap: balance; }
+p, li, dd, td, figcaption, blockquote, label { text-wrap: pretty; }
 
 a { color: var(--crust); text-underline-offset: .2em; }
 a:hover { color: var(--espresso); }
@@ -195,8 +199,38 @@ ul { margin: 0; padding: 0; list-style: none; }
 }
 .btn-ghost:hover { border-color: var(--espresso); color: var(--espresso); }
 
-.btn-sm { min-height: 42px; padding: .55rem 1.2rem; font-size: .95rem; }
+.btn-sm { min-height: 44px; padding: .55rem 1.2rem; font-size: .95rem; }
 .btn-block { width: 100%; }
+
+/* ---------- Demo banner (above the sticky header, scrolls away) ---------- */
+
+.demo-banner {
+  background: var(--oat);
+  border-bottom: 1px solid rgba(138, 90, 43, .18);
+  color: var(--espresso);
+  font-size: .875rem;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: .01em;
+}
+.demo-banner p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .55rem;
+  margin: 0 auto;
+  padding-block: .5rem;
+  text-align: center;
+  text-wrap: balance;
+}
+.demo-banner-dot {
+  flex: none;
+  width: .5rem;
+  height: .5rem;
+  border-radius: 50%;
+  background: var(--honey);
+  box-shadow: 0 0 0 3px rgba(224, 164, 59, .25);
+}
 
 /* ---------- Header ---------- */
 
@@ -226,6 +260,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 .brand {
   display: inline-flex;
   align-items: center;
+  min-height: 44px; /* tap target */
   gap: .7rem;
   color: var(--espresso);
   text-decoration: none;
@@ -256,7 +291,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 }
 .lang-switch button {
   min-width: 44px;
-  min-height: 36px;
+  min-height: 44px;
   padding: 0 .7rem;
   border: 0;
   border-radius: 999px;
@@ -345,6 +380,9 @@ ul { margin: 0; padding: 0; list-style: none; }
   .main-nav ul { display: flex; align-items: center; gap: .25rem; }
   .main-nav a:not(.btn) {
     position: relative;
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
     padding: .5rem .85rem;
     border: 0;
     font-family: var(--font-sans);
@@ -812,7 +850,7 @@ ul { margin: 0; padding: 0; list-style: none; }
   vertical-align: top;
 }
 .hours th { font-weight: 500; }
-.hours td { text-align: right; color: var(--cocoa); font-variant-numeric: tabular-nums; }
+.hours td { text-align: right; color: var(--cocoa); font-variant-numeric: tabular-nums; white-space: nowrap; }
 .hours tr.is-today th, .hours tr.is-today td { color: var(--espresso); font-weight: 600; }
 
 .today-badge {
@@ -878,13 +916,13 @@ address { font-style: normal; font-size: 1.05rem; margin-bottom: 1rem; }
   display: inline-flex;
   align-items: center;
   gap: .5rem;
-  min-height: 32px;
+  min-height: 44px;
   color: var(--espresso);
   font-size: .9rem;
   cursor: pointer;
 }
 .map-remember input { width: 18px; height: 18px; margin: 0; accent-color: var(--crust); }
-.map-privacy { color: var(--crust); font-size: .82rem; }
+.map-privacy { display: inline-flex; align-items: center; min-height: 44px; color: var(--crust); font-size: .82rem; }
 .map-status { margin: 0; color: var(--cocoa); font-size: .85rem; }
 .map-status:empty { display: none; }
 
@@ -916,6 +954,9 @@ address { font-style: normal; font-size: 1.05rem; margin-bottom: 1rem; }
 }
 .map-route-alt,
 .map-forget {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   color: var(--crust);
   font-size: .9rem;
   font-weight: 500;
@@ -957,11 +998,18 @@ address { font-style: normal; font-size: 1.05rem; margin-bottom: 1rem; }
 }
 
 .order-card { padding: clamp(1.5rem, 4vw, 2.5rem); }
+.form-demo-note {
+  grid-column: 1 / -1;
+  margin: -.4rem 0 0; /* sits close to the submit button despite the grid gap */
+  color: var(--cocoa);
+  font-size: .85rem;
+  text-align: center;
+}
 
-#order-form { display: grid; gap: 1.1rem; }
+#order-form { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.1rem; }
 #order-form[hidden] { display: none; }
 
-.field { display: flex; flex-direction: column; }
+.field { display: flex; flex-direction: column; min-width: 0; }
 .field label { margin-bottom: .4rem; font-weight: 600; font-size: .95rem; }
 
 .field input,
@@ -977,6 +1025,17 @@ address { font-style: normal; font-size: 1.05rem; margin-bottom: 1rem; }
   transition: border-color .2s, box-shadow .2s, background-color .2s;
 }
 .field textarea { resize: vertical; min-height: 96px; }
+/* iOS Safari: a native date input has its own intrinsic width and sticks out of the card.
+   Drop the native look and let it fill the column like the text fields. */
+.field input[type="date"] {
+  -webkit-appearance: none;
+  appearance: none;
+  display: block;
+  min-width: 0;
+  max-width: 100%;
+  text-align: left;
+}
+.field input[type="date"]::-webkit-date-and-time-value { text-align: left; }
 .field input::placeholder,
 .field textarea::placeholder { color: #8C7766; }
 .field input:hover,
@@ -1000,7 +1059,7 @@ address { font-style: normal; font-size: 1.05rem; margin-bottom: 1rem; }
 .field-submit { justify-content: flex-end; }
 
 @media (min-width: 600px) {
-  #order-form { grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+  #order-form { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; }
   .field-full { grid-column: 1 / -1; }
 }
 
@@ -1064,6 +1123,13 @@ address { font-style: normal; font-size: 1.05rem; margin-bottom: 1rem; }
   color: #CDB89C;
 }
 .footer-col li { margin-bottom: .5rem; }
+/* Safari/iOS turn phone numbers, e-mails and addresses into links on its own
+   (see meta format-detection); keep any that slip through looking like plain text. */
+a[x-apple-data-detectors] {
+  color: inherit !important;
+  text-decoration: none !important;
+  font: inherit !important;
+}
 
 .footer-bottom {
   display: flex;
@@ -1100,13 +1166,15 @@ address { font-style: normal; font-size: 1.05rem; margin-bottom: 1rem; }
   transform: translateY(12px);
   transition: opacity .3s var(--ease), transform .3s var(--ease), visibility 0s .3s, background-color .2s;
 }
-.to-top.is-visible {
+.to-top.is-visible:not(.is-tucked) {
   opacity: 1;
   visibility: visible;
   transform: none;
   transition: opacity .3s var(--ease), transform .3s var(--ease), background-color .2s;
 }
-.to-top:hover { background: var(--crust); color: var(--cream); }
+/* Lives inside the footer (landmark); keep its own colours over `.site-footer a`. */
+.site-footer .to-top { color: var(--cream); }
+.site-footer .to-top:hover { background: var(--crust); color: var(--cream); }
 
 /* ---------- Reveal on scroll ---------- */
 
@@ -1158,7 +1226,7 @@ address { font-style: normal; font-size: 1.05rem; margin-bottom: 1rem; }
 }
 .legal p { color: var(--cocoa); }
 .legal-card h2 { margin: 2.25rem 0 .8rem; font-size: 1.6rem; scroll-margin-top: calc(var(--header-h) + 1rem); }
-.legal-back { display: inline-block; margin-top: 1rem; font-weight: 600; }
+.legal-back { display: inline-flex; align-items: center; min-height: 44px; margin-top: .5rem; font-weight: 600; }
 
 .credits {
   margin-top: 2.5rem;
@@ -1266,7 +1334,11 @@ html.scroll-locked body { padding-right: var(--scrollbar-gap, 0px); }
   .brand img { width: 34px; height: 34px; }
   .brand-name { font-size: 1.2rem; }
   .brand-small { font-size: .6rem; }
-  .lang-switch button { min-width: 38px; padding: 0 .5rem; }
+  .lang-switch button { min-width: 44px; padding: 0 .5rem; }
+}
+/* Below 375px there is no room for two 44px language buttons next to logo, cart and menu. */
+@media (max-width: 374px) {
+  .lang-switch button { min-width: 38px; }
 }
 /* 320–359px: "BACKSTUBE" is as wide as "Honigkorn" and ran into the cart button. Keep only
    the name (the link's aria-label still says "Backstube Honigkorn") and tighten the buttons. */
@@ -1288,6 +1360,7 @@ html.scroll-locked body { padding-right: var(--scrollbar-gap, 0px); }
 .product-media { cursor: pointer; }
 
 .product-link {
+  position: relative;
   padding: 0;
   border: 0;
   background: none;
@@ -1303,6 +1376,8 @@ html.scroll-locked body { padding-right: var(--scrollbar-gap, 0px); }
 }
 .product-link:hover,
 .product:hover .product-link { text-decoration-color: var(--honey); }
+/* The name stays one text line tall, but the tap area is 44px high. */
+.product-link::before { content: ""; position: absolute; inset: -11px -4px; }
 
 .product-foot {
   display: flex;
@@ -1891,6 +1966,7 @@ html.scroll-locked body { padding-right: var(--scrollbar-gap, 0px); }
   height: 100%;
   padding: .7rem .75rem;
   border: 1.5px solid rgba(59, 38, 24, .16);
+  min-height: 44px;
   border-radius: var(--radius-sm);
   background: var(--cream);
   transition: border-color .2s, background-color .2s, box-shadow .2s;
@@ -1917,9 +1993,9 @@ html.scroll-locked body { padding-right: var(--scrollbar-gap, 0px); }
   .choices-3 .choice-meta { text-align: right; }
 }
 
-.builder-fields { display: grid; gap: 1.1rem; }
+.builder-fields { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.1rem; }
 @media (min-width: 560px) {
-  .builder-fields { grid-template-columns: 1fr 1fr; }
+  .builder-fields { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 .field-hint-row { display: flex; justify-content: space-between; gap: 1rem; }
 .char-count { flex: none; font-variant-numeric: tabular-nums; }

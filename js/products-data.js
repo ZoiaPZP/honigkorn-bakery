@@ -10,13 +10,13 @@ window.BakeryData = (function () {
       id: 'p1', category: 'brot', price: 5.20, image: 'images/products/honigkorn-laib',
       allergens: ['gluten'], traces: ['nuts', 'sesame', 'soy'],
       de: {
-        long: 'Unser Hausbrot: ein milder Dinkel-Sauerteig, der 24 Stunden reift und mit Waldhonig vom Imker aus Fischbach abgerundet wird. Haferflocken und Sonnenblumenkerne sorgen für eine saftige Krume – das Brot bleibt drei bis vier Tage frisch.',
-        weight: '750 g',
-        ingredients: 'Dinkelmehl Type 630, Wasser, Dinkelvollkornmehl, Haferflocken, Sonnenblumenkerne, Waldhonig (4 %), Sauerteig (Roggenmehl, Wasser), Meersalz, Hefe.'
+        long: 'Unser Hausbrot: ein milder Dinkel-Sauerteig, der 24\u00A0Stunden reift und mit Waldhonig vom Imker aus Fischbach abgerundet wird. Haferflocken und Sonnenblumenkerne sorgen für eine saftige Krume – das Brot bleibt drei bis vier Tage frisch.',
+        weight: '750\u00A0g',
+        ingredients: 'Dinkelmehl Type 630, Wasser, Dinkelvollkornmehl, Haferflocken, Sonnenblumenkerne, Waldhonig (4\u00A0%), Sauerteig (Roggenmehl, Wasser), Meersalz, Hefe.'
       },
       en: {
-        long: 'Our signature loaf: a mild spelt sourdough that matures for 24 hours and is rounded off with forest honey from a beekeeper in Fischbach. Oat flakes and sunflower seeds keep the crumb moist – it stays fresh for three to four days.',
-        weight: '750 g',
+        long: 'Our signature loaf: a mild spelt sourdough that matures for 24\u00A0hours and is rounded off with forest honey from a beekeeper in Fischbach. Oat flakes and sunflower seeds keep the crumb moist – it stays fresh for three to four days.',
+        weight: '750\u00A0g',
         ingredients: 'Spelt flour type 630, water, wholegrain spelt flour, oat flakes, sunflower seeds, forest honey (4%), sourdough (rye flour, water), sea salt, yeast.'
       }
     },
@@ -24,13 +24,13 @@ window.BakeryData = (function () {
       id: 'p2', category: 'brot', price: 4.80, image: 'images/products/bauernbrot',
       allergens: ['gluten'], traces: ['sesame', 'soy'],
       de: {
-        long: 'Ein kräftiges Roggenmischbrot nach Taunus-Art: Der Roggensauerteig reift 48 Stunden, gebacken wird auf Stein bei hoher Hitze. Das Ergebnis ist eine dunkle, aromatische Kruste und eine feste, würzige Krume.',
-        weight: '1000 g',
+        long: 'Ein kräftiges Roggenmischbrot nach Taunus-Art: Der Roggensauerteig reift 48\u00A0Stunden, gebacken wird auf Stein bei hoher Hitze. Das Ergebnis ist eine dunkle, aromatische Kruste und eine feste, würzige Krume.',
+        weight: '1000\u00A0g',
         ingredients: 'Roggenmehl Type 1150, Wasser, Weizenmehl Type 1050, Roggensauerteig, Meersalz, Brotgewürz (Kümmel, Koriander, Fenchel).'
       },
       en: {
-        long: 'A hearty Taunus-style rye-wheat bread: the rye sourdough matures for 48 hours and the loaf is baked on stone at high heat. The result is a dark, aromatic crust and a firm, well-spiced crumb.',
-        weight: '1000 g',
+        long: 'A hearty Taunus-style rye-wheat bread: the rye sourdough matures for 48\u00A0hours and the loaf is baked on stone at high heat. The result is a dark, aromatic crust and a firm, well-spiced crumb.',
+        weight: '1000\u00A0g',
         ingredients: 'Rye flour type 1150, water, wheat flour type 1050, rye sourdough, sea salt, bread spices (caraway, coriander, fennel).'
       }
     },
@@ -39,12 +39,12 @@ window.BakeryData = (function () {
       allergens: ['gluten'], traces: ['sesame', 'milk'],
       de: {
         long: 'Das klassische Frühstücksbrötchen mit dem typischen Sternmuster. Der Teig ruht über Nacht, deshalb ist die Kruste besonders knusprig und das Innere luftig-weich.',
-        weight: '1 Stück, ca. 60 g',
+        weight: '1\u00A0Stück, ca.\u00A060\u00A0g',
         ingredients: 'Weizenmehl Type 550, Wasser, Hefe, Meersalz, Rapsöl, Gerstenmalzmehl.'
       },
       en: {
         long: 'The classic breakfast roll with its typical star pattern. The dough rests overnight, which makes the crust extra crisp and the inside light and soft.',
-        weight: '1 roll, approx. 60 g',
+        weight: '1 roll, approx. 60\u00A0g',
         ingredients: 'Wheat flour type 550, water, yeast, sea salt, rapeseed oil, barley malt flour.'
       }
     },
@@ -53,12 +53,12 @@ window.BakeryData = (function () {
       allergens: ['gluten', 'milk'], traces: ['sesame'],
       de: {
         long: 'Von Hand geschlungen, kurz in Lauge getaucht und mit grobem Salz bestreut: außen glänzend und kräftig, innen weich – mit dem typisch dünnen, knusprigen Ärmchen.',
-        weight: '1 Stück, ca. 90 g',
+        weight: '1\u00A0Stück, ca.\u00A090\u00A0g',
         ingredients: 'Weizenmehl Type 550, Wasser, Butter, Hefe, Meersalz, Brezelsalz, Gerstenmalz, Natronlauge (Lebensmittelqualität).'
       },
       en: {
         long: 'Twisted by hand, briefly dipped in lye and sprinkled with coarse salt: glossy and hearty outside, soft inside – with the typical thin, crunchy arms.',
-        weight: '1 pretzel, approx. 90 g',
+        weight: '1 pretzel, approx. 90\u00A0g',
         ingredients: 'Wheat flour type 550, water, butter, yeast, sea salt, pretzel salt, barley malt, food-grade lye.'
       }
     },
@@ -67,12 +67,12 @@ window.BakeryData = (function () {
       allergens: ['gluten', 'milk', 'eggs'], traces: ['nuts', 'soy'],
       de: {
         long: 'Drei Tage Arbeit für 27 hauchdünne Schichten: Der Teig wird mit französischer Butter tourniert, kalt geführt und morgens frisch gebacken. Außen splitterzart, innen wabig und buttrig.',
-        weight: '1 Stück, ca. 70 g',
-        ingredients: 'Weizenmehl Type 550, Butter (28 %), Wasser, Vollmilch, Zucker, Hefe, Eigelb, Meersalz.'
+        weight: '1\u00A0Stück, ca.\u00A070\u00A0g',
+        ingredients: 'Weizenmehl Type 550, Butter (28\u00A0%), Wasser, Vollmilch, Zucker, Hefe, Eigelb, Meersalz.'
       },
       en: {
         long: 'Three days of work for 27 paper-thin layers: the dough is laminated with French butter, rested cold and baked fresh every morning. Shatteringly crisp outside, open and buttery inside.',
-        weight: '1 piece, approx. 70 g',
+        weight: '1 piece, approx. 70\u00A0g',
         ingredients: 'Wheat flour type 550, butter (28%), water, whole milk, sugar, yeast, egg yolk, sea salt.'
       }
     },
@@ -81,12 +81,12 @@ window.BakeryData = (function () {
       allergens: ['gluten', 'milk', 'eggs'], traces: ['nuts'],
       de: {
         long: 'Weicher Hefeteig, großzügig mit Zimt und braunem Zucker gerollt und noch warm mit einer Frischkäse-Vanille-Glasur überzogen. Am besten am selben Tag genießen.',
-        weight: '1 Stück, ca. 110 g',
-        ingredients: 'Weizenmehl, Vollmilch, Butter, brauner Zucker, Zucker, Eier, Hefe, Zimt (1,5 %), Puderzucker, Frischkäse, Vanille, Salz.'
+        weight: '1\u00A0Stück, ca.\u00A0110\u00A0g',
+        ingredients: 'Weizenmehl, Vollmilch, Butter, brauner Zucker, Zucker, Eier, Hefe, Zimt (1,5\u00A0%), Puderzucker, Frischkäse, Vanille, Salz.'
       },
       en: {
         long: 'Soft yeast dough, generously rolled with cinnamon and brown sugar and topped while still warm with a cream cheese and vanilla glaze. Best enjoyed the same day.',
-        weight: '1 piece, approx. 110 g',
+        weight: '1 piece, approx. 110\u00A0g',
         ingredients: 'Wheat flour, whole milk, butter, brown sugar, sugar, eggs, yeast, cinnamon (1.5%), icing sugar, cream cheese, vanilla, salt.'
       }
     },
@@ -95,12 +95,12 @@ window.BakeryData = (function () {
       allergens: ['gluten', 'milk', 'eggs', 'nuts'], traces: ['soy', 'peanuts'],
       de: {
         long: 'Der hessische Klassiker: ein Kranz aus Buttersandmasse, dreimal geschnitten und mit Vanille-Buttercreme und Johannisbeergelee gefüllt, rundum mit hausgemachtem Haselnusskrokant und Belegkirschen.',
-        weight: '1 Stück, ca. 140 g',
+        weight: '1\u00A0Stück, ca.\u00A0140\u00A0g',
         ingredients: 'Butter, Zucker, Weizenmehl, Eier, Haselnusskrokant (Haselnüsse, Zucker), Johannisbeergelee, Vollmilch, Speisestärke, Belegkirschen (Kirschen, Zucker, Farbstoff Anthocyane), Vanille, Backpulver.'
       },
       en: {
         long: 'The Hessian classic: a ring of butter sponge, cut into three layers and filled with vanilla buttercream and redcurrant jelly, coated all over with homemade hazelnut brittle and glacé cherries.',
-        weight: '1 slice, approx. 140 g',
+        weight: '1 slice, approx. 140\u00A0g',
         ingredients: 'Butter, sugar, wheat flour, eggs, hazelnut brittle (hazelnuts, sugar), redcurrant jelly, whole milk, corn starch, glacé cherries (cherries, sugar, colour: anthocyanins), vanilla, baking powder.'
       }
     },
@@ -109,12 +109,12 @@ window.BakeryData = (function () {
       allergens: ['gluten', 'milk', 'eggs', 'soy'], traces: ['nuts'],
       de: {
         long: 'Lockerer Schokoladenbiskuit, mit Kirschwasser beträufelt, Sauerkirschen und viel Sahne, verziert mit Zartbitter-Raspeln und einer Kirsche. Enthält Alkohol.',
-        weight: '1 Stück, ca. 150 g',
-        ingredients: 'Sahne, Sauerkirschen, Zucker, Weizenmehl, Eier, Kakao, Zartbitterschokolade (Kakaomasse, Zucker, Kakaobutter, Emulgator: Sojalecithin), Kirschwasser (2 %), Speisestärke, Gelatine, Vanille.'
+        weight: '1\u00A0Stück, ca.\u00A0150\u00A0g',
+        ingredients: 'Sahne, Sauerkirschen, Zucker, Weizenmehl, Eier, Kakao, Zartbitterschokolade (Kakaomasse, Zucker, Kakaobutter, Emulgator: Sojalecithin), Kirschwasser (2\u00A0%), Speisestärke, Gelatine, Vanille.'
       },
       en: {
         long: 'Light chocolate sponge drizzled with kirsch, sour cherries and plenty of cream, decorated with dark chocolate shavings and a cherry. Contains alcohol.',
-        weight: '1 slice, approx. 150 g',
+        weight: '1 slice, approx. 150\u00A0g',
         ingredients: 'Cream, sour cherries, sugar, wheat flour, eggs, cocoa, dark chocolate (cocoa mass, sugar, cocoa butter, emulsifier: soy lecithin), kirsch (2%), corn starch, gelatine, vanilla.'
       }
     }
