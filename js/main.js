@@ -173,27 +173,50 @@
     }
 
     if (toTop) {
+      // iOS WebKit (Safari and Chrome on iPhone) swallows the synthetic click when
+      // something on the page starts to appear right after the touch (it treats the
+      // tap as a "hover"). Touch/pen taps therefore act on pointerup; the click that
+      // may follow is ignored. Mouse and keyboard keep using click.
+      let downAt = null;
+      let handledAt = 0;
+      toTop.addEventListener('pointerdown', function (e) {
+        downAt = e.pointerType === 'mouse' ? null : { x: e.clientX, y: e.clientY };
+      });
+      toTop.addEventListener('pointercancel', function () { downAt = null; });
+      toTop.addEventListener('pointerup', function (e) {
+        if (!downAt || e.pointerType === 'mouse') return;
+        const moved = Math.abs(e.clientX - downAt.x) + Math.abs(e.clientY - downAt.y);
+        downAt = null;
+        if (moved > 12) return;
+        handledAt = Date.now();
+        goTop();
+      });
       toTop.addEventListener('click', function (e) {
         e.preventDefault();
-        const skip = document.querySelector('.skip-link');
-        window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
-        // Move keyboard focus to the top only once the scroll has finished:
-        // focusing during a smooth scroll can stop it half-way in iOS Safari.
-        if (!skip) return;
-        let done = false;
-        const finish = function () {
-          if (done) return;
-          done = true;
-          window.removeEventListener('scroll', onTopScroll);
-          skip.focus({ preventScroll: true });
-        };
-        const onTopScroll = function () { if (window.scrollY < 2) finish(); };
-        if (window.scrollY < 2) finish();
-        else {
-          window.addEventListener('scroll', onTopScroll, { passive: true });
-          setTimeout(finish, 1500);
-        }
+        if (Date.now() - handledAt < 1000) return;
+        goTop();
       });
+    }
+
+    function goTop() {
+      const skip = document.querySelector('.skip-link');
+      window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+      // Move keyboard focus to the top only once the scroll has finished:
+      // focusing during a smooth scroll can stop it half-way in iOS Safari.
+      if (!skip) return;
+      let done = false;
+      const finish = function () {
+        if (done) return;
+        done = true;
+        window.removeEventListener('scroll', onTopScroll);
+        skip.focus({ preventScroll: true });
+      };
+      const onTopScroll = function () { if (window.scrollY < 2) finish(); };
+      if (window.scrollY < 2) finish();
+      else {
+        window.addEventListener('scroll', onTopScroll, { passive: true });
+        setTimeout(finish, 1500);
+      }
     }
   }
 
