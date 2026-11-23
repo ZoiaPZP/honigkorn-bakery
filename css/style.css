@@ -1251,6 +1251,7 @@ a[x-apple-data-detectors] {
   max-width: 44rem;
   margin-inline: auto;
   padding: clamp(1.75rem, 5vw, 3rem);
+  overflow-wrap: break-word; /* lange URLs wie osmfoundation.org/wiki/Privacy_Policy auf 320px */
 }
 .legal h1 { font-size: clamp(2.2rem, 6vw, 3.2rem); }
 .legal-demo {
@@ -1264,6 +1265,18 @@ a[x-apple-data-detectors] {
 }
 .legal p { color: var(--cocoa); }
 .legal-card h2 { margin: 2.25rem 0 .8rem; font-size: 1.6rem; scroll-margin-top: calc(var(--header-h) + 1rem); }
+.legal-resp {
+  margin: 1.25rem 0 1.5rem;
+  padding: 1.1rem 1.25rem;
+  border: 1px solid rgba(59, 38, 24, .12);
+  border-radius: var(--radius-sm);
+  background: var(--paper);
+}
+.legal-card .legal-resp h2 { margin: 0 0 .4rem; font-size: 1.3rem; }
+.legal-resp p { margin: 0; }
+.legal-list { margin: 0 0 1rem 1.2rem; list-style: disc; color: var(--cocoa); }
+.legal-list li { margin-bottom: .35rem; }
+.footer-fictional { opacity: .75; font-size: .9em; }
 .legal-back { display: inline-flex; align-items: center; min-height: 44px; margin-top: .5rem; font-weight: 600; }
 
 .credits {
